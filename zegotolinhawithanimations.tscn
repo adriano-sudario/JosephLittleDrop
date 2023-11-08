@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://pvf8kld36o13"]
+
+[ext_resource type="PackedScene" uid="uid://c35nmk7h2ekl6" path="res://models/zegotolinhawithanimations.glb" id="1_kdioy"]
+
+[node name="zegotolinhawithanimations" instance=ExtResource("1_kdioy")]
+
+[node name="Skeleton3D" parent="metarig" index="0"]
+bones/0/position = Vector3(0.00476349, 1.47964, -0.035538)
+bones/0/rotation = Quaternion(-0.0544476, 1.19032e-07, -6.49065e-09, 0.998517)
+bones/6/rotation = Quaternion(-0.0937119, -0.000174226, -0.0018497, 0.995598)
+bones/8/rotation = Quaternion(-0.0722378, 0.730963, 0.0157532, 0.678401)
+bones/9/rotation = Quaternion(-0.0277015, 0.000792129, -0.181334, 0.983031)
+bones/12/rotation = Quaternion(-0.041379, -0.734085, -0.0448961, 0.676307)
+bones/13/rotation = Quaternion(-0.0258136, -0.0013539, 0.28564, 0.957988)
+bones/17/rotation = Quaternion(0.983825, 0.0475688, -0.0071428, 0.172555)
+bones/18/rotation = Quaternion(0.358329, 0.0267421, 0.0187351, 0.933024)
+bones/19/rotation = Quaternion(-0.764997, -0.0228883, 0.0107699, 0.643537)
+bones/22/rotation = Quaternion(0.983825, -0.0475689, 0.0071432, 0.172555)
+bones/23/rotation = Quaternion(0.358329, -0.0267421, -0.0187351, 0.933024)
+bones/24/rotation = Quaternion(-0.764997, 0.0228883, -0.0107699, 0.643537)

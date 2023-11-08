@@ -7,6 +7,7 @@ signal coin_collected
 
 @export_subgroup("Properties")
 @export var movement_speed = 250
+@export var running_speed_multiplier = 1.75
 @export var jump_strength = 7
 @export var maximum_jumps = 2
 
@@ -19,6 +20,7 @@ var movement_velocity: Vector3
 var rotation_direction: float
 var gravity := 0.0
 var was_on_floor := false
+var is_running := false
 var jumps_count := 0
 var coins := 0
 
@@ -55,20 +57,28 @@ func handle_effects():
 	
 	if is_on_floor():
 		if abs(velocity.x) > 1 or abs(velocity.z) > 1:
-			animation.play("walk", 0.5)
+			if is_running:
+				animation.play("running", 0.5)
+			else:
+				animation.play("walk", 0.5)
+			
 			particles_trail.emitting = true
 			sound_footsteps.stream_paused = false
 		else:
-			animation.play("idle", 0.5)
-	else:
-		animation.play("jump", 0.5)
+			animation.play("Idle", 0.5)
+#	else:
+#		animation.play("jump", 0.5)
 
 func handle_controls(delta):
 	var input := Vector3.ZERO
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
 	input = input.rotated(Vector3.UP, view.rotation.y).normalized()
+	is_running = Input.is_action_pressed("run")
 	movement_velocity = input * movement_speed * delta
+	
+	if is_running:
+		movement_velocity *= running_speed_multiplier
 	
 	if Input.is_action_just_pressed("jump") and can_jump():
 		Audio.play("res://sounds/jump.ogg")
