@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platform_grass_large_round.tscn" id="8_4oh1e"]
 [ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platform_falling.tscn" id="9_2fnpo"]
 [ext_resource type="PackedScene" uid="uid://dtjvjdjl8cs6e" path="res://models/flag.glb" id="9_fw1f5"]
-[ext_resource type="PackedScene" uid="uid://dfpisimsgf5ce" path="res://objects/coin.tscn" id="10_fwhys"]
+[ext_resource type="PackedScene" uid="uid://cnb32b6dfgrer" path="res://objects/little_drop.tscn" id="10_fwhys"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="11_apvpm"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="13_drtpy"]
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="13_jfda3"]
@@ -26,6 +26,7 @@ shadow_offset = Vector2(2, 2)
 environment = ExtResource("1_ahusb")
 
 [node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("2_onms2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23874, 0.5, 3.62309)
 view = NodePath("../View")
 
 [node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
@@ -41,7 +42,7 @@ fov = 40.0
 [node name="World" type="Node3D" parent="."]
 
 [node name="platform" parent="World" instance=ExtResource("6_sdmev")]
-transform = Transform3D(0.993085, 0, -0.117399, 0, 1, 0, 0.117399, 0, 0.993085, 0, 0, 0)
+transform = Transform3D(0.993085, 0, -0.117399, 0, 1, 0, 0.117399, 0, 0.993085, 4.02761, -0.0964074, 3.6356)
 
 [node name="platform4" parent="World" instance=ExtResource("6_sdmev")]
 transform = Transform3D(0.993085, 0, -0.117399, 0, 1, 0, 0.117399, 0, 0.993085, -15, 0, 4)
@@ -53,10 +54,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -3)
 transform = Transform3D(0.966237, 0, -0.257656, 0, 1, 0, 0.257656, 0, 0.966237, -3, 3, -5)
 
 [node name="platform-medium" parent="World" instance=ExtResource("7_ixpj3")]
-transform = Transform3D(0.996134, 0, 0.0878512, 0, 1, 0, -0.0878512, 0, 0.996134, -0.279221, 0, 3.89167)
+transform = Transform3D(0.996134, 0, 0.0878512, 0, 1, 0, -0.0878512, 0, 0.996134, -0.141522, 0, 6.44055)
 
 [node name="platform-medium2" parent="World" instance=ExtResource("7_ixpj3")]
-transform = Transform3D(0.995121, 0, 0.0986598, 0, 1, 0, -0.0986598, 0, 0.995121, -5, 0, 4)
+transform = Transform3D(0.995121, 0, 0.0986598, 0, 1, 0, -0.0986598, 0, 0.995121, -5, 0, 7.89157)
 
 [node name="platform-medium4" parent="World" instance=ExtResource("7_ixpj3")]
 transform = Transform3D(0.929796, 0, -0.368076, 0, 1, 0, 0.368076, 0, 0.929796, -14.9422, 0.991941, 0.128304)
@@ -65,10 +66,10 @@ transform = Transform3D(0.929796, 0, -0.368076, 0, 1, 0, 0.368076, 0, 0.929796, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -6)
 
 [node name="platform-falling" parent="World" instance=ExtResource("9_2fnpo")]
-transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, -9, 0.419294, 4)
+transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, -9, 0.419294, 6.91184)
 
 [node name="platform-falling2" parent="World" instance=ExtResource("9_2fnpo")]
-transform = Transform3D(0.994522, 0, -0.104528, 0, 1, 0, 0.104528, 0, 0.994522, -12, -0.315063, 4)
+transform = Transform3D(0.994522, 0, -0.104528, 0, 1, 0, 0.104528, 0, 0.994522, -12, -0.315063, 6.06915)
 
 [node name="platform-falling3" parent="World" instance=ExtResource("9_2fnpo")]
 transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, -11.7527, 1.8303, -2.30579)
@@ -79,34 +80,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, -2)
 [node name="flag" parent="World" instance=ExtResource("9_fw1f5")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 3.48077, -6)
 
-[node name="coin" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226232, 0.635, 3.98308)
+[node name="little_drop" parent="World" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0578647, 0.635, 6.50785)
 
-[node name="coin10" parent="World" instance=ExtResource("10_fwhys")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.635, 4)
+[node name="little_drop10" parent="World" instance=ExtResource("10_fwhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85305, 0.711952, 7.89287)
 
-[node name="coin2" parent="World" instance=ExtResource("10_fwhys")]
+[node name="little_drop2" parent="World" instance=ExtResource("10_fwhys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0437, 1.97005, -0.33003)
 
-[node name="coin3" parent="World" instance=ExtResource("10_fwhys")]
+[node name="little_drop3" parent="World" instance=ExtResource("10_fwhys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0437, 1.97005, -1.33003)
 
-[node name="coin5" parent="World" instance=ExtResource("10_fwhys")]
+[node name="little_drop5" parent="World" instance=ExtResource("10_fwhys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7731, 2.54941, -2.28223)
 
-[node name="coin6" parent="World" instance=ExtResource("10_fwhys")]
+[node name="little_drop6" parent="World" instance=ExtResource("10_fwhys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8111, 1.6888, 0.328574)
 
-[node name="coin7" parent="World" instance=ExtResource("10_fwhys")]
+[node name="little_drop7" parent="World" instance=ExtResource("10_fwhys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8111, 2.6888, 0.328574)
 
-[node name="coin8" parent="World" instance=ExtResource("10_fwhys")]
+[node name="little_drop8" parent="World" instance=ExtResource("10_fwhys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9647, 0.801836, 3.99354)
 
-[node name="coin9" parent="World" instance=ExtResource("10_fwhys")]
+[node name="little_drop9" parent="World" instance=ExtResource("10_fwhys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -6)
 
-[node name="coin4" parent="World" instance=ExtResource("10_fwhys")]
+[node name="little_drop4" parent="World" instance=ExtResource("10_fwhys")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0437, 1.97005, -2.33003)
 
 [node name="cube8" parent="World" instance=ExtResource("13_drtpy")]
@@ -161,5 +162,3 @@ offset_right = 368.0
 offset_bottom = 123.0
 text = "0"
 label_settings = SubResource("LabelSettings_38ys3")
-
-[connection signal="coin_collected" from="Player" to="HUD" method="_on_coin_collected"]

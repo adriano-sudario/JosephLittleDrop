@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0v4hkvstt3yk"]
+
+[ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="1_qnvhl"]
+[ext_resource type="Script" path="res://objects/death_smoke.gd" id="2_i5inp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q7stj"]
+diffuse_mode = 2
+specular_mode = 2
+metallic_specular = 0.0
+backlight = Color(0, 0.521569, 0.709804, 1)
+billboard_keep_scale = true
+grow_amount = 1.882
+proximity_fade_distance = 0.25
+
+[sub_resource type="Curve" id="Curve_xh1e2"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0164835, 0.705263), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="DeathSmoke" type="CPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_q7stj")
+cast_shadow = 0
+emitting = false
+amount = 40
+lifetime = 0.75
+one_shot = true
+mesh = ExtResource("1_qnvhl")
+emission_shape = 1
+emission_sphere_radius = 0.1
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+spread = 90.0
+gravity = Vector3(0, 3, 0)
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_xh1e2")
+script = ExtResource("2_i5inp")

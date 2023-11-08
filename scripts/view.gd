@@ -20,6 +20,9 @@ func _ready():
 	camera_rotation = rotation_degrees
 
 func _physics_process(delta):
+	if target == null:
+		return
+	
 	position = position.lerp(target.position, delta * 4)
 	rotation_degrees = rotation_degrees.lerp(camera_rotation, delta * 6)
 	

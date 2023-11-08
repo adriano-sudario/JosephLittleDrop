@@ -1,6 +1,8 @@
+class_name Player
 extends CharacterBody3D
 
-signal coin_collected
+signal on_little_drop_collected
+signal on_jump
 
 @export_subgroup("Components")
 @export var view: Node3D
@@ -41,7 +43,12 @@ func _physics_process(delta):
 
 func handle_death():
 	if position.y < -10 or current_scale < minimum_scale:
-		get_tree().reload_current_scene()
+		var death_smoke_scene_path = "res://objects/death_smoke.tscn"
+		var death_smoke = load(death_smoke_scene_path).instantiate()
+		get_parent().add_child(death_smoke)
+		death_smoke.global_position = global_position
+		death_smoke.global_position.y += 0.15
+		queue_free()
 
 func handle_movement(delta):
 	var applied_velocity: Vector3
@@ -113,6 +120,7 @@ func jump():
 	gravity = -jump_strength
 	model.scale = Vector3(current_scale * 0.5, current_scale * 1.5, current_scale * 0.5)
 	jumps_count += 1
+	on_jump.emit(jumps_count)
 
 func handle_gravity(delta):
 	gravity += 25 * delta
@@ -121,8 +129,8 @@ func handle_gravity(delta):
 		jumps_count = 0
 		gravity = 0
 
-func collect_coin(value):
+func collect_little_drop(value):
 	coins += 1
-	coin_collected.emit(coins)
+	on_little_drop_collected.emit(coins)
 	model.scale = Vector3(current_scale * 1.25, current_scale * 0.75, current_scale * 0.75)
 	current_scale += value
