@@ -1,7 +1,8 @@
 extends Area3D
 
+@export var value := 0.15
+
 var time := 0.0
-var value := 0.05
 var grabbed := false
 
 func _on_body_entered(body):

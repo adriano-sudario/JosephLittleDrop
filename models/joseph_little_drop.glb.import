@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c35nmk7h2ekl6"
-path="res://.godot/imported/zegotolinhawithanimations.glb-cd5be1b8a63983dac48a273690ba8f09.scn"
+uid="uid://dhl1s0fd86ahg"
+path="res://.godot/imported/joseph_little_drop.glb-8625915939e525abfcd6021c73093bf1.scn"
 
 [deps]
 
-source_file="res://models/zegotolinhawithanimations.glb"
-dest_files=["res://.godot/imported/zegotolinhawithanimations.glb-cd5be1b8a63983dac48a273690ba8f09.scn"]
+source_file="res://models/joseph_little_drop.glb"
+dest_files=["res://.godot/imported/joseph_little_drop.glb-8625915939e525abfcd6021c73093bf1.scn"]
 
 [params]
 

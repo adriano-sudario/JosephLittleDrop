@@ -4,22 +4,20 @@ extends CharacterBody3D
 signal on_little_drop_collected
 signal on_jump
 
-@export_subgroup("Components")
-@export var view: Node3D
-
 @export_subgroup("Properties")
 @export var movement_speed = 250
 @export var running_speed_multiplier = 1.75
 @export var jump_strength = 7
 @export var maximum_jumps = 2
-@export var evaporation_rate = 0.05
-@export var initial_scale := 0.4
+@export var evaporation_rate = 0.15
+@export var initial_scale := 1.0
 @export var minimum_scale := 0.1
 
 @onready var particles_trail = $ParticlesTrail
 @onready var sound_footsteps = $SoundFootsteps
 @onready var model = $Character
 @onready var animation = $Character/AnimationPlayer
+@onready var view = $"../View"
 
 var current_scale := initial_scale
 var movement_velocity: Vector3
@@ -94,9 +92,14 @@ func handle_effects():
 			particles_trail.emitting = true
 			sound_footsteps.stream_paused = false
 		else:
-			animation.play("Idle", 0.5)
-#	else:
-#		animation.play("jump", 0.5)
+			animation.play("idle", 0.5)
+	else:
+		var animation_name = "jumping"
+		
+		if gravity > 0:
+			animation_name = "falling"
+			
+		animation.play(animation_name, 0.5)
 
 func handle_controls(delta):
 	var input := Vector3.ZERO

@@ -25,9 +25,8 @@ shadow_offset = Vector2(2, 2)
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_ahusb")
 
-[node name="Player" parent="." node_paths=PackedStringArray("view") instance=ExtResource("2_onms2")]
+[node name="Player" parent="." instance=ExtResource("2_onms2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23874, 0.5, 3.62309)
-view = NodePath("../View")
 
 [node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 0, 0, 0)
