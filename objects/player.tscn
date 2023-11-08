@@ -48,6 +48,9 @@ bones/22/rotation = Quaternion(0.997853, -0.0480926, 0.000959364, 0.0444521)
 bones/23/rotation = Quaternion(0.614, -0.0465191, -0.0162887, 0.787765)
 bones/24/rotation = Quaternion(-0.764997, 0.0228883, -0.0107699, 0.643537)
 
+[node name="AnimationPlayer" parent="Character" index="4"]
+playback_default_blend_time = 0.3
+
 [node name="Shadow" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
 size = Vector3(1, 2, 1)
