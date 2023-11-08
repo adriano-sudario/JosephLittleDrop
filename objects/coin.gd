@@ -1,11 +1,12 @@
 extends Area3D
 
 var time := 0.0
+var value := 0.05
 var grabbed := false
 
 func _on_body_entered(body):
 	if body.has_method("collect_coin") and !grabbed:
-		body.collect_coin()
+		body.collect_coin(value)
 		Audio.play("res://sounds/coin.ogg")
 		$Mesh.queue_free()
 		$Particles.emitting = false

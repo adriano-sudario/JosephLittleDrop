@@ -34,7 +34,6 @@ shape = SubResource("CapsuleShape3D_gdq8c")
 [node name="Character" parent="." instance=ExtResource("2_tqn5g")]
 
 [node name="Skeleton3D" parent="Character/metarig" index="0"]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 bones/0/position = Vector3(0.00476349, 1.47964, -0.035538)
 bones/0/rotation = Quaternion(-0.0544476, 1.19032e-07, -6.49065e-09, 0.998517)
 bones/6/rotation = Quaternion(-0.0937119, -0.000174226, -0.0018497, 0.995598)
