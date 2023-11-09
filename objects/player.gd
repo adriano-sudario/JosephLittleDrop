@@ -25,6 +25,7 @@ var rotation_direction: float
 var gravity := 0.0
 var was_on_floor := false
 var is_running := false
+var is_evaporating := true
 var jumps_count := 0
 var coins := 0
 
@@ -67,7 +68,11 @@ func handle_movement_rotation(delta):
 	rotation.y = lerp_angle(rotation.y, rotation_direction, delta * 10)
 
 func handle_evaporation(delta):
+	if not is_evaporating:
+		return
+	
 	current_scale -= evaporation_rate * delta
+	particles_trail.scale = current_scale * Vector3.ONE
 	maintain_current_scale(delta)
 
 func maintain_current_scale(delta):
