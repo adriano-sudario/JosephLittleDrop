@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://sdd66ixup1ng"]
+[gd_scene load_steps=16 format=3 uid="uid://sdd66ixup1ng"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_7cr1w"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_gwfa6"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="3_7eyrx"]
 [ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="4_8yxcn"]
 [ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platform_grass_large_round.tscn" id="7_pspgo"]
-[ext_resource type="PackedScene" uid="uid://dtjvjdjl8cs6e" path="res://models/flag.glb" id="8_csfih"]
 [ext_resource type="PackedScene" uid="uid://dfnia5s6w0noc" path="res://objects/scalable_platform.tscn" id="8_gye6r"]
+[ext_resource type="PackedScene" uid="uid://88vv3axisa5h" path="res://objects/flag.tscn" id="9_fx5x2"]
 [ext_resource type="PackedScene" uid="uid://cnb32b6dfgrer" path="res://objects/little_drop.tscn" id="9_uaak4"]
+[ext_resource type="PackedScene" uid="uid://xm83bu5mci02" path="res://scenes/level_three.tscn" id="10_l55bw"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="10_wva1b"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="11_b7eti"]
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="12_686fh"]
@@ -45,9 +46,6 @@ transform = Transform3D(0.993085, 0, -0.117399, 0, 1, 0, 0.117399, 0, 0.993085, 
 
 [node name="platform-grass-large-round" parent="World" instance=ExtResource("7_pspgo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597204, -3.68372, -32.8995)
-
-[node name="flag" parent="World" instance=ExtResource("8_csfih")]
-transform = Transform3D(0.707107, 0, -0.707107, 0.00188822, 0.999996, 0.00188822, 0.707105, -0.00267035, 0.707105, 0.47004, -3.1767, -33.1309)
 
 [node name="cube8" parent="World" instance=ExtResource("10_wva1b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5495, 1.10741, 24.9183)
@@ -117,6 +115,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0737789, -4.91241, -19.366
 
 [node name="LittleDrop2" parent="World" instance=ExtResource("9_uaak4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22986, -3.48472, -11.8884)
+
+[node name="Flag" parent="World" instance=ExtResource("9_fx5x2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0935779, -3.21609, -32.2633)
+next_level = ExtResource("10_l55bw")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.422618, -0.694272, 0.582563, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
