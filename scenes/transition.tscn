@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cla4fkne5tyu0"]
+
+[ext_resource type="Script" path="res://scenes/transition.gd" id="1_1yqk1"]
+[ext_resource type="Shader" path="res://scenes/transition.gdshader" id="1_v1re6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eqq4j"]
+shader = ExtResource("1_v1re6")
+shader_parameter/circle_size = 0.0
+shader_parameter/screen_width = 0.0
+shader_parameter/screen_height = 0.0
+
+[node name="Transition" type="CanvasLayer"]
+script = ExtResource("1_1yqk1")
+
+[node name="DissolveRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_eqq4j")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

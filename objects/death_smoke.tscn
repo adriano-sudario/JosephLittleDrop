@@ -21,7 +21,6 @@ material_override = SubResource("StandardMaterial3D_q7stj")
 cast_shadow = 0
 emitting = false
 amount = 40
-lifetime = 0.75
 one_shot = true
 mesh = ExtResource("1_qnvhl")
 emission_shape = 1
