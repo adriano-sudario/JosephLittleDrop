@@ -88,7 +88,6 @@ transform = Transform3D(1.56209, -1.37982, 1.71508, 1.97375, 1.80907, -0.342241,
 
 [node name="ScalablePlatform" parent="World" instance=ExtResource("8_gye6r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15715, -4.26223, -11.7821)
-scale_increment = 3.0
 
 [node name="ScalablePlatform2" parent="World" instance=ExtResource("8_gye6r")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.27253, -3.41568, -4.24928)

@@ -107,6 +107,9 @@ func handle_effects():
 		animation.play(animation_name, 0.5)
 
 func handle_controls(delta):
+	if Input.is_action_just_pressed("respawn"):
+		current_scale = 0
+	
 	var input := Vector3.ZERO
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")

@@ -1,7 +1,7 @@
 class_name ScalablePlatform
 extends Platform
 
-@export var scale_increment := 2.0
+@export var scale_increment := Vector3(2, 2, 2)
 @export var is_big := false
 
 func _ready():
