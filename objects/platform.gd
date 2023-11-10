@@ -27,7 +27,10 @@ func handle_fall(delta):
 	if falling:
 		gravity_force_applied += 0.25
 
-func _on_body_entered(_body):
+func _on_body_entered(body):
+	if not body is Player:
+		return
+	
 	if !falling:
 		Audio.play("res://sounds/fall.ogg")
 		scale = current_scale * Vector3(1.25, 1, 1.25)

@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6awvrl334mgs"]
+
+[ext_resource type="PackedScene" uid="uid://gpvdu35xq0x7" path="res://models/platform_small.glb" id="1_ie0r8"]
+[ext_resource type="Script" path="res://objects/safe_platform.gd" id="1_vdctc"]
+[ext_resource type="PackedScene" uid="uid://bsrmqj84lksd7" path="res://models/cloud.glb" id="2_ww3c2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gfx37"]
+size = Vector3(1, 1.5328, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gcixt"]
+points = PackedVector3Array(-0.400059, 0, -0.5, -0.5, 0, -0.400059, -0.400059, 0.1, -0.5, 0.399961, 0, -0.5, -0.5, 0.1, -0.400059, -0.5, 0, 0.399961, 0.399961, 0.1, -0.5, 0.5, 0, -0.400059, -0.5, 0.1, 0.399961, -0.400059, 0, 0.5, 0.5, 0.1, -0.400059, 0.5, 0, 0.399961, -0.400059, 0.1, 0.5, 0.399961, 0, 0.5, 0.5, 0.1, 0.399961, 0.399961, 0.1, 0.5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qub0e"]
+emission_shape = 3
+emission_box_extents = Vector3(0.4, 0.4, 0.4)
+spread = 90.0
+gravity = Vector3(0, -5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4imc0"]
+albedo_color = Color(0.4, 0.572549, 0.847059, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4vp5g"]
+material = SubResource("StandardMaterial3D_4imc0")
+radius = 0.03
+height = 0.06
+
+[node name="SafePlatform" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_vdctc")
+
+[node name="SafeArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SafeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.781093, 0)
+shape = SubResource("BoxShape3D_gfx37")
+
+[node name="platform_small" parent="." instance=ExtResource("1_ie0r8")]
+
+[node name="platform_small2" parent="platform_small/tmpParent" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Area3D" type="StaticBody3D" parent="platform_small/tmpParent/platform_small2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="platform_small/tmpParent/platform_small2/Area3D"]
+shape = SubResource("ConvexPolygonShape3D_gcixt")
+
+[node name="cloud" parent="." instance=ExtResource("2_ww3c2")]
+transform = Transform3D(0.609086, 0, 0, 0, 0.398256, 0, 0, 0, 1, 0, 1.26061, 0)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="cloud/cube2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.373686, 0)
+amount = 250
+lifetime = 0.9
+visibility_aabb = AABB(-0.417105, -1.37751, -0.314499, 0.83421, 2.75502, 0.628998)
+process_material = SubResource("ParticleProcessMaterial_qub0e")
+draw_pass_1 = SubResource("SphereMesh_4vp5g")
+
+[connection signal="body_entered" from="SafeArea" to="." method="_on_safe_area_body_entered"]
+[connection signal="body_exited" from="SafeArea" to="." method="_on_safe_area_body_exited"]
+
+[editable path="platform_small"]
+[editable path="cloud"]

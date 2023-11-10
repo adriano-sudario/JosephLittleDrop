@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://ddbojdn6yydje"]
+
+[ext_resource type="Script" path="res://objects/safe_platform.gd" id="1_s1f0o"]
+[ext_resource type="PackedScene" uid="uid://cg30tp6ig461y" path="res://models/structureCloth.glb" id="2_qvjqp"]
+[ext_resource type="PackedScene" uid="uid://cejy6wlhes7iy" path="res://models/floor.glb" id="3_u6y1j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gfx37"]
+size = Vector3(1, 1.5328, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cpw4i"]
+points = PackedVector3Array(-0.244653, 0.02, -0.244653, -0.244653, 0, -0.14637, -0.244653, 0.04, -0.244653, 0.244653, 0.02, -0.244653, -0.244653, 0, 0.146322, 0.244653, 0, -0.14637, -0.244653, 0.04, 0.244653, 0.244653, 0.04, -0.244653, -0.244653, 0.02, 0.244653, 0.244653, 0, 0.146322, 0.244653, 0.04, 0.244653, 0.244653, 0.02, 0.244653)
+
+[node name="SafePlatformAlt" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_s1f0o")
+
+[node name="SafeArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SafeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.781093, 0)
+shape = SubResource("BoxShape3D_gfx37")
+
+[node name="structureCloth" parent="." instance=ExtResource("2_qvjqp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.0614454, 0)
+
+[node name="structureCloth2" parent="structureCloth" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1.43391, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="floor" parent="." instance=ExtResource("3_u6y1j")]
+transform = Transform3D(2.13681, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor/floor2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/floor2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_cpw4i")
+
+[connection signal="body_entered" from="SafeArea" to="." method="_on_safe_area_body_entered"]
+[connection signal="body_exited" from="SafeArea" to="." method="_on_safe_area_body_exited"]
+
+[editable path="structureCloth"]
+[editable path="floor"]
