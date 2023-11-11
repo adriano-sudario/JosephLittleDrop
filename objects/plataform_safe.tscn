@@ -15,7 +15,6 @@ script = ExtResource("2_kp7fc")
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_rv02x")
 
 [node name="SafeArea" type="Area3D" parent="." index="2"]
@@ -26,3 +25,6 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SafeArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.781093, 0)
 shape = SubResource("BoxShape3D_lmkpl")
+
+[connection signal="body_entered" from="SafeArea" to="." method="_on_safe_area_body_entered"]
+[connection signal="body_exited" from="SafeArea" to="." method="_on_safe_area_body_exited"]

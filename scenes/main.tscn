@@ -114,7 +114,7 @@ transform = Transform3D(1.56209, -1.37982, 1.71508, 1.97375, 1.80907, -0.342241,
 transform = Transform3D(1.56209, -1.37982, 1.71508, 1.97375, 1.80907, -0.342241, -0.974547, 1.4522, 2.05595, -15.866, 2.03819, 7.83702)
 
 [node name="Flag" parent="World" instance=ExtResource("11_0nlf7")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 3.48077, -6)
+transform = Transform3D(0.707103, -0.00317649, -0.707103, 0.00224612, 0.999995, -0.00224612, 0.707107, 0, 0.707107, 0, 3.48077, -6)
 next_level = ExtResource("12_a7lyd")
 
 [node name="PlataformNormal" parent="World" instance=ExtResource("16_rtwrh")]

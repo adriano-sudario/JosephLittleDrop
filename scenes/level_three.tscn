@@ -1,11 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://xm83bu5mci02"]
+[gd_scene load_steps=19 format=3 uid="uid://xm83bu5mci02"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_30xlt"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_o5uvy"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="3_mhnml"]
 [ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platform_grass_large_round.tscn" id="5_kctcl"]
+[ext_resource type="Script" path="res://objects/flag.gd" id="6_h5c5c"]
 [ext_resource type="PackedScene" uid="uid://dtjvjdjl8cs6e" path="res://models/flag.glb" id="6_yrfy4"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="7_1of6f"]
+[ext_resource type="PackedScene" uid="uid://bwf3sre8j43jb" path="res://scenes/level_four.tscn" id="7_64dc6"]
 [ext_resource type="PackedScene" uid="uid://cnb32b6dfgrer" path="res://objects/little_drop.tscn" id="9_7ifcj"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="10_h2jqr"]
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="11_kxff5"]
@@ -47,6 +49,8 @@ transform = Transform3D(0.367508, 0, -0.93002, 0, 1, 0, 0.93002, 0, 0.367508, 21
 
 [node name="flag" parent="World" instance=ExtResource("6_yrfy4")]
 transform = Transform3D(-0.397755, 0.00248348, -0.917489, 0.00188822, 0.999996, 0.00188822, 0.917491, -0.000981374, -0.397757, 21.59, -3.1767, -29.4626)
+script = ExtResource("6_h5c5c")
+next_level = ExtResource("7_64dc6")
 
 [node name="cube8" parent="World" instance=ExtResource("7_1of6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5495, 1.10741, 24.9183)
@@ -127,7 +131,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.22967, -4.26639, -14.
 transform = Transform3D(0.618664, 0, -0.327497, 0, 0.7, 0, 0.327497, 0, 0.618664, 3.90716, -0.4279, 7.12286)
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.422618, -0.694272, 0.582563, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
+transform = Transform3D(-0.422618, -0.694272, 0.582564, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
 shadow_enabled = true
 shadow_opacity = 0.75
 
