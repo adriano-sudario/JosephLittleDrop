@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://xm83bu5mci02"]
+[gd_scene load_steps=16 format=3 uid="uid://xm83bu5mci02"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_30xlt"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_o5uvy"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="11_kxff5"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="12_qq7l4"]
 [ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platform_falling.tscn" id="13_u4lum"]
+[ext_resource type="PackedScene" uid="uid://b7iot73p6aiab" path="res://objects/plataform_normal.tscn" id="14_mu3nc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_38ys3"]
 font = ExtResource("12_qq7l4")
@@ -143,3 +144,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.420094, -4.00413, -28.2268)
 
 [node name="Platform" parent="." instance=ExtResource("4_ymf47")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.29972, -1.02246, -0.515226)
+
+[node name="PlataformNormal" parent="." instance=ExtResource("14_mu3nc")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.383748, -5.12739, -18.1609)
