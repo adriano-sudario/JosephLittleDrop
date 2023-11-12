@@ -7,6 +7,7 @@ extends Platform
 
 @onready var feedback_drop = $FeedbackDrop
 @onready var cube = $Cube
+@onready var gpu_particles_3d = $GPUParticles3D
 
 var random_generator = RandomNumberGenerator.new()
 var player: Player
@@ -40,6 +41,7 @@ func _on_area_3d_body_entered(body):
 	if body is Player:
 		player = body
 		player.on_jump.connect(teleport_on_second_jump)
+		linked_platform.gpu_particles_3d.visible = false
 
 func _on_area_3d_body_exited(body):
 	if body is Player:
@@ -48,3 +50,4 @@ func _on_area_3d_body_exited(body):
 		linked_platform.cube.rotation_degrees = Vector3.ZERO
 		linked_platform.feedback_drop.scale = Vector3.ZERO
 		scale_on_teleport = minimum_scale_on_teleport
+		linked_platform.gpu_particles_3d.visible = true

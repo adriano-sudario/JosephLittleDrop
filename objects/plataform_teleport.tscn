@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6esc0vskheb6"]
+[gd_scene load_steps=14 format=3 uid="uid://c6esc0vskheb6"]
 
 [ext_resource type="PackedScene" uid="uid://cqlq863jxsgu" path="res://models/PlataformTeleport.glb" id="1_6wa2y"]
 [ext_resource type="Script" path="res://objects/plataform_teleport.gd" id="2_5i0pf"]
+[ext_resource type="PackedScene" uid="uid://dhl1s0fd86ahg" path="res://models/joseph_little_drop.glb" id="3_1skp4"]
+[ext_resource type="Shader" path="res://objects/plataform_teleport_feedback.gdshader" id="4_j7qf8"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_83qoa"]
 points = PackedVector3Array(0.891938, 0.663051, 0.994716, -0.856682, -0.571033, -1.02781, -0.994216, 0.594101, 0.925304, 0.788186, -0.947957, 0.89088, 0.890076, 0.867004, -0.924019, 0.930811, -0.884823, -0.86197, -0.861877, -0.919403, 0.89626, -0.858887, 0.973504, -0.755627, 0.755783, 0.973541, 0.858749, -0.890999, -0.947896, -0.788002, 1.09917, 0.182811, 0.824237, -1.09678, 0.182587, -0.822425, -0.755808, 0.973541, 0.858749, -0.822317, 0.182574, 1.09649, 0.972184, -0.196622, -1.04162, -1.0729, -0.195806, 0.934156, -0.826303, 0.183487, -1.10181, 0.934277, -0.195991, 1.07286, 1.10315, 0.183493, -0.827219, 1.02582, -0.604189, 0.820646, 0.858867, 0.973509, -0.755631, 0.754281, -0.983149, -0.822888, -0.789298, -0.983916, 0.789139, 0.960137, 0.868499, 0.788556, -0.788797, 0.868783, -0.960073, 0.822264, 0.182568, -1.09645, -0.820742, -0.604105, 1.02583, -1.02587, -0.604012, -0.820665, 0.788179, -0.879489, -0.95935, -0.959472, -0.879427, 0.787989, -0.960142, 0.868673, 0.78854, 0.822827, -0.983166, 0.754166)
@@ -20,16 +22,85 @@ emission_energy_multiplier = 0.81
 material = SubResource("StandardMaterial3D_gbj11")
 size = Vector2(2, 2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q51w2"]
-albedo_color = Color(0.4, 0.572549, 0.847059, 1)
+[sub_resource type="Shader" id="Shader_ra0pf"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.3.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform sampler2D texture_metallic : hint_default_white,filter_linear_mipmap,repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r,filter_linear_mipmap,repeat_enable;
+uniform float specular;
+uniform float metallic;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float metallic_tex = dot(texture(texture_metallic,base_uv),metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	vec4 roughness_texture_channel = vec4(1.0,0.0,0.0,0.0);
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_030yy"]
+render_priority = 0
+shader = SubResource("Shader_ra0pf")
+shader_parameter/albedo = Color(0.4, 0.572549, 0.847059, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_640g7"]
-material = SubResource("StandardMaterial3D_q51w2")
+material = SubResource("ShaderMaterial_030yy")
 radius = 1.5
 height = 3.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4pcp"]
 size = Vector3(5.30831, 6.34799, 5.46706)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6o5ki"]
+render_priority = 0
+shader = ExtResource("4_j7qf8")
+shader_parameter/line_color = Color(0.4, 0.572549, 0.847059, 1)
+shader_parameter/line_width = 0.01
+shader_parameter/line_blur = 0.2
+shader_parameter/line_speed = 0.1
+shader_parameter/straight_lines = true
+shader_parameter/interrupt_width = 0.7
+shader_parameter/interrupt_blur = 0.25
+shader_parameter/interrupt_speed = 0.5
+shader_parameter/glow_color = Color(0.5, 0.75, 1, 1)
+shader_parameter/glow_itensity = 7.5
+shader_parameter/glow_amount = 4.5
+shader_parameter/flickering = 1.0
 
 [node name="PlataformTeleport" instance=ExtResource("1_6wa2y")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -49,8 +120,9 @@ visibility_aabb = AABB(-1.99101, -2.18559, -2.29303, 3.98201, 4.37117, 4.58605)
 process_material = SubResource("ParticleProcessMaterial_6xnn4")
 draw_pass_1 = SubResource("QuadMesh_y75qf")
 
-[node name="FeedbackDrop" type="MeshInstance3D" parent="." index="2"]
+[node name="FeedbackDropBkp" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 2.44639, 0)
+visible = false
 mesh = SubResource("SphereMesh_640g7")
 
 [node name="Area3D" type="Area3D" parent="." index="3"]
@@ -59,5 +131,14 @@ mesh = SubResource("SphereMesh_640g7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.53496, 0)
 shape = SubResource("BoxShape3D_e4pcp")
 
+[node name="FeedbackDrop" parent="." index="4" instance=ExtResource("3_1skp4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54671, 0)
+
+[node name="Sphere_001" parent="FeedbackDrop/metarig/Skeleton3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, -0.428102, 0)
+material_override = SubResource("ShaderMaterial_6o5ki")
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="FeedbackDrop"]
