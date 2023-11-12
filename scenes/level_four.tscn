@@ -86,8 +86,15 @@ transform = Transform3D(1.56209, -1.37982, 1.71508, 1.97375, 1.80907, -0.342241,
 [node name="PlataformSafe" parent="World" instance=ExtResource("12_s6e0o")]
 transform = Transform3D(0.618664, 0, -0.327497, 0, 0.7, 0, 0.327497, 0, 0.618664, 3.90716, -0.4279, 7.12286)
 
+[node name="PlataformTeleport" parent="World" node_paths=PackedStringArray("linked_platform") instance=ExtResource("16_g6qae")]
+transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, 6.51414, -0.88214, 1.20608)
+linked_platform = NodePath("../PlataformTeleport2")
+
+[node name="PlataformTeleport2" parent="World" instance=ExtResource("16_g6qae")]
+transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, 8.41157, -2.81276, -23.4841)
+
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.422618, -0.694272, 0.582564, 0, 0.642788, 0.766044, -0.906308, 0.323744, -0.271654, 0, 0, 0)
+transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.992474, -0.930117, 0.366944, -0.0153039, 0, 0, 0)
 shadow_enabled = true
 shadow_opacity = 0.75
 
@@ -117,9 +124,3 @@ offset_right = 368.0
 offset_bottom = 123.0
 text = "0"
 label_settings = SubResource("LabelSettings_38ys3")
-
-[node name="PlataformTeleport" parent="." instance=ExtResource("16_g6qae")]
-transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, 6.51414, -0.88214, 1.20608)
-
-[node name="PlataformTeleport2" parent="." instance=ExtResource("16_g6qae")]
-transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, 8.41157, -2.81276, -23.4841)

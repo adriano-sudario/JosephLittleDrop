@@ -12,6 +12,7 @@ signal on_jump
 @export var evaporation_rate = 0.15
 @export var initial_scale := 1.0
 @export var minimum_scale := 0.1
+@export var maximum_scale := 1.1
 
 @onready var particles_trail = $ParticlesTrail
 @onready var sound_footsteps = $SoundFootsteps
@@ -27,6 +28,7 @@ var was_on_floor := false
 var is_running := false
 var is_evaporating := true
 var jumps_count := 0
+var is_jump_prevented := false
 var coins := 0
 
 func _ready():
@@ -69,6 +71,7 @@ func handle_movement_rotation(delta):
 
 func handle_evaporation(delta):
 	if not is_evaporating:
+		maintain_current_scale(delta)
 		return
 	
 	current_scale -= evaporation_rate * delta
@@ -128,10 +131,12 @@ func can_jump():
 	return jumps_count < maximum_jumps
 
 func jump():
-	gravity = -jump_strength
-	model.scale = Vector3(current_scale * 0.5, current_scale * 1.5, current_scale * 0.5)
-	jumps_count += 1
 	on_jump.emit(jumps_count)
+	
+	if not is_jump_prevented:
+		gravity = -jump_strength
+		model.scale = Vector3(current_scale * 0.5, current_scale * 1.5, current_scale * 0.5)
+		jumps_count += 1
 
 func handle_gravity(delta):
 	gravity += 25 * delta
@@ -139,9 +144,13 @@ func handle_gravity(delta):
 	if gravity > 0 and is_on_floor():
 		jumps_count = 0
 		gravity = 0
+		is_jump_prevented = false
 
 func collect_little_drop(value):
 	coins += 1
 	on_little_drop_collected.emit(coins)
 	model.scale = Vector3(current_scale * 1.25, current_scale * 0.75, current_scale * 0.75)
 	current_scale += value
+	
+	if current_scale > maximum_scale:
+		current_scale = maximum_scale
