@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cqlq863jxsgu" path="res://models/PlataformTeleport.glb" id="1_6wa2y"]
 [ext_resource type="Script" path="res://objects/plataform_teleport.gd" id="2_5i0pf"]
 [ext_resource type="PackedScene" uid="uid://dhl1s0fd86ahg" path="res://models/joseph_little_drop.glb" id="3_1skp4"]
-[ext_resource type="Shader" path="res://objects/plataform_teleport_feedback.gdshader" id="4_j7qf8"]
+[ext_resource type="Shader" path="res://shaders/hologram.gdshader" id="4_bb6ev"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_83qoa"]
 points = PackedVector3Array(0.891938, 0.663051, 0.994716, -0.856682, -0.571033, -1.02781, -0.994216, 0.594101, 0.925304, 0.788186, -0.947957, 0.89088, 0.890076, 0.867004, -0.924019, 0.930811, -0.884823, -0.86197, -0.861877, -0.919403, 0.89626, -0.858887, 0.973504, -0.755627, 0.755783, 0.973541, 0.858749, -0.890999, -0.947896, -0.788002, 1.09917, 0.182811, 0.824237, -1.09678, 0.182587, -0.822425, -0.755808, 0.973541, 0.858749, -0.822317, 0.182574, 1.09649, 0.972184, -0.196622, -1.04162, -1.0729, -0.195806, 0.934156, -0.826303, 0.183487, -1.10181, 0.934277, -0.195991, 1.07286, 1.10315, 0.183493, -0.827219, 1.02582, -0.604189, 0.820646, 0.858867, 0.973509, -0.755631, 0.754281, -0.983149, -0.822888, -0.789298, -0.983916, 0.789139, 0.960137, 0.868499, 0.788556, -0.788797, 0.868783, -0.960073, 0.822264, 0.182568, -1.09645, -0.820742, -0.604105, 1.02583, -1.02587, -0.604012, -0.820665, 0.788179, -0.879489, -0.95935, -0.959472, -0.879427, 0.787989, -0.960142, 0.868673, 0.78854, 0.822827, -0.983166, 0.754166)
@@ -86,21 +86,21 @@ height = 3.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4pcp"]
 size = Vector3(5.30831, 6.34799, 5.46706)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6o5ki"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_14l4y"]
 render_priority = 0
-shader = ExtResource("4_j7qf8")
+shader = ExtResource("4_bb6ev")
 shader_parameter/line_color = Color(0.4, 0.572549, 0.847059, 1)
 shader_parameter/line_width = 0.01
-shader_parameter/line_blur = 0.2
-shader_parameter/line_speed = 0.1
+shader_parameter/line_blur = 0.3
+shader_parameter/line_speed = 0.05
 shader_parameter/straight_lines = true
-shader_parameter/interrupt_width = 0.7
+shader_parameter/interrupt_width = 0.5
 shader_parameter/interrupt_blur = 0.25
-shader_parameter/interrupt_speed = 0.5
-shader_parameter/glow_color = Color(0.5, 0.75, 1, 1)
-shader_parameter/glow_itensity = 7.5
+shader_parameter/interrupt_speed = 0.2
+shader_parameter/glow_color = Color(0.0588235, 0.0156863, 1, 1)
+shader_parameter/glow_itensity = 4.5
 shader_parameter/glow_amount = 4.5
-shader_parameter/flickering = 1.0
+shader_parameter/flickering = 0.55
 
 [node name="PlataformTeleport" instance=ExtResource("1_6wa2y")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -134,9 +134,24 @@ shape = SubResource("BoxShape3D_e4pcp")
 [node name="FeedbackDrop" parent="." index="4" instance=ExtResource("3_1skp4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54671, 0)
 
+[node name="Skeleton3D" parent="FeedbackDrop/metarig" index="0"]
+bones/0/position = Vector3(0.00476349, 1.47964, -0.035538)
+bones/0/rotation = Quaternion(-0.0544476, 1.19032e-07, -6.49065e-09, 0.998517)
+bones/6/rotation = Quaternion(-0.0937119, -0.000174226, -0.0018497, 0.995598)
+bones/8/rotation = Quaternion(-0.0722378, 0.730963, 0.0157532, 0.678401)
+bones/9/rotation = Quaternion(-0.0277015, 0.000792129, -0.181334, 0.983031)
+bones/12/rotation = Quaternion(-0.041379, -0.734085, -0.0448961, 0.676307)
+bones/13/rotation = Quaternion(-0.0258136, -0.0013539, 0.28564, 0.957988)
+bones/17/rotation = Quaternion(0.983825, 0.0475688, -0.0071428, 0.172555)
+bones/18/rotation = Quaternion(0.358329, 0.0267421, 0.0187351, 0.933024)
+bones/19/rotation = Quaternion(-0.764997, -0.0228883, 0.0107699, 0.643537)
+bones/22/rotation = Quaternion(0.983825, -0.0475689, 0.0071432, 0.172555)
+bones/23/rotation = Quaternion(0.358329, -0.0267421, -0.0187351, 0.933024)
+bones/24/rotation = Quaternion(-0.764997, 0.0228883, -0.0107699, 0.643537)
+
 [node name="Sphere_001" parent="FeedbackDrop/metarig/Skeleton3D" index="0"]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0, -0.428102, 0)
-material_override = SubResource("ShaderMaterial_6o5ki")
+material_override = SubResource("ShaderMaterial_14l4y")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

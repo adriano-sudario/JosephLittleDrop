@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyjoi2078fxxm"]
+
+[ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="1_613ur"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5empu"]
+render_priority = 0
+shader = ExtResource("1_613ur")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.3
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[sub_resource type="QuadMesh" id="QuadMesh_bdwod"]
+material = SubResource("ShaderMaterial_5empu")
+size = Vector2(3, 2)
+
+[node name="GlitchFilter" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.859)
+mesh = SubResource("QuadMesh_bdwod")

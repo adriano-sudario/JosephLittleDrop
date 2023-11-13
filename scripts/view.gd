@@ -34,6 +34,13 @@ func _physics_process(delta):
 	
 	handle_input(delta)
 
+func add_glitch():
+	var glitch = load("res://objects/glitch_filter.tscn").instantiate()
+	camera.add_child(glitch)
+
+func remove_glitch():
+	camera.remove_child(camera.get_child(0))
+
 func handle_input(delta):
 	if Input.is_action_just_pressed("camera_focus_behind"):
 		camera_rotation.y = target.rotation_degrees.y + 180
