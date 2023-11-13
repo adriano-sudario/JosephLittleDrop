@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnb32b6dfgrer"]
+[gd_scene load_steps=14 format=3 uid="uid://cnb32b6dfgrer"]
 
 [ext_resource type="Script" path="res://objects/little_drop.gd" id="1_rawhc"]
 [ext_resource type="Texture2D" uid="uid://0odt7cvj574e" path="res://models/Textures/colormap.png" id="2_04qt4"]
 [ext_resource type="Texture2D" uid="uid://bs6puxrivhkk2" path="res://sprites/particle.png" id="3_xl1k0"]
+[ext_resource type="PackedScene" uid="uid://clqr0manm2rxe" path="res://models/drop.glb" id="4_w6r5o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ct61v"]
 resource_name = "colormap"
@@ -71,6 +72,7 @@ script = ExtResource("1_rawhc")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+visible = false
 mesh = SubResource("ArrayMesh_t08aw")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_xkafy")
@@ -94,4 +96,12 @@ scale_amount_max = 0.15
 scale_amount_curve = SubResource("Curve_6a7l3")
 color_ramp = SubResource("Gradient_7tsk2")
 
+[node name="Drop" parent="." instance=ExtResource("4_w6r5o")]
+transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, 0.221789, 0)
+
+[node name="Cube" parent="Drop" index="0"]
+transform = Transform3D(0.0887989, 0, 0, 0, 0.0887989, 0, 0, 0, 0.0887989, 0, 0.0994149, 0)
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="Drop"]

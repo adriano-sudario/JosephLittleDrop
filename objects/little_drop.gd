@@ -9,7 +9,7 @@ func _on_body_entered(body):
 	if body.has_method("collect_little_drop") and !grabbed:
 		body.collect_little_drop(value)
 		Audio.play("res://sounds/coin.ogg")
-		$Mesh.queue_free()
+		$Drop.queue_free()
 		$Particles.emitting = false
 		grabbed = true
 
