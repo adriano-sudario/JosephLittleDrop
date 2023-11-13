@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/view.gd" id="3_7eyrx"]
 [ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platform_grass_large_round.tscn" id="7_pspgo"]
 [ext_resource type="PackedScene" uid="uid://88vv3axisa5h" path="res://objects/flag.tscn" id="9_fx5x2"]
-[ext_resource type="PackedScene" uid="uid://cnb32b6dfgrer" path="res://objects/little_drop.tscn" id="9_uaak4"]
+[ext_resource type="PackedScene" uid="uid://cy2v8hph35gv5" path="res://objects/little_drop.tscn" id="9_uaak4"]
 [ext_resource type="PackedScene" uid="uid://xm83bu5mci02" path="res://scenes/level_three.tscn" id="10_l55bw"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="10_wva1b"]
 [ext_resource type="PackedScene" uid="uid://bh1sgdtda13i3" path="res://objects/plataform_scalable.tscn" id="10_xgybc"]
