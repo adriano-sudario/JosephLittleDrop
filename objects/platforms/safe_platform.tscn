@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b6awvrl334mgs"]
 
 [ext_resource type="PackedScene" uid="uid://gpvdu35xq0x7" path="res://models/platform_small.glb" id="1_ie0r8"]
-[ext_resource type="Script" path="res://objects/safe_platform.gd" id="1_vdctc"]
+[ext_resource type="Script" path="res://objects/platforms/platform_safe.gd" id="1_vdctc"]
 [ext_resource type="PackedScene" uid="uid://bsrmqj84lksd7" path="res://models/cloud.glb" id="2_ww3c2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gfx37"]
