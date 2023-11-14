@@ -10,4 +10,5 @@ func _on_body_entered(body):
 	
 	SceneManager.load_packed(next_level)
 	body.is_evaporating = false
+	body.can_control = false
 	is_transitioning = true

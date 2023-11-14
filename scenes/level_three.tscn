@@ -23,7 +23,7 @@ font_size = 48
 shadow_color = Color(0, 0, 0, 0.376471)
 shadow_offset = Vector2(2, 2)
 
-[node name="LevelTwo" type="Node3D"]
+[node name="LevelThree" type="Node3D"]
 
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_30xlt")

@@ -13,12 +13,13 @@ signal on_jump
 @export var initial_scale := 1.0
 @export var minimum_scale := 0.1
 @export var maximum_scale := 1.1
+@export var gravity_force := 25.0
 
 @onready var particles_trail = $ParticlesTrail
 @onready var sound_footsteps = $SoundFootsteps
 @onready var model = $Character
 @onready var animation = $Character/AnimationPlayer
-@onready var view = $"../View"
+@onready var view: ViewCamera = $"../View"
 
 var current_scale := initial_scale
 var movement_velocity: Vector3
@@ -30,14 +31,22 @@ var is_evaporating := true
 var jumps_count := 0
 var is_jump_prevented := false
 var coins := 0
+var can_control:
+	get: return can_control
+	set(_value):
+		is_running = false
+		movement_velocity = Vector3.ZERO
+		can_control = _value
 
 func _ready():
 	model.scale = Vector3(initial_scale, initial_scale, initial_scale)
+	can_control = true
 
 func _physics_process(delta):
 	handle_controls(delta)
 	handle_gravity(delta)
 	handle_effects()
+	handle_animations()
 	handle_movement(delta)
 	handle_evaporation(delta)
 	handle_death()
@@ -89,7 +98,8 @@ func handle_landing():
 func handle_effects():
 	particles_trail.emitting = false
 	sound_footsteps.stream_paused = true
-	
+
+func handle_animations():
 	if is_on_floor():
 		if abs(velocity.x) > 1 or abs(velocity.z) > 1:
 			if is_running:
@@ -110,6 +120,9 @@ func handle_effects():
 		animation.play(animation_name, 0.5)
 
 func handle_controls(delta):
+	if not can_control:
+		return
+	
 	if Input.is_action_just_pressed("respawn"):
 		current_scale = 0
 	
@@ -139,7 +152,7 @@ func jump():
 		jumps_count += 1
 
 func handle_gravity(delta):
-	gravity += 25 * delta
+	gravity += gravity_force * delta
 	
 	if gravity > 0 and is_on_floor():
 		jumps_count = 0

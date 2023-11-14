@@ -1,3 +1,4 @@
+class_name ViewCamera
 extends Node3D
 
 @export_group("Properties")
@@ -9,10 +10,15 @@ extends Node3D
 @export var zoom_speed = 10
 
 @export_group("Rotation")
-@export var rotation_speed = 120
+@export var rotation_speed = 120.0
 
 @export_group("Mouse")
 @export var mouse_sensitivity := 0.5
+
+@export_group("Transition Speed")
+@export var movement_transition_speed = 4.0
+@export var rotation_transition_speed = 6.0
+@export var zoom_transition_speed = 8.0
 
 @onready var camera = $Camera
 
@@ -27,10 +33,10 @@ func _physics_process(delta):
 	if target == null:
 		return
 	
-	position = position.lerp(target.position, delta * 4)
-	rotation_degrees = rotation_degrees.lerp(camera_rotation, delta * 6)
+	position = position.lerp(target.position, delta * movement_transition_speed)
+	rotation_degrees = rotation_degrees.lerp(camera_rotation, delta * rotation_transition_speed)
 
-	camera.position = camera.position.lerp(Vector3(0, 0, zoom), 8 * delta)
+	camera.position = camera.position.lerp(Vector3(0, 0, zoom), zoom_transition_speed * delta)
 	
 	handle_input(delta)
 

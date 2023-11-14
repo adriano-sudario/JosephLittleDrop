@@ -106,7 +106,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.587355, -3.54405, -28.1603)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0737789, -4.91241, -19.3663)
 
 [node name="LittleDrop2" parent="World" instance=ExtResource("9_uaak4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22986, -3.48472, -11.8884)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22986, -2.88776, -11.8884)
 
 [node name="Flag" parent="World" instance=ExtResource("9_fx5x2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0935779, -3.21609, -32.2633)
