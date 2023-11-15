@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://p14nq2v66ncr"]
+[gd_scene load_steps=18 format=3 uid="uid://p14nq2v66ncr"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_kd65o"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_4cpk7"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://c62nd1qonqavv" path="res://objects/platforms/platform_trigger.tscn" id="10_aqjp8"]
 [ext_resource type="PackedScene" uid="uid://vkmsjybcl8kd" path="res://objects/platforms/platform_toggle_visible.tscn" id="11_mngn2"]
 [ext_resource type="PackedScene" uid="uid://cy2v8hph35gv5" path="res://objects/little_drop.tscn" id="12_ff4kn"]
-[ext_resource type="PackedScene" uid="uid://bqqgyqafm7xwp" path="res://scenes/level_one.tscn" id="13_0p4ox"]
 [ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platforms/platform_falling.tscn" id="13_1e1qn"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="13_jh5e4"]
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="14_8ce1g"]
@@ -145,7 +144,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18786, -0.362135, 0.720832)
 
 [node name="Flag" parent="World" instance=ExtResource("5_6j0ia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2986, 0, -1.87209)
-next_level = ExtResource("13_0p4ox")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.992474, -0.930117, 0.366944, -0.015304, 0, 0, 7.99239)
