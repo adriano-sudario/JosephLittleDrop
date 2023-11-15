@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bacvvetpvjor6"
-path="res://.godot/imported/PlataformFalling.glb-798667ff37844ef44abd30a2400343a3.scn"
+uid="uid://bhfmsuhhr68ln"
+path="res://.godot/imported/PlatformSafe.glb-dadbe525f949ec3e604d6ada3de4f4bb.scn"
 
 [deps]
 
-source_file="res://models/PlataformFalling.glb"
-dest_files=["res://.godot/imported/PlataformFalling.glb-798667ff37844ef44abd30a2400343a3.scn"]
+source_file="res://models/PlatformSafe.glb"
+dest_files=["res://.godot/imported/PlatformSafe.glb-dadbe525f949ec3e604d6ada3de4f4bb.scn"]
 
 [params]
 

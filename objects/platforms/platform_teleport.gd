@@ -4,6 +4,7 @@ extends Platform
 @export var shake_force := 3.0
 @export var linked_platform:PlatformTeleport
 @export var minimum_scale_on_teleport := 0.15
+@export var is_active := true
 
 @onready var feedback_drop = $FeedbackDrop
 @onready var cube = $Cube
@@ -13,6 +14,13 @@ var random_generator = RandomNumberGenerator.new()
 var player: Player
 var scale_on_teleport := minimum_scale_on_teleport
 var initial_feedback_scale:Vector3
+
+func set_active(value: bool, set_linked = true):
+	is_active = value
+	gpu_particles_3d.visible = value
+	
+	if set_linked:
+		linked_platform.set_active(value, false)
 
 func teleport_on_second_jump(jumps_count):
 	if jumps_count >= 1:
@@ -26,8 +34,12 @@ func _ready():
 	
 	initial_feedback_scale = feedback_drop.scale
 	feedback_drop.scale = Vector3.ZERO
+	call_deferred("set_active", is_active, false)
 
 func _process(delta):
+	if not is_active:
+		return
+	
 	if player != null:
 		linked_platform.cube.rotation_degrees.x = random_generator.randf_range(-shake_force, shake_force)
 		linked_platform.cube.rotation_degrees.y = random_generator.randf_range(-shake_force, shake_force)
@@ -38,16 +50,19 @@ func _process(delta):
 		linked_platform.feedback_drop.scale = feedback_drop_scale * initial_feedback_scale
 
 func _on_area_3d_body_entered(body):
-	if body is Player:
+	if body is Player and is_active:
 		player = body
 		player.on_jump.connect(teleport_on_second_jump)
 		linked_platform.gpu_particles_3d.visible = false
 
 func _on_area_3d_body_exited(body):
-	if body is Player:
+	if body is Player and player != null:
 		player.on_jump.disconnect(teleport_on_second_jump)
 		player = null
 		linked_platform.cube.rotation_degrees = Vector3.ZERO
 		linked_platform.feedback_drop.scale = Vector3.ZERO
 		scale_on_teleport = minimum_scale_on_teleport
 		linked_platform.gpu_particles_3d.visible = true
+
+func on_activate():
+	set_active(true)

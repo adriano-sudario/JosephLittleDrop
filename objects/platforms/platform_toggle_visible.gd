@@ -34,16 +34,5 @@ func toggle():
 		visible = true
 		current_scale = initial_scale
 
-func on_activate(player: Player):
-	var view_transition_speed = player.view.movement_transition_speed
-	player.view.movement_transition_speed = 2.0
-	player.can_control = false
-	player.is_evaporating = false
-	player.view.target = self
-	await get_tree().create_timer(1).timeout
+func on_activate():
 	toggle()
-	await get_tree().create_timer(1).timeout
-	player.can_control = true
-	player.is_evaporating = true
-	player.view.movement_transition_speed = view_transition_speed
-	player.view.target = player

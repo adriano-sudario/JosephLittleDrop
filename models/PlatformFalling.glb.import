@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ss7gtkd56nru"
-path="res://.godot/imported/PlataformButtom.glb-ffd76d0b1448261ce09f80d9a92a3f59.scn"
+uid="uid://bacvvetpvjor6"
+path="res://.godot/imported/PlatformFalling.glb-e07be897f61a476a32360d07c26028d3.scn"
 
 [deps]
 
-source_file="res://models/PlataformButtom.glb"
-dest_files=["res://.godot/imported/PlataformButtom.glb-ffd76d0b1448261ce09f80d9a92a3f59.scn"]
+source_file="res://models/PlatformFalling.glb"
+dest_files=["res://.godot/imported/PlatformFalling.glb-e07be897f61a476a32360d07c26028d3.scn"]
 
 [params]
 

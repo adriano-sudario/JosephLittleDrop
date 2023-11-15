@@ -18,11 +18,29 @@ var is_locked:
 var player: Player
 var has_activated := false
 
+func prepare_transition():
+	player.view.movement_transition_speed = 2.0
+	player.can_control = false
+	player.is_evaporating = false
+	player.view.target = linked_platform
+
+func finish_transition():
+	player.can_control = true
+	player.view.target = player
+#	await get_tree().create_timer(0.5).timeout
+	player.is_evaporating = true
+
 func activate():
 	has_activated = true
 	
 	if linked_platform.has_method("on_activate"):
-		linked_platform.on_activate(player)
+		prepare_transition()
+		await get_tree().create_timer(1).timeout
+		
+		linked_platform.on_activate()
+		
+		await get_tree().create_timer(1).timeout
+		finish_transition()
 
 func _process(delta):
 	if has_activated:

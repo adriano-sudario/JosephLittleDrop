@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://c6esc0vskheb6"]
 
-[ext_resource type="PackedScene" uid="uid://cqlq863jxsgu" path="res://models/PlataformTeleport.glb" id="1_ay5mj"]
+[ext_resource type="PackedScene" uid="uid://cqlq863jxsgu" path="res://models/PlatformTeleport.glb" id="1_ay5mj"]
 [ext_resource type="Script" path="res://objects/platforms/platform_teleport.gd" id="2_xwsfl"]
 [ext_resource type="Shader" path="res://shaders/hologram.gdshader" id="3_7ng1r"]
 

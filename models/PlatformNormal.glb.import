@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bhfmsuhhr68ln"
-path="res://.godot/imported/PlataformSafe.glb-c0e3c4929cb98975fdc596af3b0e4359.scn"
+uid="uid://lkblvp6qghvw"
+path="res://.godot/imported/PlatformNormal.glb-c24cce630b4e23aa67f3f2dffc5463b6.scn"
 
 [deps]
 
-source_file="res://models/PlataformSafe.glb"
-dest_files=["res://.godot/imported/PlataformSafe.glb-c0e3c4929cb98975fdc596af3b0e4359.scn"]
+source_file="res://models/PlatformNormal.glb"
+dest_files=["res://.godot/imported/PlatformNormal.glb-c24cce630b4e23aa67f3f2dffc5463b6.scn"]
 
 [params]
 

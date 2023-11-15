@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://p14nq2v66ncr"]
+[gd_scene load_steps=17 format=3 uid="uid://p14nq2v66ncr"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_n387p"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_2sv3x"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platforms/platform_grass_large_round.tscn" id="4_syqdr"]
 [ext_resource type="PackedScene" uid="uid://88vv3axisa5h" path="res://objects/flag.tscn" id="5_wblhw"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="6_3tbvb"]
+[ext_resource type="PackedScene" uid="uid://bx6psav577se8" path="res://scenes/level_six.tscn" id="6_rlvn8"]
 [ext_resource type="PackedScene" uid="uid://biafwc82jxhuf" path="res://objects/platforms/platform_safe.tscn" id="7_0rcgt"]
 [ext_resource type="PackedScene" uid="uid://c6esc0vskheb6" path="res://objects/platforms/platform_teleport.tscn" id="8_i3jmd"]
 [ext_resource type="PackedScene" uid="uid://c62nd1qonqavv" path="res://objects/platforms/platform_trigger.tscn" id="9_1d0qi"]
@@ -46,6 +47,7 @@ transform = Transform3D(0.367508, 0, -0.93002, 0, 1, 0, 0.93002, 0, 0.367508, -1
 
 [node name="Flag" parent="World" instance=ExtResource("5_wblhw")]
 transform = Transform3D(-0.397754, 0.00248348, -0.917489, 0.00188822, 0.999996, 0.00188822, 0.91749, -0.000981369, -0.397758, -13.3095, -3.1767, -5.24881)
+next_level = ExtResource("6_rlvn8")
 
 [node name="cube8" parent="World" instance=ExtResource("6_3tbvb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5495, 1.10741, 24.9183)
