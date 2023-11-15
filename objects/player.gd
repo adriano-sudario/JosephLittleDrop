@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 signal on_little_drop_collected
 signal on_jump
+signal on_interaction
 
 @export_subgroup("Properties")
 @export var movement_speed = 250
@@ -139,6 +140,9 @@ func handle_controls(delta):
 	if Input.is_action_just_pressed("jump") and can_jump():
 		Audio.play("res://sounds/jump.ogg")
 		jump()
+	
+	if Input.is_action_just_pressed("interact"):
+		on_interaction.emit()
 
 func can_jump():
 	return jumps_count < maximum_jumps

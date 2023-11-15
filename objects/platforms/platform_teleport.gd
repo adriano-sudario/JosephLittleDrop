@@ -22,11 +22,9 @@ func set_active(value: bool, set_linked = true):
 	if set_linked:
 		linked_platform.set_active(value, false)
 
-func teleport_on_second_jump(jumps_count):
-	if jumps_count >= 1:
-		player.is_jump_prevented = true
-		player.global_position = linked_platform.feedback_drop.global_position
-		player.current_scale = scale_on_teleport
+func teleport():
+	player.global_position = linked_platform.feedback_drop.global_position
+	player.current_scale = scale_on_teleport
 
 func _ready():
 	if linked_platform != null:
@@ -52,12 +50,12 @@ func _process(delta):
 func _on_area_3d_body_entered(body):
 	if body is Player and is_active:
 		player = body
-		player.on_jump.connect(teleport_on_second_jump)
+		player.on_interaction.connect(teleport)
 		linked_platform.gpu_particles_3d.visible = false
 
 func _on_area_3d_body_exited(body):
 	if body is Player and player != null:
-		player.on_jump.disconnect(teleport_on_second_jump)
+		player.on_interaction.disconnect(teleport)
 		player = null
 		linked_platform.cube.rotation_degrees = Vector3.ZERO
 		linked_platform.feedback_drop.scale = Vector3.ZERO

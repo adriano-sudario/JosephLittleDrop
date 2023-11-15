@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://bx6psav577se8"]
+[gd_scene load_steps=19 format=3 uid="uid://bx6psav577se8"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_i48yn"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_ussqw"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="3_oxef4"]
 [ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platforms/platform_grass_large_round.tscn" id="4_ysw0c"]
 [ext_resource type="PackedScene" uid="uid://88vv3axisa5h" path="res://objects/flag.tscn" id="5_i2oex"]
+[ext_resource type="PackedScene" uid="uid://p14nq2v66ncr" path="res://scenes/level_seven.tscn" id="6_gj3sn"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="7_3vx5h"]
 [ext_resource type="PackedScene" uid="uid://biafwc82jxhuf" path="res://objects/platforms/platform_safe.tscn" id="8_b41q4"]
 [ext_resource type="PackedScene" uid="uid://c6esc0vskheb6" path="res://objects/platforms/platform_teleport.tscn" id="9_a42bw"]
@@ -48,6 +49,7 @@ transform = Transform3D(0.367508, 0, -0.93002, 0, 1, 0, 0.93002, 0, 0.367508, 11
 
 [node name="Flag" parent="World" instance=ExtResource("5_i2oex")]
 transform = Transform3D(-0.397754, 0.00248348, -0.917489, 0.00188822, 0.999996, 0.00188822, 0.91749, -0.000981369, -0.397758, 11.2942, -1.18942, -15.8512)
+next_level = ExtResource("6_gj3sn")
 
 [node name="cube8" parent="World" instance=ExtResource("7_3vx5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5495, 1.10741, 24.9183)
