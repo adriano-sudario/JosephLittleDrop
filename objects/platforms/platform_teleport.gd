@@ -71,15 +71,12 @@ func _on_area_3d_body_entered(body):
 		player = body
 		player.on_interaction.connect(teleport)
 		linked_platform.is_scanning = false
-		player.view.camera.add_child(glitch_scene.instantiate())
 
 func _on_area_3d_body_exited(body):
 	super._on_body_entered(body)
 	
 	if body is Player and player != null:
 		player.on_interaction.disconnect(teleport)
-		var glitch = player.view.camera.get_child(0)
-		player.view.camera.remove_child(glitch)
 		player = null
 		linked_platform.cube.rotation_degrees = Vector3.ZERO
 		linked_platform.feedback_drop.scale = Vector3.ZERO
