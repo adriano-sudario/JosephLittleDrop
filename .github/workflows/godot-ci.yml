@@ -103,6 +103,14 @@ jobs:
       - name: Install rsync 📚
         run: |
           apt-get update && apt-get install -y rsync
+      - name: deploy to itch.io (Web)
+        uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: web
+          ITCH_GAME: ${{ env.ITCH_GAME_NAME }}
+          ITCH_USER: ${{ env.ITCH_USER_NAME }}
+          PACKAGE: build/web
 
   export-mac:
     name: Mac Export

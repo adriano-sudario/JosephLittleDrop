@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c6esc0vskheb6"]
+[gd_scene load_steps=19 format=3 uid="uid://c6esc0vskheb6"]
 
 [ext_resource type="PackedScene" uid="uid://cqlq863jxsgu" path="res://models/PlatformTeleport.glb" id="1_ay5mj"]
 [ext_resource type="Script" path="res://objects/platforms/platform_teleport.gd" id="2_xwsfl"]
@@ -6,20 +6,6 @@
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_83qoa"]
 points = PackedVector3Array(0.891938, 0.663051, 0.994716, -0.856682, -0.571033, -1.02781, -0.994216, 0.594101, 0.925304, 0.788186, -0.947957, 0.89088, 0.890076, 0.867004, -0.924019, 0.930811, -0.884823, -0.86197, -0.861877, -0.919403, 0.89626, -0.858887, 0.973504, -0.755627, 0.755783, 0.973541, 0.858749, -0.890999, -0.947896, -0.788002, 1.09917, 0.182811, 0.824237, -1.09678, 0.182587, -0.822425, -0.755808, 0.973541, 0.858749, -0.822317, 0.182574, 1.09649, 0.972184, -0.196622, -1.04162, -1.0729, -0.195806, 0.934156, -0.826303, 0.183487, -1.10181, 0.934277, -0.195991, 1.07286, 1.10315, 0.183493, -0.827219, 1.02582, -0.604189, 0.820646, 0.858867, 0.973509, -0.755631, 0.754281, -0.983149, -0.822888, -0.789298, -0.983916, 0.789139, 0.960137, 0.868499, 0.788556, -0.788797, 0.868783, -0.960073, 0.822264, 0.182568, -1.09645, -0.820742, -0.604105, 1.02583, -1.02587, -0.604012, -0.820665, 0.788179, -0.879489, -0.95935, -0.959472, -0.879427, 0.787989, -0.960142, 0.868673, 0.78854, 0.822827, -0.983166, 0.754166)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6xnn4"]
-gravity = Vector3(0, 4, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gbj11"]
-transparency = 1
-albedo_color = Color(0.0974598, 0.379769, 0.519239, 0.470588)
-emission_enabled = true
-emission = Color(0.290196, 0.4, 0.623529, 1)
-emission_energy_multiplier = 0.81
-
-[sub_resource type="QuadMesh" id="QuadMesh_y75qf"]
-material = SubResource("StandardMaterial3D_gbj11")
-size = Vector2(2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4pcp"]
 size = Vector3(5.30831, 6.34799, 5.46706)
@@ -252,14 +238,7 @@ script = ExtResource("2_xwsfl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/StaticBody3D" index="0"]
 shape = SubResource("ConvexPolygonShape3D_83qoa")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0160373, 0.172568, 0)
-amount = 3
-lifetime = 0.8
-speed_scale = 0.5
-visibility_aabb = AABB(-1.99101, -2.18559, -0.483253, 3.98201, 4.37117, 0.966496)
-process_material = SubResource("ParticleProcessMaterial_6xnn4")
-draw_pass_1 = SubResource("QuadMesh_y75qf")
+[node name="ScanController" type="Node3D" parent="." index="1"]
 
 [node name="Area3D" type="Area3D" parent="." index="2"]
 

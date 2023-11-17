@@ -40,10 +40,10 @@ fov = 40.0
 [node name="World" type="Node3D" parent="."]
 
 [node name="platform-grass-large-round" parent="World" instance=ExtResource("4_cr5wb")]
-transform = Transform3D(0.367508, 0, -0.93002, 0, 1, 0, 0.93002, 0, 0.367508, 11.1257, -3.68372, -29.2593)
+transform = Transform3D(0.367508, 0, -0.93002, 0, 1, 0, 0.93002, 0, 0.367508, 5.41733, -3.68372, -29.2593)
 
 [node name="Flag" parent="World" instance=ExtResource("5_j12g1")]
-transform = Transform3D(-0.397754, 0.00248348, -0.917489, 0.00188822, 0.999996, 0.00188822, 0.91749, -0.000981369, -0.397758, 11.2942, -3.1767, -29.4626)
+transform = Transform3D(-0.397754, 0.00248348, -0.917489, 0.00188822, 0.999996, 0.00188822, 0.91749, -0.000981369, -0.397758, 5.58583, -3.1767, -29.4626)
 next_level = ExtResource("6_s3ifk")
 
 [node name="cube8" parent="World" instance=ExtResource("6_kfjtw")]
@@ -93,7 +93,7 @@ transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846
 linked_platform = NodePath("../PlataformTeleport2")
 
 [node name="PlataformTeleport2" parent="World" instance=ExtResource("16_g6qae")]
-transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, 8.41157, -2.81276, -23.4841)
+transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, 2.7032, -2.81276, -23.4841)
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.992474, -0.930117, 0.366944, -0.0153039, 0, 0, 0)

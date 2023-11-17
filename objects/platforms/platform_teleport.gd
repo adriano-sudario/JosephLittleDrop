@@ -5,19 +5,38 @@ extends Platform
 @export var linked_platform:PlatformTeleport
 @export var minimum_scale_on_teleport := 0.15
 @export var is_active := true
+@export var scan_spawn_interval_seconds := 1.0
 
 @onready var feedback_drop = $FeedbackDrop
 @onready var cube = $Cube
-@onready var gpu_particles_3d = $GPUParticles3D
+@onready var scan_controller = $ScanController
 
+var teleport_scan_scene = preload("res://objects/platforms/teleport_scan.tscn")
+var glitch_scene = preload("res://objects/glitch_filter.tscn")
 var random_generator = RandomNumberGenerator.new()
 var player: Player
+var is_scanning := false:
+	set(value):
+		is_scanning = value
+		
+		if is_scanning:
+			scan()
+		else:
+			for child in scan_controller.get_children():
+				child.queue_free()
 var scale_on_teleport := minimum_scale_on_teleport
 var initial_feedback_scale:Vector3
 
+func scan():
+	scan_controller.add_child(teleport_scan_scene.instantiate())
+	await get_tree().create_timer(scan_spawn_interval_seconds).timeout
+	
+	if is_scanning:
+		scan()
+
 func set_active(value: bool, set_linked = true):
 	is_active = value
-	gpu_particles_3d.visible = value
+	is_scanning = value
 	
 	if set_linked:
 		linked_platform.set_active(value, false)
@@ -51,16 +70,21 @@ func _on_area_3d_body_entered(body):
 	if body is Player and is_active:
 		player = body
 		player.on_interaction.connect(teleport)
-		linked_platform.gpu_particles_3d.visible = false
+		linked_platform.is_scanning = false
+		player.view.camera.add_child(glitch_scene.instantiate())
 
 func _on_area_3d_body_exited(body):
+	super._on_body_entered(body)
+	
 	if body is Player and player != null:
 		player.on_interaction.disconnect(teleport)
+		var glitch = player.view.camera.get_child(0)
+		player.view.camera.remove_child(glitch)
 		player = null
 		linked_platform.cube.rotation_degrees = Vector3.ZERO
 		linked_platform.feedback_drop.scale = Vector3.ZERO
 		scale_on_teleport = minimum_scale_on_teleport
-		linked_platform.gpu_particles_3d.visible = true
+		linked_platform.is_scanning = true
 
 func on_activate():
 	set_active(true)
