@@ -142,6 +142,6 @@ jobs:
       - name: Notify Discord Channel
         env:
             DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          uses: Ilshidur/action-discord@0.3.0
-          with:
-            args: 'buildzinhas atualizada p nois: https://petit-suisse.itch.io/joseph-little-drop 💧 a senha é "zegotinha" 💦'
+        uses: Ilshidur/action-discord@0.3.0
+        with:
+          args: 'buildzinhas atualizada p nois: https://petit-suisse.itch.io/joseph-little-drop 💧 a senha é "zegotinha" 💦'
