@@ -6,7 +6,9 @@ on:
 
 env:
   GODOT_VERSION: 4.1.3
-  EXPORT_NAME: joseph-little-drop-gameoff
+  EXPORT_NAME_WINDOWS: joseph-little-drop-gameoff-windows
+  EXPORT_NAME_LINUX: joseph-little-drop-gameoff-linux
+  EXPORT_NAME_MAC: joseph-little-drop-gameoff-mac
   ITCH_USER_NAME: petit-suisse
   ITCH_GAME_NAME: joseph-little-drop
 
@@ -28,7 +30,7 @@ jobs:
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
-          godot --headless --export-release "Windows Desktop" ./build/windows/$EXPORT_NAME.exe project.godot
+          godot --headless --export-release "Windows Desktop" ./build/windows/$EXPORT_NAME_WINDOWS.exe project.godot
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
@@ -60,7 +62,7 @@ jobs:
       - name: Linux Build
         run: |
           mkdir -v -p build/linux
-          godot --headless --export-release "Linux/X11" ./build/linux/$EXPORT_NAME.x86_64 project.godot
+          godot --headless --export-release "Linux/X11" ./build/linux/$EXPORT_NAME_LINUX.x86_64 project.godot
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
@@ -119,7 +121,7 @@ jobs:
       - name: Mac Build
         run: |
           mkdir -v -p build/mac
-          godot --headless --export-release "Mac OSX" ./build/mac/$EXPORT_NAME.zip project.godot
+          godot --headless --export-release "Mac OSX" ./build/mac/$EXPORT_NAME_MAC.zip project.godot
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
