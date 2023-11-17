@@ -133,3 +133,15 @@ jobs:
           ITCH_GAME: ${{ env.ITCH_GAME_NAME }}
           ITCH_USER: ${{ env.ITCH_USER_NAME }}
           PACKAGE: build/mac
+
+  discord-notification:
+    name: Discord Notification
+    needs: [export-windows, export-linux, export-mac]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+      env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@0.3.0
+        with:
+          args: 'buildzinhas atualizada p nois: https://petit-suisse.itch.io/joseph-little-drop 💧 a senha é "zegotinha" 💦'
