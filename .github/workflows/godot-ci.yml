@@ -25,6 +25,8 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+          cd /root/.local/share/godot/templates
+          ls
       - name: Windows Build
         run: |
           mkdir -v -p build/windows
