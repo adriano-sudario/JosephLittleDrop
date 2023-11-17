@@ -63,7 +63,11 @@ jobs:
           path: build/linux
       - name: deploy to itch.io (Linux)
         run: |
-          butler push "build/linux" ${{ env.ITCH_USER_NAME }}/${{ env.ITCH_GAME_NAME }}:linux
+          apt-get update
+          apt-get install -y curl unzip
+          curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip
+          ./butler push ./build/linux ${{ env.ITCH_USER_NAME }}/${{ env.ITCH_GAME_NAME }}:linux-64bit
 
   export-web:
     name: Web Export
