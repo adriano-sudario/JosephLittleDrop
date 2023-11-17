@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://btfo4v77g2j6c"]
+
+[ext_resource type="Script" path="res://objects/platforms/teleport_scan.gd" id="1_oty84"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ywy3"]
+transparency = 1
+albedo_color = Color(0.0980392, 0.380392, 0.517647, 0.470588)
+emission_enabled = true
+emission = Color(0.290196, 0.4, 0.623529, 1)
+emission_energy_multiplier = 0.81
+
+[sub_resource type="QuadMesh" id="QuadMesh_qpu01"]
+material = SubResource("StandardMaterial3D_5ywy3")
+size = Vector2(2, 2)
+orientation = 1
+
+[node name="TeleportScan" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_oty84")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_qpu01")
