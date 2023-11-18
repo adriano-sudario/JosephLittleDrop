@@ -69,4 +69,6 @@ func _on_body_entered(body):
 	player.is_evaporating = false
 	player.can_control = false
 	player.has_won = true
-	SceneManager.load_packed(next_level, 1.5)
+	
+	if next_level != null:
+		SceneManager.load_packed(next_level, 1.5)
