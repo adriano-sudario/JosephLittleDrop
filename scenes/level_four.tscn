@@ -1,12 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwf3sre8j43jb"]
+[gd_scene load_steps=13 format=3 uid="uid://bwf3sre8j43jb"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_3a646"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_ksh73"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="3_r65oe"]
-[ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platforms/platform_grass_large_round.tscn" id="4_cr5wb"]
-[ext_resource type="PackedScene" uid="uid://88vv3axisa5h" path="res://objects/flag.tscn" id="5_j12g1"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="6_kfjtw"]
 [ext_resource type="PackedScene" uid="uid://c7jv1l1vigm0l" path="res://scenes/level_five.tscn" id="6_s3ifk"]
+[ext_resource type="PackedScene" uid="uid://l64gv7asxqet" path="res://objects/energy_field.tscn" id="7_u6r0e"]
 [ext_resource type="PackedScene" uid="uid://biafwc82jxhuf" path="res://objects/platforms/platform_safe.tscn" id="12_s6e0o"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="13_de2vm"]
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="14_nhf06"]
@@ -38,13 +37,6 @@ current = true
 fov = 40.0
 
 [node name="World" type="Node3D" parent="."]
-
-[node name="platform-grass-large-round" parent="World" instance=ExtResource("4_cr5wb")]
-transform = Transform3D(0.367508, 0, -0.93002, 0, 1, 0, 0.93002, 0, 0.367508, 5.41733, -3.68372, -29.2593)
-
-[node name="Flag" parent="World" instance=ExtResource("5_j12g1")]
-transform = Transform3D(-0.397754, 0.00248348, -0.917489, 0.00188822, 0.999996, 0.00188822, 0.91749, -0.000981369, -0.397758, 5.58583, -3.1767, -29.4626)
-next_level = ExtResource("6_s3ifk")
 
 [node name="cube8" parent="World" instance=ExtResource("6_kfjtw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5495, 1.10741, 24.9183)
@@ -94,6 +86,10 @@ linked_platform = NodePath("../PlataformTeleport2")
 
 [node name="PlataformTeleport2" parent="World" instance=ExtResource("16_g6qae")]
 transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, 2.7032, -2.81276, -23.4841)
+
+[node name="EnergyField" parent="World" instance=ExtResource("7_u6r0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58583, -3.1767, -29.4626)
+next_level = ExtResource("6_s3ifk")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.992474, -0.930117, 0.366944, -0.0153039, 0, 0, 0)

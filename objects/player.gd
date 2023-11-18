@@ -21,6 +21,7 @@ signal on_interaction
 @onready var model = $Character
 @onready var animation = $Character/AnimationPlayer
 @onready var view: ViewCamera = $"../View"
+@onready var centered_position: Vector3 = $Collider.position
 
 var current_scale := initial_scale
 var movement_velocity: Vector3
@@ -32,6 +33,7 @@ var is_evaporating := true
 var jumps_count := 0
 var is_jump_prevented := false
 var coins := 0
+var has_won := false
 var can_control:
 	get: return can_control
 	set(_value):
@@ -101,24 +103,28 @@ func handle_effects():
 	sound_footsteps.stream_paused = true
 
 func handle_animations():
-	if is_on_floor():
+	var animation_name = ""
+	
+	if has_won:
+		animation_name = "winning"
+	elif is_on_floor():
+		animation_name = "idle"
+		
 		if abs(velocity.x) > 1 or abs(velocity.z) > 1:
+			animation_name = "walk"
+			
 			if is_running:
-				animation.play("running", 0.5)
-			else:
-				animation.play("walk", 0.5)
+				animation_name = "running"
 			
 			particles_trail.emitting = true
 			sound_footsteps.stream_paused = false
-		else:
-			animation.play("idle", 0.5)
 	else:
-		var animation_name = "jumping"
+		animation_name = "jumping"
 		
 		if gravity > 0:
 			animation_name = "falling"
-			
-		animation.play(animation_name, 0.5)
+	
+	animation.play(animation_name, 0.5)
 
 func handle_controls(delta):
 	if not can_control:
@@ -138,7 +144,6 @@ func handle_controls(delta):
 		movement_velocity *= running_speed_multiplier
 	
 	if Input.is_action_just_pressed("jump") and can_jump():
-		Audio.play("res://sounds/jump.ogg")
 		jump()
 	
 	if Input.is_action_just_pressed("interact"):
@@ -151,9 +156,12 @@ func jump():
 	on_jump.emit(jumps_count)
 	
 	if not is_jump_prevented:
+		Audio.play("res://sounds/jump.ogg")
 		gravity = -jump_strength
 		model.scale = Vector3(current_scale * 0.5, current_scale * 1.5, current_scale * 0.5)
 		jumps_count += 1
+	
+	is_jump_prevented = false
 
 func handle_gravity(delta):
 	gravity += gravity_force * delta
@@ -161,7 +169,6 @@ func handle_gravity(delta):
 	if gravity > 0 and is_on_floor():
 		jumps_count = 0
 		gravity = 0
-		is_jump_prevented = false
 
 func collect_little_drop(value):
 	coins += 1
