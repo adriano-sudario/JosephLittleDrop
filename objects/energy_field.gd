@@ -46,8 +46,10 @@ func _process(delta):
 		body_rotation_degrees += body_rotation_speed * delta
 		player.rotation_degrees.y = body_rotation_degrees
 		var weight = body_magnetic_force * delta
-		var fixed_position = player.position - (player.centered_position * player.current_scale)
-		player.position = player.position.lerp(fixed_position, weight)
+		var fixed_vertical_position = -(0.35 * player.current_scale)
+		var centered_position = player.position - (player.centered_position * player.current_scale)
+		centered_position.y += fixed_vertical_position
+		player.position = player.position.lerp(centered_position, weight)
 		player.global_position = player.global_position.lerp(global_position, weight)
 
 func _on_body_entered(body):
@@ -66,5 +68,5 @@ func _on_body_entered(body):
 	player.view.target = self
 	player.is_evaporating = false
 	player.can_control = false
-	
+	player.has_won = true
 	SceneManager.load_packed(next_level, 1.5)
