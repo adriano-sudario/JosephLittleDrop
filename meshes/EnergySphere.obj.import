@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://da14x8guf5n1y"
+path="res://.godot/imported/EnergySphere.obj-8d24c942144d3b729e80cc77e927a37c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/EnergySphere.obj-8d24c942144d3b729e80cc77e927a37c.mesh"]
+
+source_file="res://meshes/EnergySphere.obj"
+dest_files=["res://.godot/imported/EnergySphere.obj-8d24c942144d3b729e80cc77e927a37c.mesh", "res://.godot/imported/EnergySphere.obj-8d24c942144d3b729e80cc77e927a37c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

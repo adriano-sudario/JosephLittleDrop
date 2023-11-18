@@ -1,15 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://xm83bu5mci02"]
+[gd_scene load_steps=17 format=3 uid="uid://xm83bu5mci02"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_30xlt"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_o5uvy"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="3_mhnml"]
-[ext_resource type="PackedScene" uid="uid://88vv3axisa5h" path="res://objects/flag.tscn" id="5_gchwb"]
-[ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platforms/platform_grass_large_round.tscn" id="5_kctcl"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="7_1of6f"]
 [ext_resource type="PackedScene" uid="uid://bwf3sre8j43jb" path="res://scenes/level_four.tscn" id="7_64dc6"]
 [ext_resource type="PackedScene" uid="uid://cy2v8hph35gv5" path="res://objects/little_drop.tscn" id="9_7ifcj"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="10_h2jqr"]
 [ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="11_kxff5"]
+[ext_resource type="PackedScene" uid="uid://l64gv7asxqet" path="res://objects/energy_field.tscn" id="11_wi6cn"]
 [ext_resource type="PackedScene" uid="uid://bea0cpu3jbdhb" path="res://objects/platforms/platform_scalable_small.tscn" id="12_5rfh6"]
 [ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="12_qq7l4"]
 [ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platforms/platform_falling.tscn" id="13_u4lum"]
@@ -42,13 +41,6 @@ current = true
 fov = 40.0
 
 [node name="World" type="Node3D" parent="."]
-
-[node name="platform-grass-large-round" parent="World" instance=ExtResource("5_kctcl")]
-transform = Transform3D(0.367508, 0, -0.93002, 0, 1, 0, 0.93002, 0, 0.367508, 21.4215, -3.68372, -29.2593)
-
-[node name="Flag" parent="World" instance=ExtResource("5_gchwb")]
-transform = Transform3D(-0.397754, 0.00248348, -0.917489, 0.00188822, 0.999996, 0.00188822, 0.91749, -0.000981369, -0.397758, 21.59, -3.1767, -29.4626)
-next_level = ExtResource("7_64dc6")
 
 [node name="cube8" parent="World" instance=ExtResource("7_1of6f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5495, 1.10741, 24.9183)
@@ -129,6 +121,10 @@ is_big = false
 
 [node name="PlataformSafe" parent="World" instance=ExtResource("15_rcsp8")]
 transform = Transform3D(0.618664, 0, -0.327497, 0, 0.7, 0, 0.327497, 0, 0.618664, 3.90716, -0.4279, 7.12286)
+
+[node name="EnergyField" parent="World" instance=ExtResource("11_wi6cn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.59, -3.1767, -29.4626)
+next_level = ExtResource("7_64dc6")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.992474, -0.930117, 0.366944, -0.0153039, 0, 0, 0)

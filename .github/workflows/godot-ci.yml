@@ -6,9 +6,9 @@ on:
 
 env:
   GODOT_VERSION: 4.1.3
-  EXPORT_NAME_WINDOWS: joseph-little-drop-gameoff-windows
-  EXPORT_NAME_LINUX: joseph-little-drop-gameoff-linux
-  EXPORT_NAME_MAC: joseph-little-drop-gameoff-mac
+  EXPORT_NAME_WINDOWS: joseph-little-drop-windows
+  EXPORT_NAME_LINUX: joseph-little-drop-linux
+  EXPORT_NAME_MAC: joseph-little-drop-mac
   ITCH_USER_NAME: petit-suisse
   ITCH_GAME_NAME: joseph-little-drop
 

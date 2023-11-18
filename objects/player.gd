@@ -21,6 +21,7 @@ signal on_interaction
 @onready var model = $Character
 @onready var animation = $Character/AnimationPlayer
 @onready var view: ViewCamera = $"../View"
+@onready var centered_position: Vector3 = $Collider.position
 
 var current_scale := initial_scale
 var movement_velocity: Vector3
@@ -138,7 +139,6 @@ func handle_controls(delta):
 		movement_velocity *= running_speed_multiplier
 	
 	if Input.is_action_just_pressed("jump") and can_jump():
-		Audio.play("res://sounds/jump.ogg")
 		jump()
 	
 	if Input.is_action_just_pressed("interact"):
@@ -151,9 +151,12 @@ func jump():
 	on_jump.emit(jumps_count)
 	
 	if not is_jump_prevented:
+		Audio.play("res://sounds/jump.ogg")
 		gravity = -jump_strength
 		model.scale = Vector3(current_scale * 0.5, current_scale * 1.5, current_scale * 0.5)
 		jumps_count += 1
+	
+	is_jump_prevented = false
 
 func handle_gravity(delta):
 	gravity += gravity_force * delta
@@ -161,7 +164,6 @@ func handle_gravity(delta):
 	if gravity > 0 and is_on_floor():
 		jumps_count = 0
 		gravity = 0
-		is_jump_prevented = false
 
 func collect_little_drop(value):
 	coins += 1

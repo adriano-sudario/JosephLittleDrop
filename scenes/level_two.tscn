@@ -1,11 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://sdd66ixup1ng"]
+[gd_scene load_steps=16 format=3 uid="uid://sdd66ixup1ng"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_7cr1w"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_gwfa6"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="3_7eyrx"]
-[ext_resource type="PackedScene" uid="uid://uqr4hswv6d2g" path="res://objects/platforms/platform_grass_large_round.tscn" id="7_pspgo"]
-[ext_resource type="PackedScene" uid="uid://88vv3axisa5h" path="res://objects/flag.tscn" id="9_fx5x2"]
 [ext_resource type="PackedScene" uid="uid://cy2v8hph35gv5" path="res://objects/little_drop.tscn" id="9_uaak4"]
+[ext_resource type="PackedScene" uid="uid://l64gv7asxqet" path="res://objects/energy_field.tscn" id="10_2uddq"]
 [ext_resource type="PackedScene" uid="uid://xm83bu5mci02" path="res://scenes/level_three.tscn" id="10_l55bw"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="10_wva1b"]
 [ext_resource type="PackedScene" uid="uid://bh1sgdtda13i3" path="res://objects/platforms/platform_scalable.tscn" id="10_xgybc"]
@@ -41,9 +40,6 @@ current = true
 fov = 40.0
 
 [node name="World" type="Node3D" parent="."]
-
-[node name="platform-grass-large-round" parent="World" instance=ExtResource("7_pspgo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.597204, -3.68372, -32.8995)
 
 [node name="cube8" parent="World" instance=ExtResource("10_wva1b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5495, 1.10741, 24.9183)
@@ -108,10 +104,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0737789, -4.91241, -19.366
 [node name="LittleDrop2" parent="World" instance=ExtResource("9_uaak4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22986, -2.88776, -11.8884)
 
-[node name="Flag" parent="World" instance=ExtResource("9_fx5x2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0935779, -3.21609, -32.2633)
-next_level = ExtResource("10_l55bw")
-
 [node name="PlataformScalable" parent="World" instance=ExtResource("10_xgybc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26389, -2.85985, -4.26408)
 
@@ -130,6 +122,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.420094, -4.75341, -25.1997)
 
 [node name="PlatformFalling2" parent="World" instance=ExtResource("13_iixjf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.420094, -4.00413, -28.2268)
+
+[node name="EnergyField" parent="World" instance=ExtResource("10_2uddq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0935779, -3.21609, -32.2633)
+next_level = ExtResource("10_l55bw")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.992474, -0.930117, 0.366944, -0.0153039, 4.8697, 5.04647, 3.36484)

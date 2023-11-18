@@ -49,6 +49,7 @@ func _ready():
 	dissolve_rect.material.set_shader_parameter("screen_width", dissolve_rect.size.x)
 	dissolve_rect.material.set_shader_parameter("screen_height", dissolve_rect.size.y)
 	configure_tween()
+	dissolve_rect.material.set_shader_parameter("circle_size", progress)
 
 func _process(_delta):
 	dissolve_rect.material.set_shader_parameter("circle_size", progress)
