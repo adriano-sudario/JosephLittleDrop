@@ -60,7 +60,12 @@ func handle_input(delta):
 	
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		input = Vector3.ZERO
-		input.y = Input.get_axis("camera_left", "camera_right")
+		
+		if OS.get_name() == "Web":
+			input.y = Input.get_axis("web_camera_left", "web_camera_right")
+		else:
+			input.y = Input.get_axis("camera_left", "camera_right")
+		
 		input.x = Input.get_axis("camera_up", "camera_down")
 	
 	camera_rotation += input.limit_length(1.0) * rotation_speed * delta
