@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://c6esc0vskheb6"]
+[gd_scene load_steps=15 format=3 uid="uid://c6esc0vskheb6"]
 
 [ext_resource type="PackedScene" uid="uid://cqlq863jxsgu" path="res://models/PlatformTeleport.glb" id="1_ay5mj"]
 [ext_resource type="Script" path="res://objects/platforms/platform_teleport.gd" id="2_xwsfl"]
-[ext_resource type="Shader" path="res://shaders/hologram.gdshader" id="3_7ng1r"]
+[ext_resource type="Shader" path="res://shaders/distortion.gdshader" id="3_dxc0p"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_83qoa"]
 points = PackedVector3Array(0.891938, 0.663051, 0.994716, -0.856682, -0.571033, -1.02781, -0.994216, 0.594101, 0.925304, 0.788186, -0.947957, 0.89088, 0.890076, 0.867004, -0.924019, 0.930811, -0.884823, -0.86197, -0.861877, -0.919403, 0.89626, -0.858887, 0.973504, -0.755627, 0.755783, 0.973541, 0.858749, -0.890999, -0.947896, -0.788002, 1.09917, 0.182811, 0.824237, -1.09678, 0.182587, -0.822425, -0.755808, 0.973541, 0.858749, -0.822317, 0.182574, 1.09649, 0.972184, -0.196622, -1.04162, -1.0729, -0.195806, 0.934156, -0.826303, 0.183487, -1.10181, 0.934277, -0.195991, 1.07286, 1.10315, 0.183493, -0.827219, 1.02582, -0.604189, 0.820646, 0.858867, 0.973509, -0.755631, 0.754281, -0.983149, -0.822888, -0.789298, -0.983916, 0.789139, 0.960137, 0.868499, 0.788556, -0.788797, 0.868783, -0.960073, 0.822264, 0.182568, -1.09645, -0.820742, -0.604105, 1.02583, -1.02587, -0.604012, -0.820665, 0.788179, -0.879489, -0.95935, -0.959472, -0.879427, 0.787989, -0.960142, 0.868673, 0.78854, 0.822827, -0.983166, 0.754166)
@@ -10,50 +10,12 @@ points = PackedVector3Array(0.891938, 0.663051, 0.994716, -0.856682, -0.571033, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4pcp"]
 size = Vector3(5.30831, 6.34799, 5.46706)
 
-[sub_resource type="Animation" id="Animation_yw0st"]
-resource_name = "falling"
-length = 1.25
-
-[sub_resource type="Animation" id="Animation_lf1am"]
-resource_name = "idle"
-length = 1.25
-
-[sub_resource type="Animation" id="Animation_cah8k"]
-resource_name = "jumping"
-length = 1.25
-
-[sub_resource type="Animation" id="Animation_6jv0y"]
-resource_name = "running"
-length = 1.25
-
-[sub_resource type="Animation" id="Animation_2353b"]
-resource_name = "walk"
-length = 1.25
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xpc8e"]
-_data = {
-"falling": SubResource("Animation_yw0st"),
-"idle": SubResource("Animation_lf1am"),
-"jumping": SubResource("Animation_cah8k"),
-"running": SubResource("Animation_6jv0y"),
-"walk": SubResource("Animation_2353b")
-}
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_14l4y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3g4i6"]
 render_priority = 0
-shader = ExtResource("3_7ng1r")
-shader_parameter/line_color = Color(0.4, 0.572549, 0.847059, 1)
-shader_parameter/line_width = 0.01
-shader_parameter/line_blur = 0.3
-shader_parameter/line_speed = 0.05
-shader_parameter/straight_lines = true
-shader_parameter/interrupt_width = 0.5
-shader_parameter/interrupt_blur = 0.25
-shader_parameter/interrupt_speed = 0.2
-shader_parameter/glow_color = Color(0.0588235, 0.0156863, 1, 1)
-shader_parameter/glow_itensity = 4.5
-shader_parameter/glow_amount = 4.5
-shader_parameter/flickering = 0.55
+shader = ExtResource("3_dxc0p")
+shader_parameter/wave_weight = 0.075
+shader_parameter/albedo = Color(0.623529, 0.443137, 1, 1)
+shader_parameter/speed = Vector2(7.5, 7.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2v4hv"]
 resource_name = "gota"
@@ -229,6 +191,41 @@ bind/26/name = &"heel.02.R"
 bind/26/bone = -1
 bind/26/pose = Transform3D(1.04149e-06, -7.23469e-07, -2.50065, -2.49504, 0.16747, -6.36419e-06, 0.167472, 2.49504, -3.21411e-06, -0.0548666, -0.33522, -0.027302)
 
+[sub_resource type="Animation" id="Animation_5q482"]
+resource_name = "float"
+length = 4.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DropMesh:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.5, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DropMesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 6.28319, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3eyng"]
+_data = {
+"float": SubResource("Animation_5q482")
+}
+
 [node name="PlataformTeleport" instance=ExtResource("1_ay5mj")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("2_xwsfl")
@@ -247,19 +244,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.53496, 0)
 shape = SubResource("BoxShape3D_e4pcp")
 
 [node name="FeedbackDrop" type="Node3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54671, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25427, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FeedbackDrop" index="0"]
-libraries = {
-"": SubResource("AnimationLibrary_xpc8e")
-}
-
-[node name="DropMesh" type="MeshInstance3D" parent="FeedbackDrop" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.171196, 0)
-material_override = SubResource("ShaderMaterial_14l4y")
+[node name="DropMesh" type="MeshInstance3D" parent="FeedbackDrop" index="0"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_3g4i6")
 mesh = SubResource("ArrayMesh_gfk2d")
 skin = SubResource("Skin_1ief6")
 skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FeedbackDrop" index="1"]
+autoplay = "float"
+libraries = {
+"": SubResource("AnimationLibrary_3eyng")
+}
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -85,10 +85,10 @@ transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846
 linked_platform = NodePath("../PlataformTeleport2")
 
 [node name="PlataformTeleport2" parent="World" instance=ExtResource("16_g6qae")]
-transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, 2.7032, -2.81276, -23.4841)
+transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, -1.2968, -2.81276, -23.4841)
 
 [node name="EnergyField" parent="World" instance=ExtResource("7_u6r0e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58583, -3.1767, -29.4626)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58583, -3.1767, -29.4626)
 next_level = ExtResource("6_s3ifk")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
