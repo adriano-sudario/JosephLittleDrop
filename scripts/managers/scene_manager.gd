@@ -32,3 +32,27 @@ static func load_packed(scene: PackedScene, delay = null):
 	)
 	transition_scene.mode = Transition.Mode.IN_OUT
 	scene_tree.current_scene.get_parent().add_child(transition_scene)
+
+static func load_string(scene_path: String, delay = null):
+	var transition_scene = transition_load.instantiate()
+	var main_loop = Engine.get_main_loop()
+	var scene_tree = main_loop as SceneTree;
+	
+	if delay != null:
+		await scene_tree.create_timer(delay).timeout
+	
+	transition_scene.on_transition_end.connect(
+		func(_transition):
+			scene_tree.change_scene_to_file(scene_path)
+	)
+	transition_scene.mode = Transition.Mode.IN_OUT
+	scene_tree.current_scene.get_parent().add_child(transition_scene)
+
+static func load_next(delay = 1.5):
+	LevelManager.current_level_index += 1
+	
+	if LevelManager.current_level_index >= LevelData.levels.size():
+		LevelManager.current_level_index = 0
+	
+	var current_level = LevelManager.get_current_level()
+	load_string(current_level.scene_path, delay)

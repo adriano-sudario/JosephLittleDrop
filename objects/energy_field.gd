@@ -1,6 +1,5 @@
 extends Node3D
 
-@export var next_level: PackedScene
 @export var animation_curve: Curve
 @export var impact_curve: Curve
 @export var animation_time := 1.0
@@ -73,6 +72,4 @@ func _on_body_entered(body):
 		return
 	
 	prepare_player(body)
-	
-	if next_level != null:
-		SceneManager.load_packed(next_level, 1.5)
+	SceneManager.load_next()

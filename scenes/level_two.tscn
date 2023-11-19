@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://sdd66ixup1ng"]
+[gd_scene load_steps=15 format=3 uid="uid://sdd66ixup1ng"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_7cr1w"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_gwfa6"]
 [ext_resource type="Script" path="res://scripts/view.gd" id="3_7eyrx"]
 [ext_resource type="PackedScene" uid="uid://cy2v8hph35gv5" path="res://objects/little_drop.tscn" id="9_uaak4"]
 [ext_resource type="PackedScene" uid="uid://l64gv7asxqet" path="res://objects/energy_field.tscn" id="10_2uddq"]
-[ext_resource type="PackedScene" uid="uid://xm83bu5mci02" path="res://scenes/level_three.tscn" id="10_l55bw"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="10_wva1b"]
 [ext_resource type="PackedScene" uid="uid://bh1sgdtda13i3" path="res://objects/platforms/platform_scalable.tscn" id="10_xgybc"]
 [ext_resource type="PackedScene" uid="uid://bea0cpu3jbdhb" path="res://objects/platforms/platform_scalable_small.tscn" id="11_0fjdw"]
@@ -125,7 +124,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.420094, -4.00413, -28.2268)
 
 [node name="EnergyField" parent="World" instance=ExtResource("10_2uddq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0935779, -3.21609, -32.2633)
-next_level = ExtResource("10_l55bw")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.992474, -0.930117, 0.366944, -0.0153039, 4.8697, 5.04647, 3.36484)

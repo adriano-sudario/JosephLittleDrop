@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqqgyqafm7xwp"]
+[gd_scene load_steps=15 format=3 uid="uid://bqqgyqafm7xwp"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_04jcy"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_cdplo"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platforms/platform_falling.tscn" id="5_ljmjs"]
 [ext_resource type="PackedScene" uid="uid://cy2v8hph35gv5" path="res://objects/little_drop.tscn" id="7_t0rry"]
 [ext_resource type="PackedScene" uid="uid://dy017k58p20sk" path="res://objects/cloud.tscn" id="8_ote1q"]
-[ext_resource type="PackedScene" uid="uid://sdd66ixup1ng" path="res://scenes/level_two.tscn" id="10_kot5u"]
 [ext_resource type="PackedScene" uid="uid://biafwc82jxhuf" path="res://objects/platforms/platform_safe.tscn" id="11_kb1xv"]
 [ext_resource type="PackedScene" uid="uid://dts0acramv17a" path="res://objects/platforms/platform_moving.tscn" id="12_3ytpj"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="13_uxdda"]
@@ -105,7 +104,6 @@ destination = Vector3(-26.4923, 3.92116, 1.62371)
 
 [node name="EnergyField" parent="World" instance=ExtResource("14_imral")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.3929, 4.83355, 1.6095)
-next_level = ExtResource("10_kot5u")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.992474, -0.930117, 0.366944, -0.0153039, 0, 0, 0)
