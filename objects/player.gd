@@ -137,7 +137,12 @@ func handle_controls(delta):
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
 	input = input.rotated(Vector3.UP, view.rotation.y).normalized()
-	is_running = Input.is_action_pressed("run")
+	
+	if OS.get_name() == "Web":
+		is_running = Input.is_action_pressed("web_run")
+	else:
+		is_running = Input.is_action_pressed("run")
+	
 	movement_velocity = input * movement_speed * delta
 	
 	if is_running:

@@ -1,10 +1,8 @@
 extends Node3D
 
-@export var next_level: PackedScene
 @export var animation_curve: Curve
 @export var impact_curve: Curve
 @export var animation_time := 1.0
-@export var body_magnetic_force := 4.0
 @export var body_rotation_speed := 100.0
 
 @onready var mesh_material: ShaderMaterial = $Mesh.material_override
@@ -45,19 +43,16 @@ func _process(delta):
 	if player != null:
 		body_rotation_degrees += body_rotation_speed * delta
 		player.rotation_degrees.y = body_rotation_degrees
-		var weight = body_magnetic_force * delta
-		var fixed_vertical_position = -(0.35 * player.current_scale)
-		var centered_position = player.position - (player.centered_position * player.current_scale)
-		centered_position.y += fixed_vertical_position
-		player.position = player.position.lerp(centered_position, weight)
-		player.global_position = player.global_position.lerp(global_position, weight)
 
-func _on_body_entered(body):
-	if player != null or not body is Player:
-		return
-	
+func pull_player_towards_self():
+	var fixed_vertical_position = -(0.35 * player.current_scale)
+	var center_offset = (player.centered_position * player.current_scale)
+	center_offset.y -= fixed_vertical_position
+	var global_position_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	global_position_tween.tween_property(player, "position", position - center_offset, 0.5)
+
+func prepare_player(body: Player):
 	player = body
-	set_impact_origin(player.position)
 	player.gravity_force = 0.0
 	player.gravity = 0.0
 	var camera_speed = 1.0
@@ -69,6 +64,12 @@ func _on_body_entered(body):
 	player.is_evaporating = false
 	player.can_control = false
 	player.has_won = true
+	set_impact_origin(player.position)
+	pull_player_towards_self()
+
+func _on_body_entered(body):
+	if player != null or not body is Player:
+		return
 	
-	if next_level != null:
-		SceneManager.load_packed(next_level, 1.5)
+	prepare_player(body)
+	SceneManager.load_next()
