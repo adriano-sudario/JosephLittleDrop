@@ -24,7 +24,7 @@ shadow_offset = Vector2(2, 2)
 environment = ExtResource("1_8b1yr")
 
 [node name="Player" parent="." instance=ExtResource("2_1b3wm")]
-transform = Transform3D(-0.979806, 0, 0.199949, 0, 1, 0, -0.199949, 0, -0.979806, 4.23874, 0.5, 7.22835)
+transform = Transform3D(-0.979806, 0, 0.199949, 0, 1, 0, -0.199949, 0, -0.979806, 7.55763, 0.5, 7.22835)
 
 [node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(0.707107, -0.298836, 0.640856, 0, 0.906308, 0.422618, -0.707107, -0.298836, 0.640856, 0, 0, 0)
@@ -32,26 +32,26 @@ script = ExtResource("3_yejdg")
 target = NodePath("../Player")
 
 [node name="Camera" type="Camera3D" parent="View"]
-transform = Transform3D(1, 0, 0, 0, 1, -3.57628e-07, 0, 0, 1, 4.5546, 3.38896, 2.73235)
+transform = Transform3D(1, 0, 0, 0, 1, -3.57628e-07, 0, 0, 1, 7.13968, 2.29646, 5.07524)
 current = true
 fov = 40.0
 
 [node name="World" type="Node3D" parent="."]
 
 [node name="cube8" parent="World" instance=ExtResource("4_3sjg0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.83011, 1.10741, -4.3062)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.486, 1.10741, -4.3062)
 
 [node name="cube9" parent="World" instance=ExtResource("4_3sjg0")]
-transform = Transform3D(1.27593, -0.401864, 0.422933, 0.471408, 1.30937, -0.178025, -0.343721, 0.304009, 1.32582, -3.90859, 1.37146, 6.81947)
+transform = Transform3D(1.27593, -0.401864, 0.422933, 0.471408, 1.30937, -0.178025, -0.343721, 0.304009, 1.32582, -0.252728, 1.37146, 6.81947)
 
 [node name="cube10" parent="World" instance=ExtResource("4_3sjg0")]
-transform = Transform3D(1.32811, 0.370441, 0.259369, -0.293866, 1.3186, -0.37854, -0.34372, 0.30401, 1.32582, -1.91814, 2.03819, 0.0927653)
+transform = Transform3D(1.32811, 0.370441, 0.259369, -0.293866, 1.3186, -0.37854, -0.34372, 0.30401, 1.32582, 1.73772, 2.03819, 0.0927653)
 
 [node name="cube11" parent="World" instance=ExtResource("4_3sjg0")]
-transform = Transform3D(0.476646, 0.924607, 0.941422, -0.929853, 0.945559, -0.457882, -0.93624, -0.468385, 0.934042, 0.135397, 2.03819, -4.78566)
+transform = Transform3D(0.476646, 0.924607, 0.941422, -0.929853, 0.945559, -0.457882, -0.93624, -0.468385, 0.934042, 3.79126, 2.03819, -4.78566)
 
 [node name="cube12" parent="World" instance=ExtResource("4_3sjg0")]
-transform = Transform3D(-1.02876, -0.695523, 0.652886, -0.929853, 0.945557, -0.457881, -0.213027, -0.768461, -1.15432, -7.78401, 2.79508, -11.1696)
+transform = Transform3D(-1.02876, -0.695523, 0.652886, -0.929853, 0.945557, -0.457881, -0.213027, -0.768461, -1.15432, -4.78401, 2.79508, -11.1696)
 
 [node name="cube13" parent="World" instance=ExtResource("4_3sjg0")]
 transform = Transform3D(1.56209, -1.37982, 1.71508, 1.97375, 1.80907, -0.342241, -0.974547, 1.4522, 2.05595, 35.8883, -2.58586, -31.5134)
@@ -78,13 +78,13 @@ transform = Transform3D(1.41958, -1.17578, 1.97177, 1.97375, 1.80907, -0.342241,
 transform = Transform3D(1.56209, -1.37982, 1.71508, 1.97375, 1.80907, -0.342241, -0.974547, 1.4522, 2.05595, 19.6253, 2.03819, 7.83702)
 
 [node name="PlataformSafe" parent="World" instance=ExtResource("5_nsqc4")]
-transform = Transform3D(0.699865, 0, 0.0137065, 0, 0.7, 0, -0.0137065, 0, 0.699865, 3.90716, -0.4279, 7.12286)
+transform = Transform3D(0.699865, 0, 0.0137065, 0, 0.7, 0, -0.0137065, 0, 0.699865, 7.34755, -0.4279, 7.12286)
 
 [node name="Plataform" parent="World" instance=ExtResource("6_rwbml")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, 3.70563, -1.97822, -7.19869)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 5, 7.36149, -1.97822, -7.19869)
 
 [node name="Plataform2" parent="World" instance=ExtResource("6_rwbml")]
-transform = Transform3D(-4.37114e-08, 0, -5, 0, 1, 0, 1, 0, -2.18557e-07, 15.5729, -4.02388, -20.4738)
+transform = Transform3D(-4.37114e-08, 0, -4, 0, 1, 0, 1, 0, -1.74846e-07, 17.5249, -3.91959, -20.4738)
 
 [node name="Plataform3" parent="World" instance=ExtResource("6_rwbml")]
 transform = Transform3D(-1, 0, 4.37114e-07, 0, 1, 0, -8.74228e-08, 0, -5, 27.6254, -6.36071, -8.7309)
@@ -201,7 +201,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.7094, -5.40822, -1.83379)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.6524, -4.27415, 0.44511)
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.992474, -0.930117, 0.366944, -0.0153039, 0, 0, 0)
+transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.992474, -0.930117, 0.366944, -0.015304, 3.65586, 0, 0)
 shadow_enabled = true
 shadow_opacity = 0.75
 
