@@ -22,6 +22,5 @@ func focus():
 	return t
 
 func unfocus():
-	var t = super.unfocus()
-	t.tween_property(check_box, "modulate:a", unfocused_alpha, animation_duration)
-	return t
+	super.unfocus()
+	check_box.modulate.a = unfocused_alpha

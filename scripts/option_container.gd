@@ -30,9 +30,7 @@ func focus():
 
 func unfocus():
 	label.material = null
-	var t = create_tween().set_trans(Tween.TRANS_CUBIC)
-	t.tween_property(label, "modulate:a", unfocused_alpha, animation_duration)
-	return t
+	label.modulate.a = unfocused_alpha
 
 func select():
 	on_select.emit()

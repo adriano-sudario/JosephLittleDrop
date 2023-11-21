@@ -13,7 +13,7 @@ func _ready():
 	)
 	$ButtonsContainer/OptionsButton.on_select.connect(
 		func():
-			SceneManager.load_string("res://scenes/options_menu.tscn")
+			SceneManager.load_string("res://scenes/options_menu.tscn", null, false)
 	)
 	$ButtonsContainer/QuitButton.on_select.connect(
 		func():

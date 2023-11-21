@@ -20,7 +20,7 @@ signal on_begin_run
 @export var gravity_force := 25.0
 
 @onready var particles_trail = $ParticlesTrail
-@onready var sound_footsteps = $SoundFootsteps
+#@onready var sound_footsteps = $SoundFootsteps
 @onready var model = $Character
 @onready var animation = $Character/AnimationPlayer
 @onready var view: ViewCamera = $"../View"
@@ -35,30 +35,47 @@ var is_running := false
 var is_evaporating := true
 var jumps_count := 0
 var is_jump_prevented := false
+var footstep_player = null
+
+var is_moving:bool:
+	set(value):
+		if value == is_moving:
+			return
+		
+		is_moving = value
+		handle_footstep_sound()
+
 var has_begun_run := false:
 	set(value):
 		if not has_begun_run and value:
 			on_begin_run.emit()
 		
 		has_begun_run = value
+
 var has_won := false:
 	set(value):
 		has_won = value
 		
 		if has_won:
 			on_win.emit()
+
 var can_control:
 	set(_value):
-		is_running = false
-		movement_velocity = Vector3.ZERO
+		if not _value:
+			is_running = false
+			is_moving = false
+			movement_velocity = Vector3.ZERO
 		can_control = _value
+
+func handle_footstep_sound():
+	if footstep_player == null:
+		footstep_player = SoundManager.play_sound(Audio.resource.footsteps)
+	
+	footstep_player.stream_paused = not is_moving
 
 func _ready():
 	model.scale = Vector3(initial_scale, initial_scale, initial_scale)
 	can_control = true
-	
-	if not Audio.is_on:
-		sound_footsteps.stream_paused = true
 
 func _physics_process(delta):
 	handle_controls(delta)
@@ -71,6 +88,7 @@ func _physics_process(delta):
 
 func handle_death():
 	if position.y < -10 or current_scale < minimum_scale:
+		can_control = false
 		var death_smoke_scene_path = "res://objects/death_smoke.tscn"
 		var death_smoke = load(death_smoke_scene_path).instantiate()
 		get_parent().add_child(death_smoke)
@@ -112,11 +130,10 @@ func maintain_current_scale(delta):
 func handle_landing():
 	if is_on_floor() and gravity > 2 and !was_on_floor:
 		model.scale = Vector3(current_scale * 1.25, current_scale * 0.75, current_scale * 1.25)
-		Audio.play("res://sounds/land.ogg")
+		SoundManager.play_sound(Audio.resource.land)
 
 func handle_effects():
 	particles_trail.emitting = false
-	sound_footsteps.stream_paused = true
 
 func handle_animations():
 	var animation_name = ""
@@ -134,14 +151,17 @@ func handle_animations():
 			
 			particles_trail.emitting = true
 			
-			if Audio.is_on:
-				sound_footsteps.stream_paused = false
+#			if not SoundManager.is_sound_playing(Audio.resource.footsteps):
+#				SoundManager.play_sound(Audio.resource.footsteps)
+#			if Audio.is_on:
+#				sound_footsteps.stream_paused = false
 	else:
 		animation_name = "jumping"
 		
 		if gravity > 0:
 			animation_name = "falling"
 	
+	is_moving = animation_name == "walk" or animation_name == "running"
 	animation.play(animation_name, 0.5)
 
 func handle_controls(delta):
@@ -179,7 +199,8 @@ func jump():
 	on_jump.emit(jumps_count)
 	
 	if not is_jump_prevented:
-		Audio.play("res://sounds/jump.ogg")
+		SoundManager.play_sound(Audio.resource.jump)
+#		Audio.play("res://sounds/jump.ogg")
 		gravity = -jump_strength
 		model.scale = Vector3(current_scale * 0.5, current_scale * 1.5, current_scale * 0.5)
 		jumps_count += 1
