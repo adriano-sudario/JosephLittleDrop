@@ -33,7 +33,7 @@ func _ready():
 	var back_container = $OptionsContainer/BackContainer
 	back_container.on_select.connect(
 		func():
-			SceneManager.load_string("res://scenes/main_menu.tscn")
+			SceneManager.load_string("res://scenes/main_menu.tscn", null, false)
 	)
 
 func change_next(next: int):

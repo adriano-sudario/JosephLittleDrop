@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SoundsResource" load_steps=8 format=3 uid="uid://tr1doeeqtvud"]
+
+[ext_resource type="AudioStream" uid="uid://cko3em7xury11" path="res://sounds/sfxs/fall.ogg" id="1_1cogu"]
+[ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/sfxs/walking.ogg" id="2_3ry2v"]
+[ext_resource type="AudioStream" uid="uid://ds683ci5dtbig" path="res://sounds/soundtracks/gameplay_ost.wav" id="3_bho20"]
+[ext_resource type="AudioStream" uid="uid://dw2m5fxhfjykq" path="res://sounds/sfxs/jump.ogg" id="3_sboqd"]
+[ext_resource type="AudioStream" uid="uid://xnxidwkp46un" path="res://sounds/sfxs/land.ogg" id="4_5bbil"]
+[ext_resource type="AudioStream" uid="uid://bygrj12u37fyu" path="res://sounds/sfxs/little_drop_collected.ogg" id="5_hqej6"]
+[ext_resource type="Script" path="res://sounds/resources/sounds_resource.gd" id="6_3b4fg"]
+
+[resource]
+script = ExtResource("6_3b4fg")
+footsteps = ExtResource("2_3ry2v")
+little_drop_collected = ExtResource("5_hqej6")
+fall = ExtResource("1_1cogu")
+jump = ExtResource("3_sboqd")
+land = ExtResource("4_5bbil")
+gameplay = ExtResource("3_bho20")

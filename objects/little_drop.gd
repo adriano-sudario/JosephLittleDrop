@@ -8,7 +8,8 @@ var grabbed := false
 func _on_body_entered(body):
 	if body.has_method("collect_little_drop") and !grabbed:
 		body.collect_little_drop(value)
-		Audio.play("res://sounds/coin.ogg")
+		SoundManager.play_sound(Audio.resource.little_drop_collected)
+#		Audio.play("res://sounds/coin.ogg")
 		$Drop.queue_free()
 		$Particles.emitting = false
 		grabbed = true

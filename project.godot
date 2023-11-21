@@ -17,7 +17,7 @@ boot_splash/bg_color=Color(0.92549, 0.92549, 0.960784, 1)
 
 [autoload]
 
-Audio="*res://scripts/audio.gd"
+SoundManager="*res://addons/sound_manager/sound_manager.gd"
 
 [display]
 
@@ -27,6 +27,10 @@ window/size/viewport_height=720
 [editor]
 
 movie_writer/movie_file="C:/Users/Kenney/Desktop/video-footage.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/sound_manager/plugin.cfg")
 
 [input]
 

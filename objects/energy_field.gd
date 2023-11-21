@@ -72,4 +72,4 @@ func _on_body_entered(body):
 		return
 	
 	prepare_player(body)
-	SceneManager.load_next()
+	SceneManager.load_next_level()
