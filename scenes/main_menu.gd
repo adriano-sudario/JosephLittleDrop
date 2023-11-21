@@ -7,6 +7,7 @@ var buttons = null
 var button_focused_index := 0
 
 func _ready():
+	SoundManager.play_music(Audio.resource.menu)
 	$ButtonsContainer/PlayButton.on_select.connect(
 		func():
 			SceneManager.load_string("res://scenes/level_intro.tscn")

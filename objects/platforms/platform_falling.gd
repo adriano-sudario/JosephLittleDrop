@@ -24,8 +24,7 @@ func _on_body_entered(body):
 		return
 	
 	if !is_falling:
-		SoundManager.play_sound(Audio.resource.fall)
-#		Audio.play("res://sounds/fall.ogg")
+		Audio.resource.fall.play()
 		scale = current_scale * Vector3(1.25, 1, 1.25)
 	
 	is_falling = true
