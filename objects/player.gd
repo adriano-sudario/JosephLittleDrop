@@ -69,7 +69,7 @@ var can_control:
 
 func handle_footstep_sound():
 	if footstep_player == null:
-		footstep_player = SoundManager.play_sound(Audio.resource.footsteps)
+		footstep_player = Audio.resource.footsteps.play()
 	
 	footstep_player.stream_paused = not is_moving
 
@@ -130,7 +130,7 @@ func maintain_current_scale(delta):
 func handle_landing():
 	if is_on_floor() and gravity > 2 and !was_on_floor:
 		model.scale = Vector3(current_scale * 1.25, current_scale * 0.75, current_scale * 1.25)
-		SoundManager.play_sound(Audio.resource.land)
+		Audio.resource.land.play()
 
 func handle_effects():
 	particles_trail.emitting = false
@@ -150,11 +150,6 @@ func handle_animations():
 				animation_name = "running"
 			
 			particles_trail.emitting = true
-			
-#			if not SoundManager.is_sound_playing(Audio.resource.footsteps):
-#				SoundManager.play_sound(Audio.resource.footsteps)
-#			if Audio.is_on:
-#				sound_footsteps.stream_paused = false
 	else:
 		animation_name = "jumping"
 		
@@ -199,8 +194,7 @@ func jump():
 	on_jump.emit(jumps_count)
 	
 	if not is_jump_prevented:
-		SoundManager.play_sound(Audio.resource.jump)
-#		Audio.play("res://sounds/jump.ogg")
+		Audio.resource.jump.play()
 		gravity = -jump_strength
 		model.scale = Vector3(current_scale * 0.5, current_scale * 1.5, current_scale * 0.5)
 		jumps_count += 1
