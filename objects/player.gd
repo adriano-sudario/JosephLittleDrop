@@ -56,6 +56,9 @@ var can_control:
 func _ready():
 	model.scale = Vector3(initial_scale, initial_scale, initial_scale)
 	can_control = true
+	
+	if not Audio.is_on:
+		sound_footsteps.stream_paused = true
 
 func _physics_process(delta):
 	handle_controls(delta)
@@ -130,7 +133,9 @@ func handle_animations():
 				animation_name = "running"
 			
 			particles_trail.emitting = true
-			sound_footsteps.stream_paused = false
+			
+			if Audio.is_on:
+				sound_footsteps.stream_paused = false
 	else:
 		animation_name = "jumping"
 		

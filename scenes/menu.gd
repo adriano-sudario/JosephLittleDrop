@@ -1,4 +1,4 @@
-class_name MainMenu
+class_name Menu
 extends Control
 
 @onready var buttons_container = $ButtonsContainer
@@ -6,21 +6,7 @@ extends Control
 var buttons = null
 var button_focused_index := 0
 
-func _ready():
-	$ButtonsContainer/PlayButton.on_select.connect(
-		func():
-			SceneManager.load_string("res://scenes/level_intro.tscn")
-	)
-	$ButtonsContainer/OptionsButton.on_select.connect(
-		func():
-			SceneManager.load_string("res://scenes/options_menu.tscn")
-	)
-	$ButtonsContainer/QuitButton.on_select.connect(
-		func():
-			get_tree().quit()
-	)
-
-func change_next(next: int):
+func focus(next: int):
 	var previous_focused:Button = buttons[button_focused_index]
 	previous_focused.unfocus()
 	
@@ -38,13 +24,13 @@ func _process(_delta):
 	if buttons == null:
 		buttons = buttons_container.get_children()
 		button_focused_index = buttons.size() - 1
-		change_next(1)
+		focus(1)
 	
 	if Input.is_action_just_pressed("ui_down"):
-		change_next(1)
+		focus(1)
 	
 	if Input.is_action_just_pressed("ui_up"):
-		change_next(-1)
+		focus(-1)
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		buttons[button_focused_index].select()

@@ -1,5 +1,6 @@
 extends Node
 
+var is_on := true
 var num_players = 12
 var bus = "master"
 var available = []
@@ -20,9 +21,15 @@ func _on_stream_finished(stream):
 	available.append(stream)
 
 func play(sound_path):
+	if not is_on:
+		return
+	
 	queue.append(sound_path)
 
 func _process(_delta):
+	if not is_on:
+		return
+	
 	if not queue.is_empty() and not available.is_empty():
 		available[0].stream = load(queue.pop_front())
 		available[0].play()
