@@ -49,7 +49,7 @@ jobs:
     name: Linux Export
     runs-on: ubuntu-20.04
     container:
-      image: barichello/godot-ci:4.1.3
+      image: barichello/godot-ci:${{ env.GODOT_VERSION }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -154,4 +154,10 @@ jobs:
             DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         uses: Ilshidur/action-discord@0.3.0
         with:
-          args: 'buildzinhas atualizada p nois (${{ github.event.head_commit.message }}): https://petit-suisse.itch.io/joseph-little-drop 💦💧 senha: zegotinha'
+          args: |
+            buildzinhas atualizada p nois 💦💧
+
+            ${{ github.event.head_commit.message }}
+            
+            https://petit-suisse.itch.io/joseph-little-drop
+            senha: zegotinha
