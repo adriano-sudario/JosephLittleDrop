@@ -11,3 +11,6 @@ func _on_safe_area_body_exited(body):
 		return
 	
 	body.is_evaporating = true
+	
+	if not body.has_begun_run:
+		body.has_begun_run = true

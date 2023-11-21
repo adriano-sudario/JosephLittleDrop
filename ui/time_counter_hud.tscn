@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c80b1odgla686"]
+
+[ext_resource type="Script" path="res://ui/time_counter_hud.gd" id="1_b21cv"]
+[ext_resource type="Texture2D" uid="uid://b8sgu3q4nssr4" path="res://sprites/clock.png" id="2_lhfp2"]
+[ext_resource type="FontFile" uid="uid://ccs8rh8s7ngx5" path="res://fonts/Jackpot.ttf" id="3_450q7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_38ys3"]
+font = ExtResource("3_450q7")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="TimeCounterHud" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_b21cv")
+
+[node name="ClockIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 327.0
+offset_bottom = 323.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_lhfp2")
+
+[node name="TimeText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 11.0
+offset_right = 310.0
+offset_bottom = 88.0
+text = "00"
+label_settings = SubResource("LabelSettings_38ys3")
+vertical_alignment = 1

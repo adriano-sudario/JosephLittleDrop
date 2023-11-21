@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://d0cxd77jybrcn"
-path="res://.godot/imported/lilita_one_regular.ttf-68cc4ab6825bdd499d1ad608190f5213.fontdata"
+uid="uid://ccs8rh8s7ngx5"
+path="res://.godot/imported/Jackpot.ttf-6b8a8fc3be8dac5c1e501d5549ac9b67.fontdata"
 
 [deps]
 
-source_file="res://fonts/lilita_one_regular.ttf"
-dest_files=["res://.godot/imported/lilita_one_regular.ttf-68cc4ab6825bdd499d1ad608190f5213.fontdata"]
+source_file="res://fonts/Jackpot.ttf"
+dest_files=["res://.godot/imported/Jackpot.ttf-6b8a8fc3be8dac5c1e501d5549ac9b67.fontdata"]
 
 [params]
 

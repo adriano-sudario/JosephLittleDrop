@@ -4,6 +4,9 @@ extends CharacterBody3D
 signal on_little_drop_collected
 signal on_jump
 signal on_interaction
+signal on_vanish
+signal on_win
+signal on_begin_run
 
 @export_subgroup("Properties")
 @export var movement_speed = 250
@@ -32,10 +35,19 @@ var is_running := false
 var is_evaporating := true
 var jumps_count := 0
 var is_jump_prevented := false
-var coins := 0
-var has_won := false
+var has_begun_run := false:
+	set(value):
+		if not has_begun_run and value:
+			on_begin_run.emit()
+		
+		has_begun_run = value
+var has_won := false:
+	set(value):
+		has_won = value
+		
+		if has_won:
+			on_win.emit()
 var can_control:
-	get: return can_control
 	set(_value):
 		is_running = false
 		movement_velocity = Vector3.ZERO
@@ -61,6 +73,7 @@ func handle_death():
 		get_parent().add_child(death_smoke)
 		death_smoke.global_position = global_position
 		death_smoke.global_position.y += 0.15
+		on_vanish.emit()
 		queue_free()
 
 func handle_movement(delta):
@@ -176,8 +189,7 @@ func handle_gravity(delta):
 		gravity = 0
 
 func collect_little_drop(value):
-	coins += 1
-	on_little_drop_collected.emit(coins)
+	on_little_drop_collected.emit()
 	model.scale = Vector3(current_scale * 1.25, current_scale * 0.75, current_scale * 0.75)
 	current_scale += value
 	
