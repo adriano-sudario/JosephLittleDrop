@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dd8cupmcklvrv"]
+[gd_scene load_steps=12 format=3 uid="uid://dd8cupmcklvrv"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_6p8ic"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_u1n2l"]
@@ -8,19 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://b7iot73p6aiab" path="res://objects/platforms/platform.tscn" id="7_l3sc8"]
 [ext_resource type="PackedScene" uid="uid://l64gv7asxqet" path="res://objects/energy_field.tscn" id="7_qss0l"]
 [ext_resource type="PackedScene" uid="uid://bh1sgdtda13i3" path="res://objects/platforms/platform_scalable.tscn" id="8_4rnv4"]
-[ext_resource type="Script" path="res://scripts/hud.gd" id="8_igrcj"]
-[ext_resource type="Texture2D" uid="uid://cd7oyc56ehkx1" path="res://sprites/coin.png" id="9_p7ife"]
 [ext_resource type="PackedScene" uid="uid://dts0acramv17a" path="res://objects/platforms/platform_moving.tscn" id="10_qb43f"]
-[ext_resource type="FontFile" uid="uid://d0cxd77jybrcn" path="res://fonts/lilita_one_regular.ttf" id="10_s6bnr"]
+[ext_resource type="PackedScene" uid="uid://c80b1odgla686" path="res://ui/time_counter_hud.tscn" id="11_uwu0o"]
 [ext_resource type="PackedScene" uid="uid://c62nd1qonqavv" path="res://objects/platforms/platform_trigger.tscn" id="12_4jrng"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_38ys3"]
-font = ExtResource("10_s6bnr")
-font_size = 48
-shadow_color = Color(0, 0, 0, 0.376471)
-shadow_offset = Vector2(2, 2)
-
-[node name="LevelFour" type="Node3D"]
+[node name="LevelNoLittleDrops" type="Node3D"]
 
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_6p8ic")
@@ -61,10 +53,10 @@ is_big = false
 [node name="PlataformMoving" parent="World" instance=ExtResource("10_qb43f")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.97099, 4.87247, -37.2491)
 moving_speed = 0.1
-destination = Vector3(3.97099, 2.53922, -15.0318)
+destination = Vector3(3.97099, 4.87247, -14.4599)
 
 [node name="EnergyField" parent="World" instance=ExtResource("7_qss0l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97099, 6.99858, -20.8282)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97099, 6.44462, -20.8282)
 
 [node name="PlatformTrigger" parent="World" node_paths=PackedStringArray("linked_platform") instance=ExtResource("12_4jrng")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 3.97099, 4.87247, -5.16646)
@@ -75,29 +67,4 @@ transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.99
 shadow_enabled = true
 shadow_opacity = 0.75
 
-[node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("8_igrcj")
-
-[node name="Icon" type="TextureRect" parent="HUD"]
-offset_left = 57.0
-offset_top = 67.0
-offset_right = 313.0
-offset_bottom = 323.0
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_p7ife")
-
-[node name="x" type="Label" parent="HUD"]
-offset_left = 112.0
-offset_top = 64.0
-offset_right = 144.0
-offset_bottom = 123.0
-text = "×"
-label_settings = SubResource("LabelSettings_38ys3")
-
-[node name="Coins" type="Label" parent="HUD"]
-offset_left = 144.0
-offset_top = 64.0
-offset_right = 368.0
-offset_bottom = 123.0
-text = "0"
-label_settings = SubResource("LabelSettings_38ys3")
+[node name="TimeCounterHud" parent="." instance=ExtResource("11_uwu0o")]
