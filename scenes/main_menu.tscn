@@ -1,0 +1,115 @@
+[gd_scene load_steps=10 format=3 uid="uid://qlo8qu8inrtl"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_by0r5"]
+[ext_resource type="FontFile" uid="uid://ccs8rh8s7ngx5" path="res://fonts/Jackpot.ttf" id="1_hu80j"]
+[ext_resource type="Shader" path="res://shaders/wavy_canvas.gdshader" id="1_uihuy"]
+[ext_resource type="StyleBox" uid="uid://ssikjff0byjg" path="res://ui/styles/button_unselected.tres" id="4_rkvkc"]
+[ext_resource type="Script" path="res://scripts/button.gd" id="5_nufvn"]
+[ext_resource type="Texture2D" uid="uid://daxmxife8dixx" path="res://sprites/joseph_little_drop.png" id="6_bxihl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdy7f"]
+shader = ExtResource("1_uihuy")
+shader_parameter/wave_weight = 5.0
+shader_parameter/frequency = 15.0
+shader_parameter/speed = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_qbbkt"]
+font = ExtResource("1_hu80j")
+font_size = 48
+
+[sub_resource type="Theme" id="Theme_ght8b"]
+default_font = ExtResource("1_hu80j")
+Button/colors/font_color = Color(0.0980392, 0.0941176, 0.266667, 1)
+Button/styles/normal = ExtResource("4_rkvkc")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_by0r5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.827451, 0.776471, 0.745098, 1)
+
+[node name="Label" type="Label" parent="."]
+material = SubResource("ShaderMaterial_sdy7f")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.0
+offset_top = 50.0
+offset_right = 134.0
+offset_bottom = 86.0
+grow_horizontal = 2
+text = "Joseph Little Drop"
+label_settings = SubResource("LabelSettings_qbbkt")
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(250, 325)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -85.0
+offset_right = 125.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="ButtonsContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme = SubResource("Theme_ght8b")
+theme_override_styles/normal = ExtResource("4_rkvkc")
+text = "Play"
+script = ExtResource("5_nufvn")
+emit_on_mid = true
+
+[node name="OptionsButton" type="Button" parent="ButtonsContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_ght8b")
+text = "Options
+"
+script = ExtResource("5_nufvn")
+
+[node name="QuitButton" type="Button" parent="ButtonsContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_ght8b")
+text = "Quit"
+script = ExtResource("5_nufvn")
+
+[node name="JosephLittleDrop" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -403.0
+offset_top = -345.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("6_bxihl")
+expand_mode = 3
