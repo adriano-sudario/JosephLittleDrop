@@ -3,6 +3,7 @@ extends Node3D
 
 @export_group("Properties")
 @export var target: Node
+@export var can_control := true
 
 @export_group("Zoom")
 @export var zoom_minimum = 16
@@ -48,6 +49,9 @@ func remove_glitch():
 	camera.remove_child(camera.get_child(0))
 
 func handle_input(delta):
+	if not can_control:
+		return
+	
 	if Input.is_action_just_pressed("camera_focus_behind"):
 		camera_rotation.y = target.rotation_degrees.y + 180
 		return
@@ -74,6 +78,9 @@ func handle_input(delta):
 	zoom = clamp(zoom, zoom_maximum, zoom_minimum)
 
 func _unhandled_input(event):
+	if not can_control:
+		return
+	
 	var is_mouse_moving = event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED
 	
 	if is_mouse_moving:

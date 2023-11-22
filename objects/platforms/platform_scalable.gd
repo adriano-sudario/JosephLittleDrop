@@ -6,8 +6,10 @@ extends Platform
 
 func _ready():
 	super._ready()
-	var player:Player = $"../../Player"
-	player.on_jump.connect(_on_player_jump)
+	var player = get_node_or_null("../../Player")
+	
+	if player != null:
+		player.on_jump.connect(_on_player_jump)
 
 func _on_player_jump(_jumps):
 	if is_big:

@@ -5,17 +5,36 @@ extends Control
 
 var buttons = null
 var button_focused_index := 0
+var is_transitioning := false
 
 func _ready():
 	SoundManager.play_music(Audio.resource.menu)
-	$ButtonsContainer/PlayButton.on_select.connect(
+	var play_button:Button = $ButtonsContainer/PlayButton
+	var level_select_button:Button = $ButtonsContainer/LevelSelectButton
+	
+	play_button.on_select.connect(
 		func():
-			SceneManager.load_string("res://scenes/level_intro.tscn")
+			is_transitioning = true
+			var current_level = LevelManager.get_current_level()
+			SceneManager.load_string(current_level.scene_path)
 	)
+	
+	if LevelManager.current_level_index == 0:
+		level_select_button.queue_free()
+	else:
+		play_button.text = "Continue"
+		level_select_button.on_select.connect(
+			func():
+				is_transitioning = true
+				SceneManager.load_string("res://scenes/level_select.tscn", null, false)
+		)
+	
 	$ButtonsContainer/OptionsButton.on_select.connect(
 		func():
+			is_transitioning = true
 			SceneManager.load_string("res://scenes/options_menu.tscn", null, false)
 	)
+	
 	$ButtonsContainer/QuitButton.on_select.connect(
 		func():
 			get_tree().quit()
@@ -36,6 +55,9 @@ func change_next(next: int):
 	focused_button.focus()
 
 func _process(_delta):
+	if is_transitioning:
+		return
+	
 	if buttons == null:
 		buttons = buttons_container.get_children()
 		button_focused_index = buttons.size() - 1

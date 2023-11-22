@@ -7,7 +7,7 @@ signal on_select
 const animation_duration := 0.25
 const unfocused_alpha := 0.65
 const sides_border_radius := 25
-const focused_position_increment := Vector2(-25.0, -2.0)
+const focused_position_increment := Vector2(-25.0, -1.0)
 
 var initial_scale:Vector2
 var initial_position = null:
@@ -27,7 +27,7 @@ func _ready():
 func get_default_theme() -> StyleBoxFlat:
 	var default_theme = StyleBoxFlat.new()
 	default_theme.bg_color = Color("7c9cc3")
-	default_theme.skew.y = -0.08
+	default_theme.skew.y = -0.06
 	default_theme.border_width_top = 5
 	default_theme.border_width_bottom = 5
 	default_theme.border_width_left = 5
