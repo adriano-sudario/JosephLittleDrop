@@ -58,11 +58,14 @@ static func load_next_level(delay := 1.5):
 	LevelManager.current_level_index += 1
 	
 	if LevelManager.current_level_index >= LevelData.levels.size():
-		LevelManager.current_level_index = 0
+		LevelManager.current_level_index = LevelData.levels.size() - 1
+		SceneManager.load_string("res://scenes/level_select.tscn")
+		return
 	
 	var current_level = LevelManager.get_current_level()
 	load_string(current_level.scene_path, delay)
 
 static func load_level(level_index:int, delay := 1.5):
+	LevelManager.current_level_index = level_index
 	var level = LevelManager.get_level(level_index)
 	load_string(level.scene_path, delay)

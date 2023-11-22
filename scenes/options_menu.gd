@@ -5,6 +5,7 @@ extends Control
 
 var options = null
 var option_focused_index := 0
+var is_transitioning := false
 
 func _ready():
 	var sound_container = $OptionsContainer/SoundContainer
@@ -28,6 +29,7 @@ func _ready():
 	var back_container = $OptionsContainer/BackContainer
 	back_container.on_select.connect(
 		func():
+			is_transitioning = true
 			ConfigurationManager.save_options()
 			SceneManager.load_string("res://scenes/main_menu.tscn", null, false)
 	)
@@ -47,6 +49,9 @@ func change_next(next: int):
 	focused_option.is_focused = true
 
 func _process(_delta):
+	if is_transitioning:
+		return
+	
 	if options == null:
 		options = options_container.get_children()
 		option_focused_index = options.size() - 1
