@@ -1,7 +1,5 @@
 extends Node
 
-const options_data_path = "res://saves/config.json"
-const progress_data_path = "res://saves/progress.bin"
 const password = "jose_gotitos007"
 
 var options: OptionsConfiguration
@@ -10,6 +8,12 @@ var progress: Progress
 func _ready():
 	load_options()
 	load_progress()
+
+func get_progress_data_path():
+	return OS.get_user_data_dir() + "/progress.bin"
+
+func get_options_data_path():
+	return OS.get_user_data_dir() + "/config.json"
 
 func keep_track_on_progress(time: float):
 	if LevelManager.current_level_index == progress.best_times.size():
@@ -20,7 +24,7 @@ func keep_track_on_progress(time: float):
 		save_progress()
 
 func load_progress():
-	progress = Serializable.load_from_encrypted(progress_data_path, password) as Progress
+	progress = Serializable.load_from_encrypted(get_progress_data_path(), password) as Progress
 	
 	if progress == null:
 		progress = Progress.new()
@@ -28,10 +32,10 @@ func load_progress():
 	LevelManager.current_level_index = progress.best_times.size()
 
 func save_progress():
-	progress.save_encrypted(progress_data_path, password)
+	progress.save_encrypted(get_progress_data_path(), password)
 
 func load_options():
-	options = Serializable.load_from_json(options_data_path) as OptionsConfiguration
+	options = Serializable.load_from_json(get_options_data_path()) as OptionsConfiguration
 	
 	if options == null:
 		options = OptionsConfiguration.new()
@@ -40,7 +44,7 @@ func load_options():
 	set_fullscreen(options.is_fullscreen)
 
 func save_options():
-	options.save_json(options_data_path)
+	options.save_json(get_options_data_path())
 
 func set_audio_on(value):
 	options.is_audio_on = value
