@@ -39,10 +39,10 @@ transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846
 linked_platform = NodePath("../PlataformTeleport2")
 
 [node name="PlataformTeleport2" parent="World" instance=ExtResource("8_i3jmd")]
-transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, 0.711849, 1.39221, -12.3414)
+transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, 0.711849, 1.39221, -18.3743)
 
 [node name="PlatformTrigger" parent="World" node_paths=PackedStringArray("linked_platform") instance=ExtResource("9_1d0qi")]
-transform = Transform3D(0.499998, 0.00100609, -0.00106986, -0.00100325, 0.499997, 0.00131745, 0.00107252, -0.00131529, 0.499997, 5.34856, 0.96536, -13.2691)
+transform = Transform3D(0.499998, 0.00100609, -0.00106986, -0.00100325, 0.499997, 0.00131745, 0.00107252, -0.00131529, 0.499997, 5.34856, 0.96536, -19.302)
 linked_platform = NodePath("../PlataformToggleVisible")
 
 [node name="PlataformTeleport3" parent="World" node_paths=PackedStringArray("linked_platform") instance=ExtResource("8_i3jmd")]
@@ -50,28 +50,28 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 2.27549, 0)
 linked_platform = NodePath("../PlataformTeleport4")
 
 [node name="PlataformTeleport4" parent="World" instance=ExtResource("8_i3jmd")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -12.7618, 0.27324, 8.12138)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -22.5362, 0.27324, 8.12138)
 
 [node name="PlataformToggleVisible" parent="World" instance=ExtResource("10_kn6ns")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9371, -0.11768, 1.57437)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.7115, -0.11768, 1.57437)
 
 [node name="LittleDrop" parent="World" instance=ExtResource("11_drbtw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48895, 1.6887, -13.2666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48895, 1.6887, -19.2995)
 
 [node name="LittleDrop2" parent="World" instance=ExtResource("11_drbtw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89646, 1.6887, -12.6147)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89646, 1.6887, -18.6476)
 
 [node name="LittleDrop3" parent="World" instance=ExtResource("11_drbtw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11753, 1.6887, -13.8818)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.11753, 1.6887, -19.9147)
 
 [node name="LittleDrop4" parent="World" instance=ExtResource("11_drbtw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5943, 1.20497, 2.34036)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3687, 1.20497, 2.34036)
 
 [node name="LittleDrop5" parent="World" instance=ExtResource("11_drbtw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5943, 1.20497, 1.21347)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3687, 1.20497, 1.21347)
 
 [node name="EnergyField" parent="World" instance=ExtResource("10_ai2sc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3095, 1.02827, -5.24881)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0839, 1.02827, -5.24881)
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.992474, -0.930117, 0.366944, -0.015304, 0, 4.20497, 0)

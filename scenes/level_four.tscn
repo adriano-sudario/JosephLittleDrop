@@ -37,13 +37,13 @@ transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846
 linked_platform = NodePath("../PlataformTeleport2")
 
 [node name="PlataformTeleport2" parent="World" instance=ExtResource("16_g6qae")]
-transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, -1.2968, 2.11, -23.4841)
+transform = Transform3D(0.464846, 0, -0.184168, 0, 0.5, 0, 0.184168, 0, 0.464846, -1.2968, 2.11, -31.939)
 
 [node name="EnergyField" parent="World" instance=ExtResource("7_u6r0e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58583, 1.74606, -29.4626)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58583, 1.74606, -37.9175)
 
 [node name="Plataform" parent="World" instance=ExtResource("8_3yops")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58583, -0.48676, -29.4626)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58583, -0.48676, -37.9175)
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.992474, -0.930117, 0.366944, -0.015304, 0, 4.92276, 0)

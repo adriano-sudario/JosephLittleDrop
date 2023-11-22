@@ -54,7 +54,7 @@ static func load_string(scene_path: String, delay = null, play_soundtrack = true
 	transition_scene.mode = Transition.Mode.IN_OUT
 	scene_tree.current_scene.get_parent().add_child(transition_scene)
 
-static func load_next_level(delay = 1.5):
+static func load_next_level(delay := 1.5):
 	LevelManager.current_level_index += 1
 	
 	if LevelManager.current_level_index >= LevelData.levels.size():
@@ -62,3 +62,7 @@ static func load_next_level(delay = 1.5):
 	
 	var current_level = LevelManager.get_current_level()
 	load_string(current_level.scene_path, delay)
+
+static func load_level(level_index:int, delay := 1.5):
+	var level = LevelManager.get_level(level_index)
+	load_string(level.scene_path, delay)

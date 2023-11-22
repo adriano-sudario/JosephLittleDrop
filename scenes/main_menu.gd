@@ -10,7 +10,8 @@ func _ready():
 	SoundManager.play_music(Audio.resource.menu)
 	$ButtonsContainer/PlayButton.on_select.connect(
 		func():
-			SceneManager.load_string("res://scenes/level_intro.tscn")
+			var current_level = LevelManager.get_current_level()
+			SceneManager.load_string(current_level.scene_path)
 	)
 	$ButtonsContainer/OptionsButton.on_select.connect(
 		func():

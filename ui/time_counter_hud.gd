@@ -8,7 +8,10 @@ var is_counting := false
 func _ready():
 	var player:Player = $"../Player"
 	player.on_vanish.connect(func(): is_counting = false)
-	player.on_win.connect(func(): is_counting = false)
+	player.on_win.connect(func():
+		is_counting = false
+		ConfigurationManager.keep_track_on_progress(elapsed_time)
+	)
 	player.on_begin_run.connect(func(): is_counting = true)
 
 func _process(delta):
