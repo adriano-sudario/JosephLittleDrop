@@ -1,6 +1,0 @@
-{
-	"@subpath": "",
-	"@path": "res://scripts/options_configuration.gd",
-	"is_audio_on": true,
-	"is_fullscreen": false
-}

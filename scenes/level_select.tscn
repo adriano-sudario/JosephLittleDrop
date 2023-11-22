@@ -68,15 +68,13 @@ transform = Transform3D(-0.365998, -0.922651, 0.121493, 0.030461, 0.118604, 0.99
 shadow_enabled = true
 shadow_opacity = 0.75
 
-[node name="View" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+[node name="View" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 script = ExtResource("3_y4g7d")
-target = NodePath("")
 can_control = false
 zoom_maximum = 3
 
 [node name="Camera" type="Camera3D" parent="View"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="LevelContainers" type="Node3D" parent="."]
 
