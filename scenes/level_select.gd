@@ -16,13 +16,14 @@ func _ready():
 		container.on_focused.connect(
 			func():
 				level_name_label.text = LevelManager.get_level(container_index).name
-				var has_best_time = container_index < LevelManager.current_level_index
+				var best_times = ConfigurationManager.progress.best_times
+				var has_best_time = container_index < best_times.size()
 				
 				if not has_best_time:
 					time_label.text = "No best time yet"
 					return
 				
-				var best_time = ConfigurationManager.progress.best_times[container_index]
+				var best_time = best_times[container_index]
 				var best_time_description = StringFormat.get_formated_time(best_time)
 				time_label.text = "Best time: %s" % best_time_description
 		)

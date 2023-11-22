@@ -10,9 +10,15 @@ func _ready():
 	load_progress()
 
 func get_progress_data_path():
+	if OS.get_name() == "Web":
+		return "user://joseph_little_drop_progress.bin"
+	
 	return OS.get_user_data_dir() + "/progress.bin"
 
 func get_options_data_path():
+	if OS.get_name() == "Web":
+		return "user://joseph_little_drop_config.json"
+	
 	return OS.get_user_data_dir() + "/config.json"
 
 func keep_track_on_progress(time: float):
