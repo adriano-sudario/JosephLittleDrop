@@ -18,7 +18,6 @@ var initial_position = null:
 		return initial_position
 
 func _ready():
-	
 	initial_scale = scale
 	var unfocused_theme = get_unfocused_theme()
 	unfocused_theme.bg_color.a = unfocused_alpha

@@ -10,8 +10,6 @@ var is_transitioning := false
 func _ready():
 	SoundManager.play_music(Audio.resource.menu)
 	var play_button:Button = $ButtonsContainer/PlayButton
-	var level_select_button:Button = $ButtonsContainer/LevelSelectButton
-	
 	play_button.on_select.connect(
 		func():
 			is_transitioning = true
@@ -19,15 +17,14 @@ func _ready():
 			SceneManager.load_string(current_level.scene_path)
 	)
 	
-	if LevelManager.current_level_index == 0:
-		level_select_button.queue_free()
-	else:
+	if LevelManager.current_level_index > 0:
 		play_button.text = "Continue"
-		level_select_button.on_select.connect(
-			func():
-				is_transitioning = true
-				SceneManager.load_string("res://scenes/level_select.tscn", null, false)
-		)
+	
+	$ButtonsContainer/LevelSelectButton.on_select.connect(
+		func():
+			is_transitioning = true
+			SceneManager.load_string("res://scenes/level_select.tscn", null, false)
+	)
 	
 	$ButtonsContainer/OptionsButton.on_select.connect(
 		func():
