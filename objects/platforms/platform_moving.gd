@@ -30,6 +30,9 @@ func has_arrived_on(value: Vector3):
 	return position.distance_to(value) <= destination_tolerance
 
 func _process(delta):
+	if LevelManager.is_paused:
+		return
+	
 	super._process(delta)
 	
 	if not is_moving:
