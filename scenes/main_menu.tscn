@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://qlo8qu8inrtl"]
+[gd_scene load_steps=11 format=3 uid="uid://qlo8qu8inrtl"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_by0r5"]
 [ext_resource type="FontFile" uid="uid://ccs8rh8s7ngx5" path="res://fonts/Jackpot.ttf" id="1_hu80j"]
 [ext_resource type="Shader" path="res://shaders/wavy_canvas.gdshader" id="1_uihuy"]
+[ext_resource type="Texture2D" uid="uid://bprxyqn6k4rmd" path="res://sprites/MenuBg.png" id="2_ijkif"]
 [ext_resource type="StyleBox" uid="uid://ssikjff0byjg" path="res://ui/styles/button_unselected.tres" id="4_rkvkc"]
 [ext_resource type="Script" path="res://scripts/button.gd" id="5_nufvn"]
 [ext_resource type="Texture2D" uid="uid://daxmxife8dixx" path="res://sprites/joseph_little_drop.png" id="6_bxihl"]
@@ -39,6 +40,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.827451, 0.776471, 0.745098, 1)
+
+[node name="JosephLittleDrop2" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = -16.0
+offset_top = -4.0
+offset_right = 1287.0
+offset_bottom = 729.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_ijkif")
+expand_mode = 3
 
 [node name="Label" type="Label" parent="."]
 material = SubResource("ShaderMaterial_sdy7f")
@@ -112,15 +124,17 @@ script = ExtResource("5_nufvn")
 
 [node name="JosephLittleDrop" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -403.0
-offset_top = -345.0
-offset_bottom = -32.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -209.0
+offset_right = 1016.0
+offset_bottom = 1071.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("6_bxihl")
-expand_mode = 3
