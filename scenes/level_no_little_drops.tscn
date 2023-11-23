@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dd8cupmcklvrv"]
+[gd_scene load_steps=13 format=3 uid="uid://dd8cupmcklvrv"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_6p8ic"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_u1n2l"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dts0acramv17a" path="res://objects/platforms/platform_moving.tscn" id="10_qb43f"]
 [ext_resource type="PackedScene" uid="uid://c80b1odgla686" path="res://ui/time_counter_hud.tscn" id="11_uwu0o"]
 [ext_resource type="PackedScene" uid="uid://c62nd1qonqavv" path="res://objects/platforms/platform_trigger.tscn" id="12_4jrng"]
+[ext_resource type="PackedScene" uid="uid://cpaxtebxa0bgj" path="res://ui/pause_hud.tscn" id="12_awofe"]
 
 [node name="LevelNoLittleDrops" type="Node3D"]
 
@@ -68,3 +69,5 @@ shadow_enabled = true
 shadow_opacity = 0.75
 
 [node name="TimeCounterHud" parent="." instance=ExtResource("11_uwu0o")]
+
+[node name="PauseHud" parent="." instance=ExtResource("12_awofe")]

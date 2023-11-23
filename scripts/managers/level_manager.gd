@@ -1,9 +1,23 @@
-class_name LevelManager
+extends Node
 
-static var current_level_index = 0
+signal on_pause
+signal on_unpause
 
-static func get_current_level() -> Level:
+var current_level_index = 0
+var is_paused = false:
+	set(value):
+		is_paused = value
+		
+		if value:
+			on_pause.emit()
+		else:
+			on_unpause.emit()
+
+func get_current_level() -> Level:
+	if current_level_index >= LevelData.levels.size():
+		current_level_index = LevelData.levels.size() - 1
+	
 	return LevelData.levels[current_level_index]
 
-static func get_level(index:int) -> Level:
+func get_level(index:int) -> Level:
 	return LevelData.levels[index]

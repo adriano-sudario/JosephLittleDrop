@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bglqa3o7nfhut"]
+[gd_scene load_steps=10 format=3 uid="uid://bglqa3o7nfhut"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_8b1yr"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_1b3wm"]
@@ -8,8 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://l64gv7asxqet" path="res://objects/energy_field.tscn" id="7_h7rnb"]
 [ext_resource type="PackedScene" uid="uid://cy2v8hph35gv5" path="res://objects/little_drop.tscn" id="7_src85"]
 [ext_resource type="PackedScene" uid="uid://c80b1odgla686" path="res://ui/time_counter_hud.tscn" id="8_b33j2"]
+[ext_resource type="PackedScene" uid="uid://cpaxtebxa0bgj" path="res://ui/pause_hud.tscn" id="9_5ypk1"]
 
-[node name="LevelFour" type="Node3D"]
+[node name="LevelIntro" type="Node3D"]
 
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_8b1yr")
@@ -158,3 +159,5 @@ shadow_enabled = true
 shadow_opacity = 0.75
 
 [node name="TimeCounterHud" parent="." instance=ExtResource("8_b33j2")]
+
+[node name="PauseHud" parent="." instance=ExtResource("9_5ypk1")]

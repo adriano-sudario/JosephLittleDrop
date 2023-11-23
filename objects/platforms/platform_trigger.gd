@@ -43,7 +43,7 @@ func activate():
 		finish_transition()
 
 func _process(delta):
-	if has_activated:
+	if has_activated or LevelManager.is_paused:
 		return
 	
 	if player != null or is_locked:

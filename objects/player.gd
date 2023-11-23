@@ -20,7 +20,6 @@ signal on_begin_run
 @export var gravity_force := 25.0
 
 @onready var particles_trail = $ParticlesTrail
-#@onready var sound_footsteps = $SoundFootsteps
 @onready var model = $Character
 @onready var animation = $Character/AnimationPlayer
 @onready var view: ViewCamera = $"../View"
@@ -76,8 +75,16 @@ func handle_footstep_sound():
 func _ready():
 	model.scale = Vector3(initial_scale, initial_scale, initial_scale)
 	can_control = true
+	LevelManager.on_pause.connect(
+		func():
+			if footstep_player != null:
+				footstep_player.stream_paused = true
+	)
 
 func _physics_process(delta):
+	if LevelManager.is_paused:
+		return
+	
 	handle_controls(delta)
 	handle_gravity(delta)
 	handle_effects()

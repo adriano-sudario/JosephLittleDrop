@@ -5,6 +5,9 @@ var is_falling := false
 var gravity_force_applied := 0.0
 
 func _process(delta):
+	if LevelManager.is_paused:
+		return
+	
 	super._process(delta)
 	handle_fall(delta)
 
