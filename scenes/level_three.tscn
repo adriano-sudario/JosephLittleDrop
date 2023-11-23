@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://xm83bu5mci02"]
+[gd_scene load_steps=13 format=3 uid="uid://xm83bu5mci02"]
 
 [ext_resource type="Environment" uid="uid://bqnqgflivjvue" path="res://scenes/main-environment.tres" id="1_30xlt"]
 [ext_resource type="PackedScene" uid="uid://dl2ed4gkybggf" path="res://objects/player.tscn" id="2_o5uvy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c80b1odgla686" path="res://ui/time_counter_hud.tscn" id="11_65mr8"]
 [ext_resource type="PackedScene" uid="uid://l64gv7asxqet" path="res://objects/energy_field.tscn" id="11_wi6cn"]
 [ext_resource type="PackedScene" uid="uid://bea0cpu3jbdhb" path="res://objects/platforms/platform_scalable_small.tscn" id="12_5rfh6"]
+[ext_resource type="PackedScene" uid="uid://cpaxtebxa0bgj" path="res://ui/pause_hud.tscn" id="12_61hcf"]
 [ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platforms/platform_falling.tscn" id="13_u4lum"]
 [ext_resource type="PackedScene" uid="uid://b7iot73p6aiab" path="res://objects/platforms/platform.tscn" id="14_mu3nc"]
 [ext_resource type="PackedScene" uid="uid://bh1sgdtda13i3" path="res://objects/platforms/platform_scalable.tscn" id="15_db7mi"]
@@ -86,3 +87,5 @@ shadow_enabled = true
 shadow_opacity = 0.75
 
 [node name="TimeCounterHud" parent="." instance=ExtResource("11_65mr8")]
+
+[node name="PauseHud" parent="." instance=ExtResource("12_61hcf")]

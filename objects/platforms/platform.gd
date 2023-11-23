@@ -11,6 +11,9 @@ func _ready():
 	current_scale = initial_scale
 
 func _process(delta):
+	if LevelManager.is_paused:
+		return
+	
 	scale = scale.lerp(current_scale, delta * 10)
 
 func _on_body_entered(body):
