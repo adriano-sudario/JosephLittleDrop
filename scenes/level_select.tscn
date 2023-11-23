@@ -46,6 +46,7 @@ shader = ExtResource("16_tmwv8")
 shader_parameter/wave_weight = 5.0
 shader_parameter/frequency = 15.0
 shader_parameter/speed = 5.0
+shader_parameter/time_scale = 5.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_11iup"]
 font = ExtResource("17_pvfbn")
