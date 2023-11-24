@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3vtosfk8400a"]
+[gd_scene load_steps=14 format=3 uid="uid://b3vtosfk8400a"]
 
 [ext_resource type="Texture2D" uid="uid://bprxyqn6k4rmd" path="res://sprites/MenuBg.png" id="1_l36wt"]
 [ext_resource type="Script" path="res://scenes/credits.gd" id="1_u3bmt"]
 [ext_resource type="FontFile" uid="uid://cx5igbhkb14mv" path="res://fonts/SoulwayFont-Demo.otf" id="2_pd5ad"]
 [ext_resource type="Texture2D" uid="uid://b6xxa16hjxywn" path="res://sprites/sparkle.png" id="3_4pu3s"]
+[ext_resource type="Shader" path="res://shaders/wavy_canvas.gdshader" id="4_3d6ct"]
 
 [sub_resource type="Curve" id="Curve_nqmxu"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -11,6 +12,16 @@ point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_xdku8"]
 offsets = PackedFloat32Array(0, 0.0331126)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4sx21"]
+shader = ExtResource("4_3d6ct")
+shader_parameter/wave_weight = 3.0
+shader_parameter/frequency = 15.0
+shader_parameter/speed = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_0414g"]
+font = ExtResource("2_pd5ad")
+font_size = 56
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xeaur"]
 
@@ -79,6 +90,24 @@ scale_amount_min = 0.15
 scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_nqmxu")
 color_initial_ramp = SubResource("Gradient_xdku8")
+
+[node name="ThanksLabel" type="Label" parent="."]
+material = SubResource("ShaderMaterial_4sx21")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -418.0
+offset_top = -33.0
+offset_right = 418.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "✨ THANKS FOR PLAYING ✨"
+label_settings = SubResource("LabelSettings_0414g")
+horizontal_alignment = 1
 
 [node name="CreditsContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
