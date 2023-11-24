@@ -44,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aaeme")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Rain" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_fwjh0")
 layout_mode = 1
 anchors_preset = 15
