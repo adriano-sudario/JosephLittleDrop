@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c80b1odgla686" path="res://ui/time_counter_hud.tscn" id="12_qookv"]
 [ext_resource type="PackedScene" uid="uid://c62nd1qonqavv" path="res://objects/platforms/platform_trigger.tscn" id="12_qta3s"]
 [ext_resource type="PackedScene" uid="uid://dts0acramv17a" path="res://objects/platforms/platform_moving.tscn" id="13_g3eqb"]
-[ext_resource type="PackedScene" uid="uid://cpaxtebxa0bgj" path="res://ui/pause_hud.tscn" id="13_gekxf"]
+[ext_resource type="PackedScene" uid="uid://dimew6d4702mq" path="res://ui/pause_hud.tscn" id="13_gekxf"]
 [ext_resource type="PackedScene" uid="uid://cy2v8hph35gv5" path="res://objects/little_drop.tscn" id="14_xl68j"]
 
 [node name="LevelSix" type="Node3D"]

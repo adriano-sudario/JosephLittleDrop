@@ -1,26 +1,65 @@
-[gd_scene load_steps=10 format=3 uid="uid://qlo8qu8inrtl"]
+[gd_scene load_steps=19 format=3 uid="uid://qlo8qu8inrtl"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_by0r5"]
-[ext_resource type="FontFile" uid="uid://ccs8rh8s7ngx5" path="res://fonts/Jackpot.ttf" id="1_hu80j"]
+[ext_resource type="Shader" path="res://shaders/speed_lines.gdshader" id="1_h50va"]
 [ext_resource type="Shader" path="res://shaders/wavy_canvas.gdshader" id="1_uihuy"]
-[ext_resource type="StyleBox" uid="uid://ssikjff0byjg" path="res://ui/styles/button_unselected.tres" id="4_rkvkc"]
-[ext_resource type="Script" path="res://scripts/button.gd" id="5_nufvn"]
+[ext_resource type="Texture2D" uid="uid://bprxyqn6k4rmd" path="res://sprites/MenuBg.png" id="2_ijkif"]
+[ext_resource type="Texture2D" uid="uid://bfwdhmfjaoqee" path="res://sprites/title.png" id="4_ncwnb"]
 [ext_resource type="Texture2D" uid="uid://daxmxife8dixx" path="res://sprites/joseph_little_drop.png" id="6_bxihl"]
+[ext_resource type="Texture2D" uid="uid://b6xxa16hjxywn" path="res://sprites/sparkle.png" id="10_7q76j"]
+[ext_resource type="Script" path="res://scripts/selection.gd" id="10_cjjc4"]
+[ext_resource type="FontFile" uid="uid://cx5igbhkb14mv" path="res://fonts/SoulwayFont-Demo.otf" id="10_i4rtx"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdy7f"]
+[sub_resource type="Curve" id="Curve_hovj1"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_dxcr7"]
+interpolation_mode = 2
+colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_cgxdu"]
+offsets = PackedFloat32Array(0, 0.0331126)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2ftpn"]
+noise_type = 0
+frequency = 0.2199
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rhefv"]
+noise = SubResource("FastNoiseLite_2ftpn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oy2n1"]
+shader = ExtResource("1_h50va")
+shader_parameter/line_color = Color(0.176471, 0.196078, 0.545098, 1)
+shader_parameter/line_count = 2.0
+shader_parameter/line_density = 0.433
+shader_parameter/line_faloff = 0.317
+shader_parameter/mask_size = 0.1
+shader_parameter/mask_edge = 0.534
+shader_parameter/animation_speed = 10.0
+shader_parameter/noise = SubResource("NoiseTexture2D_rhefv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ueuq1"]
 shader = ExtResource("1_uihuy")
-shader_parameter/wave_weight = 5.0
+shader_parameter/wave_weight = 15.0
 shader_parameter/frequency = 15.0
-shader_parameter/speed = 5.0
+shader_parameter/speed = 2.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_qbbkt"]
-font = ExtResource("1_hu80j")
+[sub_resource type="LabelSettings" id="LabelSettings_fphen"]
+font = ExtResource("10_i4rtx")
 font_size = 48
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Theme" id="Theme_ght8b"]
-default_font = ExtResource("1_hu80j")
-Button/colors/font_color = Color(0.0980392, 0.0941176, 0.266667, 1)
-Button/styles/normal = ExtResource("4_rkvkc")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5f2s"]
+bg_color = Color(0.176471, 0.196078, 0.545098, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -31,7 +70,38 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_by0r5")
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = -16.1111
+offset_top = -4.0
+offset_right = 1287.0
+offset_bottom = 729.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_ijkif")
+expand_mode = 3
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+position = Vector2(633, 355)
+amount = 10
+texture = ExtResource("10_7q76j")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 250)
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 1.0
+damping_min = 0.5
+damping_max = 0.5
+scale_amount_min = 0.15
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_hovj1")
+color = Color(0.168627, 0.192157, 0.564706, 1)
+color_ramp = SubResource("Gradient_dxcr7")
+color_initial_ramp = SubResource("Gradient_cgxdu")
+
 [node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_oy2n1")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,87 +110,95 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.827451, 0.776471, 0.745098, 1)
 
-[node name="Label" type="Label" parent="."]
-material = SubResource("ShaderMaterial_sdy7f")
+[node name="Title" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_ueuq1")
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -134.0
-offset_top = 50.0
-offset_right = 134.0
-offset_bottom = 86.0
+offset_left = -640.0
+offset_top = 35.0
+offset_right = 668.0
+offset_bottom = 131.0
 grow_horizontal = 2
-text = "Joseph Little Drop"
-label_settings = SubResource("LabelSettings_qbbkt")
+scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(653, 0)
+texture = ExtResource("4_ncwnb")
 
-[node name="ButtonsContainer" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(250, 325)
+[node name="JosephLittleDrop" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -45.0
-offset_right = 125.0
-offset_bottom = 280.0
+offset_left = -640.0
+offset_top = -630.0
+offset_right = 640.0
+offset_bottom = 650.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(635, 635)
+texture = ExtResource("6_bxihl")
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.0
+offset_top = 275.0
+offset_right = 303.0
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 75
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="ButtonsContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="PlayLabel" type="Label" parent="ButtonsContainer"]
 layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 2
-theme = SubResource("Theme_ght8b")
-theme_override_styles/normal = ExtResource("4_rkvkc")
+size_flags_horizontal = 4
 text = "Play"
-script = ExtResource("5_nufvn")
-emit_on_mid = true
+label_settings = SubResource("LabelSettings_fphen")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_cjjc4")
 
-[node name="LevelSelectButton" type="Button" parent="ButtonsContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="LevelSelectLabel" type="Label" parent="ButtonsContainer"]
 layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 2
-theme = SubResource("Theme_ght8b")
-theme_override_styles/normal = ExtResource("4_rkvkc")
 text = "Level Select"
-script = ExtResource("5_nufvn")
-emit_on_mid = true
+label_settings = SubResource("LabelSettings_fphen")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_cjjc4")
 
-[node name="OptionsButton" type="Button" parent="ButtonsContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="OptionsLabel" type="Label" parent="ButtonsContainer"]
 layout_mode = 2
-mouse_filter = 2
-theme = SubResource("Theme_ght8b")
-text = "Options
-"
-script = ExtResource("5_nufvn")
+text = "Options"
+label_settings = SubResource("LabelSettings_fphen")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_cjjc4")
 
-[node name="QuitButton" type="Button" parent="ButtonsContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="QuitLabel" type="Label" parent="ButtonsContainer"]
 layout_mode = 2
-mouse_filter = 2
-theme = SubResource("Theme_ght8b")
 text = "Quit"
-script = ExtResource("5_nufvn")
+label_settings = SubResource("LabelSettings_fphen")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_cjjc4")
 
-[node name="JosephLittleDrop" type="TextureRect" parent="."]
+[node name="ButtonsPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -403.0
-offset_top = -345.0
-offset_bottom = -32.0
-grow_horizontal = 0
+offset_top = -120.0
+grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("6_bxihl")
-expand_mode = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_d5f2s")
