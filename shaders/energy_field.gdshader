@@ -5,7 +5,7 @@ render_mode shadows_disabled, specular_disabled, ambient_light_disabled, unshade
 group_uniforms Shield_Color;
 uniform vec3 _shield_color : source_color = vec3(0.0, 0.0, 1.0);
 uniform float _shield_color_brightness : hint_range(0.25, 20.0, 0.05) = 10.0;
-uniform float _shield_intensity : hint_range(0.25, 5.0, 0.05) = 2.0;
+uniform float _shield_intensity : hint_range(0.25, 5.0, 0.05) = 1.0;
 
 group_uniforms Shield_Transform;
 uniform vec3 _rotation = vec3(0.1, 0.0, 0.0);
@@ -14,14 +14,14 @@ uniform float _shield_size : hint_range(0.0, 0.5, 0.01) = 0.0;
 group_uniforms Shield_Pulse;
 uniform float _shield_pulse_frequency = 1.0;
 uniform float _shield_pulse_density = 1.0;
-uniform float _shield_pulse_amplitude = 1.0;
-uniform float _shield_pulse_blend = 1.0;
+uniform float _shield_pulse_amplitude = 10.0;
+uniform float _shield_pulse_blend = 2.0;
 uniform float _shield_pulse_radius = 1.0;
 
 group_uniforms Impact_Shape;
 uniform vec3 _impact_origin = vec3(1.0, 0.0, 0.0);
-uniform float _impact_frequency = 5.0;
-uniform float _impact_density = 5.0;
+uniform float _impact_frequency = 10.0;
+uniform float _impact_density = 7.5;
 uniform float _impact_amplitude = 6.0;
 uniform float _impact_blend = 0;
 uniform float _impact_radius = 1.1;
