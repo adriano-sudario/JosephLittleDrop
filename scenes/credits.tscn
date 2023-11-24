@@ -1,0 +1,228 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3vtosfk8400a"]
+
+[ext_resource type="Texture2D" uid="uid://bprxyqn6k4rmd" path="res://sprites/MenuBg.png" id="1_l36wt"]
+[ext_resource type="Script" path="res://scenes/credits.gd" id="1_u3bmt"]
+[ext_resource type="FontFile" uid="uid://cx5igbhkb14mv" path="res://fonts/SoulwayFont-Demo.otf" id="2_pd5ad"]
+[ext_resource type="Texture2D" uid="uid://b6xxa16hjxywn" path="res://sprites/sparkle.png" id="3_4pu3s"]
+
+[sub_resource type="Curve" id="Curve_nqmxu"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_xdku8"]
+offsets = PackedFloat32Array(0, 0.0331126)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xeaur"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3prdh"]
+font = ExtResource("2_pd5ad")
+font_size = 32
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_itpua"]
+font = ExtResource("2_pd5ad")
+font_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0tif8"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u3bmt")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l36wt")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="SparklesBlue" type="CPUParticles2D" parent="."]
+position = Vector2(633, 355)
+texture = ExtResource("3_4pu3s")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 250)
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 1.0
+damping_min = 0.5
+damping_max = 0.5
+scale_amount_min = 0.15
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_nqmxu")
+color = Color(0.168627, 0.192157, 0.564706, 1)
+
+[node name="SparklesWhite" type="CPUParticles2D" parent="."]
+position = Vector2(633, 355)
+amount = 3
+texture = ExtResource("3_4pu3s")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 250)
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 1.0
+damping_min = 0.5
+damping_max = 0.5
+scale_amount_min = 0.15
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_nqmxu")
+color_initial_ramp = SubResource("Gradient_xdku8")
+
+[node name="CreditsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="SfxContainer" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="CreditsContainer/SfxContainer"]
+material = SubResource("ShaderMaterial_xeaur")
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SFX"
+label_settings = SubResource("LabelSettings_3prdh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="CreditsContainer/SfxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "DJ Gameshark"
+label_settings = SubResource("LabelSettings_itpua")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SoundtrackContainer" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="CreditsContainer/SoundtrackContainer"]
+material = SubResource("ShaderMaterial_0tif8")
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Soundtrack
+"
+label_settings = SubResource("LabelSettings_3prdh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="CreditsContainer/SoundtrackContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "DJ Gameshark"
+label_settings = SubResource("LabelSettings_itpua")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModelingContainer" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="CreditsContainer/ModelingContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Models / Animations
+"
+label_settings = SubResource("LabelSettings_3prdh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="CreditsContainer/ModelingContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "LizaWaves"
+label_settings = SubResource("LabelSettings_itpua")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgrammingContainer" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="CreditsContainer/ProgrammingContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Programming
+"
+label_settings = SubResource("LabelSettings_3prdh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="CreditsContainer/ProgrammingContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Petit Suisse"
+label_settings = SubResource("LabelSettings_itpua")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameDesignContainer" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="CreditsContainer/GameDesignContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Game Design"
+label_settings = SubResource("LabelSettings_3prdh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="CreditsContainer/GameDesignContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "LizaWaves
+Petit Suisse"
+label_settings = SubResource("LabelSettings_itpua")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIContainer" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="CreditsContainer/UIContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "UI"
+label_settings = SubResource("LabelSettings_3prdh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="CreditsContainer/UIContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Daytripper"
+label_settings = SubResource("LabelSettings_itpua")
+horizontal_alignment = 1
+vertical_alignment = 1
