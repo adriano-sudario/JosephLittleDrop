@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://l64gv7asxqet" path="res://objects/energy_field.tscn" id="7_h7rnb"]
 [ext_resource type="PackedScene" uid="uid://cy2v8hph35gv5" path="res://objects/little_drop.tscn" id="7_src85"]
 [ext_resource type="PackedScene" uid="uid://c80b1odgla686" path="res://ui/time_counter_hud.tscn" id="8_b33j2"]
-[ext_resource type="PackedScene" uid="uid://cpaxtebxa0bgj" path="res://ui/pause_hud.tscn" id="9_5ypk1"]
+[ext_resource type="PackedScene" uid="uid://dimew6d4702mq" path="res://ui/pause_hud.tscn" id="9_5ypk1"]
 
 [node name="LevelIntro" type="Node3D"]
 

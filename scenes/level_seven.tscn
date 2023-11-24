@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://vkmsjybcl8kd" path="res://objects/platforms/platform_toggle_visible.tscn" id="11_mngn2"]
 [ext_resource type="PackedScene" uid="uid://l64gv7asxqet" path="res://objects/energy_field.tscn" id="11_vt5su"]
 [ext_resource type="PackedScene" uid="uid://cy2v8hph35gv5" path="res://objects/little_drop.tscn" id="12_ff4kn"]
-[ext_resource type="PackedScene" uid="uid://cpaxtebxa0bgj" path="res://ui/pause_hud.tscn" id="12_mao8u"]
+[ext_resource type="PackedScene" uid="uid://dimew6d4702mq" path="res://ui/pause_hud.tscn" id="12_mao8u"]
 [ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platforms/platform_falling.tscn" id="13_1e1qn"]
 
 [node name="LevelSeven" type="Node3D"]
