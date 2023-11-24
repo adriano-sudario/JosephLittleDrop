@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c80b1odgla686" path="res://ui/time_counter_hud.tscn" id="10_kcmk1"]
 [ext_resource type="PackedScene" uid="uid://vkmsjybcl8kd" path="res://objects/platforms/platform_toggle_visible.tscn" id="10_kn6ns"]
 [ext_resource type="PackedScene" uid="uid://cy2v8hph35gv5" path="res://objects/little_drop.tscn" id="11_drbtw"]
-[ext_resource type="PackedScene" uid="uid://dimew6d4702mq" path="res://ui/pause_hud.tscn" id="11_wtmcn"
+[ext_resource type="PackedScene" uid="uid://dimew6d4702mq" path="res://ui/pause_hud.tscn" id="11_wtmcn"]
 
 [node name="LevelFive" type="Node3D"]
 

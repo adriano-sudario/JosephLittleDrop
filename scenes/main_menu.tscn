@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://qlo8qu8inrtl"]
+[gd_scene load_steps=16 format=3 uid="uid://qlo8qu8inrtl"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_by0r5"]
 [ext_resource type="Shader" path="res://shaders/speed_lines.gdshader" id="1_h50va"]
@@ -14,10 +14,6 @@
 [sub_resource type="Curve" id="Curve_hovj1"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_dxcr7"]
-interpolation_mode = 2
-colors = PackedColorArray(0.996094, 0.910156, 0.351563, 1, 1, 1, 1, 1)
 
 [sub_resource type="Gradient" id="Gradient_cgxdu"]
 offsets = PackedFloat32Array(0, 0.0331126)
@@ -64,9 +60,8 @@ texture = ExtResource("2_ijkif")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Particles" type="CPUParticles2D" parent="."]
+[node name="SparklesBlue" type="CPUParticles2D" parent="."]
 position = Vector2(633, 355)
-amount = 10
 texture = ExtResource("10_7q76j")
 emission_shape = 3
 emission_rect_extents = Vector2(1000, 250)
@@ -80,7 +75,22 @@ scale_amount_min = 0.15
 scale_amount_max = 0.3
 scale_amount_curve = SubResource("Curve_hovj1")
 color = Color(0.168627, 0.192157, 0.564706, 1)
-color_ramp = SubResource("Gradient_dxcr7")
+
+[node name="SparklesWhite" type="CPUParticles2D" parent="."]
+position = Vector2(633, 355)
+amount = 3
+texture = ExtResource("10_7q76j")
+emission_shape = 3
+emission_rect_extents = Vector2(1000, 250)
+direction = Vector2(1, 1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 1.0
+damping_min = 0.5
+damping_max = 0.5
+scale_amount_min = 0.15
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_hovj1")
 color_initial_ramp = SubResource("Gradient_cgxdu")
 
 [node name="SpeedLines" type="ColorRect" parent="."]
