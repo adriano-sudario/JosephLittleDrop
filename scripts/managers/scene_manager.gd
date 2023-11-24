@@ -1,5 +1,4 @@
 class_name SceneManager
-extends Node3D
 
 static var transition_load = preload("res://scenes/transition.tscn")
 static var is_transitioning = false

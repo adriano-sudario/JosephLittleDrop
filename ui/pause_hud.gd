@@ -51,6 +51,9 @@ func change_focus_next(next: int):
 	focused_option.is_focused = true
 
 func _process(_delta):
+	if is_transitioning:
+		return
+	
 	if Input.is_action_just_pressed("pause_menu"):
 		toggle()
 	

@@ -5,14 +5,13 @@ extends Control
 
 var selections = null
 var selection_focused_index := 0
-var is_transitioning := false
+var has_selected := false
 
 func _ready():
 	SoundManager.play_music(Audio.resource.menu)
 	var play:Label = $ButtonsContainer/PlayLabel
 	play.on_select.connect(
 		func():
-			is_transitioning = true
 			var current_level = LevelManager.get_current_level()
 			SceneManager.load_string(current_level.scene_path)
 	)
@@ -21,15 +20,11 @@ func _ready():
 		play.text = "Continue"
 		
 	$ButtonsContainer/LevelSelectLabel.on_select.connect(
-		func():
-			is_transitioning = true
-			SceneManager.load_string("res://scenes/level_select.tscn", null, false)
+		func(): SceneManager.load_string("res://scenes/level_select.tscn", null, false)
 	)
 	
 	$ButtonsContainer/OptionsLabel.on_select.connect(
-		func():
-			is_transitioning = true
-			SceneManager.load_string("res://scenes/options_menu.tscn", null, false)
+		func(): SceneManager.load_string("res://scenes/options_menu.tscn", null, false)
 	)
 	
 	$ButtonsContainer/QuitLabel.on_select.connect(func(): get_tree().quit())
@@ -49,7 +44,7 @@ func change_next(next: int):
 	focused_selection.focus()
 
 func _process(_delta):
-	if is_transitioning:
+	if has_selected:
 		return
 	
 	if selections == null:
@@ -64,4 +59,5 @@ func _process(_delta):
 		change_next(-1)
 	
 	if Input.is_action_just_pressed("ui_accept"):
+		has_selected = true
 		selections[selection_focused_index].select()
