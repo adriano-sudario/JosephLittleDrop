@@ -28,7 +28,7 @@ func _ready():
 	$PauseOptionsContainer/LevelSelectContainer.on_select.connect(
 		func():
 			is_transitioning = true
-			LevelManager.current_level_index = LevelData.levels.size() - 1
+			LevelManager.current_level_index = ConfigurationManager.progress.best_times.size()
 			SceneManager.load_string("res://scenes/level_select.tscn")
 	)
 	
