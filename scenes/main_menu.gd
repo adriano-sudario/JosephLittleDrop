@@ -1,16 +1,16 @@
 class_name MainMenu
 extends Control
 
-@onready var buttons_container = $ButtonsContainer
+@onready var selections_container = $ButtonsContainer
 
-var buttons = null
-var button_focused_index := 0
+var selections = null
+var selection_focused_index := 0
 var is_transitioning := false
 
 func _ready():
 	SoundManager.play_music(Audio.resource.menu)
-	var play_button:Button = $ButtonsContainer/PlayButton
-	play_button.on_select.connect(
+	var play:Label = $ButtonsContainer/PlayLabel
+	play.on_select.connect(
 		func():
 			is_transitioning = true
 			var current_level = LevelManager.get_current_level()
@@ -18,53 +18,50 @@ func _ready():
 	)
 	
 	if LevelManager.current_level_index > 0:
-		play_button.text = "Continue"
-	
-	$ButtonsContainer/LevelSelectButton.on_select.connect(
+		play.text = "Continue"
+		
+	$ButtonsContainer/LevelSelectLabel.on_select.connect(
 		func():
 			is_transitioning = true
 			SceneManager.load_string("res://scenes/level_select.tscn", null, false)
 	)
 	
-	$ButtonsContainer/OptionsButton.on_select.connect(
+	$ButtonsContainer/OptionsLabel.on_select.connect(
 		func():
 			is_transitioning = true
 			SceneManager.load_string("res://scenes/options_menu.tscn", null, false)
 	)
 	
-	$ButtonsContainer/QuitButton.on_select.connect(
-		func():
-			get_tree().quit()
-	)
+	$ButtonsContainer/QuitLabel.on_select.connect(func(): get_tree().quit())
 
 func change_next(next: int):
-	var previous_focused:Button = buttons[button_focused_index]
+	var previous_focused:Label = selections[selection_focused_index]
 	previous_focused.unfocus()
 	
-	button_focused_index += next
+	selection_focused_index += next
 	
-	if button_focused_index < 0:
-		button_focused_index = buttons.size() - 1
-	elif button_focused_index >= buttons.size():
-		button_focused_index = 0
+	if selection_focused_index < 0:
+		selection_focused_index = selections.size() - 1
+	elif selection_focused_index >= selections.size():
+		selection_focused_index = 0
 	
-	var focused_button:Button = buttons[button_focused_index]
-	focused_button.focus()
+	var focused_selection:Label = selections[selection_focused_index]
+	focused_selection.focus()
 
 func _process(_delta):
 	if is_transitioning:
 		return
 	
-	if buttons == null:
-		buttons = buttons_container.get_children()
-		button_focused_index = buttons.size() - 1
+	if selections == null:
+		selections = selections_container.get_children()
+		selection_focused_index = selections.size() - 1
 		change_next(1)
 	
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("ui_right"):
 		change_next(1)
 	
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_left"):
 		change_next(-1)
 	
 	if Input.is_action_just_pressed("ui_accept"):
-		buttons[button_focused_index].select()
+		selections[selection_focused_index].select()
