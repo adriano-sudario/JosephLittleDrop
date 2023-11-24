@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpaxtebxa0bgj"]
+[gd_scene load_steps=6 format=3 uid="uid://dimew6d4702mq"]
 
 [ext_resource type="Script" path="res://ui/pause_hud.gd" id="1_mlhk7"]
 [ext_resource type="Script" path="res://scripts/option_container.gd" id="2_8v50y"]
-[ext_resource type="FontFile" uid="uid://ccs8rh8s7ngx5" path="res://fonts/Jackpot.ttf" id="3_b4yp6"]
+[ext_resource type="FontFile" uid="uid://cx5igbhkb14mv" path="res://fonts/SoulwayFont-Demo.otf" id="3_7gxvg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qa163"]
-bg_color = Color(0.807843, 0.870588, 0.964706, 1)
+bg_color = Color(0.0509804, 0.713726, 0.839216, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -17,8 +17,8 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="LabelSettings" id="LabelSettings_coey7"]
-font = ExtResource("3_b4yp6")
-font_color = Color(0.0980392, 0.0941176, 0.266667, 1)
+font = ExtResource("3_7gxvg")
+font_size = 28
 
 [node name="PauseHud" type="Control"]
 layout_mode = 3

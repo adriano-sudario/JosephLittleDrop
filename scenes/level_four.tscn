@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://l64gv7asxqet" path="res://objects/energy_field.tscn" id="7_u6r0e"]
 [ext_resource type="PackedScene" uid="uid://c80b1odgla686" path="res://ui/time_counter_hud.tscn" id="8_0s6ic"]
 [ext_resource type="PackedScene" uid="uid://b7iot73p6aiab" path="res://objects/platforms/platform.tscn" id="8_3yops"]
-[ext_resource type="PackedScene" uid="uid://cpaxtebxa0bgj" path="res://ui/pause_hud.tscn" id="9_bsud7"]
+[ext_resource type="PackedScene" uid="uid://dimew6d4702mq" path="res://ui/pause_hud.tscn" id="9_bsud7"]
 [ext_resource type="PackedScene" uid="uid://biafwc82jxhuf" path="res://objects/platforms/platform_safe.tscn" id="12_s6e0o"]
 [ext_resource type="PackedScene" uid="uid://c6esc0vskheb6" path="res://objects/platforms/platform_teleport.tscn" id="16_g6qae"]
 
