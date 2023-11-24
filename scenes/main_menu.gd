@@ -9,6 +9,7 @@ var selection_focused_index := 0
 var has_selected := false
 
 func _ready():
+	$Title.material.set_shader_parameter("wave_weight", 15.0)
 	$SpeedLines.material.set_shader_parameter("noise", speed_lines_noise)
 	SoundManager.play_music(Audio.resource.menu)
 	var play:Label = $ButtonsContainer/PlayLabel
