@@ -3,11 +3,13 @@ extends Control
 
 @onready var selections_container = $ButtonsContainer
 
+var speed_lines_noise = preload("res://models/textures/speed_lines_noise.tres")
 var selections = null
 var selection_focused_index := 0
 var has_selected := false
 
 func _ready():
+	$SpeedLines.material.set_shader_parameter("noise", speed_lines_noise)
 	SoundManager.play_music(Audio.resource.menu)
 	var play:Label = $ButtonsContainer/PlayLabel
 	play.on_select.connect(
