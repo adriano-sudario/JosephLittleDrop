@@ -146,7 +146,7 @@ jobs:
 
   discord-notification:
     name: Discord Notification
-    needs: [export-windows, export-linux, export-mac]
+    needs: [export-windows, export-linux, export-mac, export-web]
     runs-on: ubuntu-latest
     steps:
       - name: Notify Discord Channel
