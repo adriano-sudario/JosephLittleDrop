@@ -17,9 +17,9 @@ func _ready():
 	check_box.modulate.a = unfocused_alpha
 
 func focus():
-	var t = super.focus()
+	super.focus()
+	var t = create_tween().set_trans(Tween.TRANS_CUBIC)
 	t.parallel().tween_property(check_box, "modulate:a", 1.0, animation_duration)
-	return t
 
 func unfocus():
 	super.unfocus()

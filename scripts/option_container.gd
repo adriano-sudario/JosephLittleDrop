@@ -18,19 +18,18 @@ signal on_select
 const animation_duration := 0.25
 const unfocused_alpha := 0.5
 
+var initial_scale:Vector2
+
 func _ready():
-	label.modulate.a = unfocused_alpha
+	initial_scale = scale
+	pivot_offset = size / 2
 
 func focus():
 	label.material = ShaderMaterial.new()
 	label.material.shader = wavy_canvas
-	var t = create_tween().set_trans(Tween.TRANS_CUBIC)
-	t.tween_property(label, "modulate:a", 1.0, animation_duration)
-	return t
 
 func unfocus():
 	label.material = null
-	label.modulate.a = unfocused_alpha
 
 func select():
 	on_select.emit()

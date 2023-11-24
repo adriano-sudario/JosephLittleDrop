@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://qlo8qu8inrtl"]
+[gd_scene load_steps=18 format=3 uid="uid://qlo8qu8inrtl"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_by0r5"]
 [ext_resource type="Shader" path="res://shaders/speed_lines.gdshader" id="1_h50va"]
@@ -48,18 +48,7 @@ shader_parameter/speed = 2.0
 [sub_resource type="LabelSettings" id="LabelSettings_fphen"]
 font = ExtResource("10_i4rtx")
 font_size = 48
-outline_size = 10
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5f2s"]
-bg_color = Color(0.176471, 0.196078, 0.545098, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -71,15 +60,15 @@ grow_vertical = 2
 script = ExtResource("1_by0r5")
 
 [node name="Background" type="TextureRect" parent="."]
-layout_mode = 2
-offset_left = -16.1111
-offset_top = -4.0
-offset_right = 1287.0
-offset_bottom = 729.0
-grow_horizontal = 0
-grow_vertical = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_ijkif")
 expand_mode = 3
+stretch_mode = 5
 
 [node name="Particles" type="CPUParticles2D" parent="."]
 position = Vector2(633, 355)
@@ -149,10 +138,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -303.0
-offset_top = 275.0
-offset_right = 303.0
-offset_bottom = 325.0
+offset_left = -463.0
+offset_top = 280.0
+offset_right = 463.0
+offset_bottom = 337.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 75
@@ -190,15 +179,3 @@ label_settings = SubResource("LabelSettings_fphen")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_cjjc4")
-
-[node name="ButtonsPanel" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -120.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_d5f2s")
