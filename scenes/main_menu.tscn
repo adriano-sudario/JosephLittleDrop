@@ -89,7 +89,7 @@ color = Color(0.168627, 0.192157, 0.564706, 1)
 color_ramp = SubResource("Gradient_dxcr7")
 color_initial_ramp = SubResource("Gradient_cgxdu")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="SpeedLines" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_oy2n1")
 layout_mode = 1
 anchors_preset = 15
