@@ -34,6 +34,10 @@ movie_writer/movie_file="C:/Users/Kenney/Desktop/video-footage.avi"
 
 enabled=PackedStringArray("res://addons/sound_manager/plugin.cfg")
 
+[filesystem]
+
+import/fbx/enabled=false
+
 [input]
 
 ui_accept={
