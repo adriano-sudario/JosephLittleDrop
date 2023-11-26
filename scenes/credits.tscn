@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3vtosfk8400a"]
+[gd_scene load_steps=16 format=3 uid="uid://b3vtosfk8400a"]
 
 [ext_resource type="Texture2D" uid="uid://bprxyqn6k4rmd" path="res://sprites/MenuBg.png" id="1_l36wt"]
 [ext_resource type="Script" path="res://scenes/credits.gd" id="1_u3bmt"]
 [ext_resource type="FontFile" uid="uid://cx5igbhkb14mv" path="res://fonts/SoulwayFont-Demo.otf" id="2_pd5ad"]
 [ext_resource type="Texture2D" uid="uid://b6xxa16hjxywn" path="res://sprites/sparkle.png" id="3_4pu3s"]
 [ext_resource type="Shader" path="res://shaders/wavy_canvas.gdshader" id="4_3d6ct"]
+[ext_resource type="Texture2D" uid="uid://cf5n1qpyn77kd" path="res://sprites/godot_icon.png" id="6_3seoo"]
 
 [sub_resource type="Curve" id="Curve_nqmxu"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504298, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -37,6 +38,8 @@ font_size = 20
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0tif8"]
+
+[sub_resource type="Theme" id="Theme_p4atk"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -116,13 +119,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -167.5
+offset_top = -301.5
+offset_right = 167.5
+offset_bottom = 301.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
+alignment = 1
 
 [node name="SfxContainer" type="VBoxContainer" parent="CreditsContainer"]
 layout_mode = 2
@@ -252,6 +256,36 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Daytripper"
+label_settings = SubResource("LabelSettings_itpua")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EngineContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.0
+offset_top = -66.0
+offset_right = 157.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_p4atk")
+
+[node name="GodotLogo" type="TextureRect" parent="EngineContainer"]
+layout_mode = 2
+texture = ExtResource("6_3seoo")
+stretch_mode = 3
+
+[node name="CreditsLabel" type="Label" parent="EngineContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Made with Godot Game Engine"
 label_settings = SubResource("LabelSettings_itpua")
 horizontal_alignment = 1
 vertical_alignment = 1

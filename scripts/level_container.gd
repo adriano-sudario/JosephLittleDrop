@@ -2,6 +2,7 @@ class_name LevelContainer
 extends Node3D
 
 @onready var preview = $Mesh/Preview
+@onready var padlock = $Mesh/Padlock
 
 signal on_focused
 
@@ -11,8 +12,9 @@ var initial_position:Vector3
 var initial_rotation:Vector3
 var is_locked := false:
 	set(value):
-		preview.visible = not value
 		is_locked = value
+		preview.visible = not is_locked
+		padlock.visible = is_locked
 
 var is_focused := false:
 	set(value):
