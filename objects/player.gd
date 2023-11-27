@@ -34,7 +34,7 @@ var is_running := false
 var is_evaporating := true
 var jumps_count := 0
 var is_jump_prevented := false
-var footstep_player = null
+var footstep_player:AudioStreamPlayer = null
 
 var is_moving:bool:
 	set(value):
@@ -67,10 +67,14 @@ var can_control:
 		can_control = _value
 
 func handle_footstep_sound():
-	if footstep_player == null:
-		footstep_player = Audio.resource.footsteps.play()
-	
-	footstep_player.stream_paused = not is_moving
+	if not is_moving:
+		footstep_player.stop()
+		footstep_player = null
+	else:
+		if is_running:
+			footstep_player = Audio.resource.run.play()
+		else:
+			footstep_player = Audio.resource.walk.play()
 
 func _ready():
 	model.scale = Vector3(initial_scale, initial_scale, initial_scale)

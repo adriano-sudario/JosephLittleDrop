@@ -145,7 +145,7 @@ vertical_alignment = 1
 [node name="CreditsLabel" type="Label" parent="CreditsContainer/SfxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "DJ Gameshark"
+text = "DJ GAMESHARK"
 label_settings = SubResource("LabelSettings_itpua")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -168,7 +168,7 @@ vertical_alignment = 1
 [node name="CreditsLabel" type="Label" parent="CreditsContainer/SoundtrackContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "DJ Gameshark"
+text = "DJ GAMESHARK"
 label_settings = SubResource("LabelSettings_itpua")
 horizontal_alignment = 1
 vertical_alignment = 1
