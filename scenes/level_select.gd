@@ -33,11 +33,11 @@ func _ready():
 		
 		container.is_locked = container_index > LevelManager.current_level_index
 
-func focus_by_increment(index_increment:int):
+func focus_by_increment(index_increment:int) -> bool:
 	var next_focused = current_focused + index_increment
 	
 	if next_focused < 0 or next_focused > LevelManager.current_level_index:
-		return
+		return false
 	
 	var container_previous_focused:LevelContainer = level_containers[current_focused]
 	container_previous_focused.is_focused = false
@@ -45,29 +45,37 @@ func focus_by_increment(index_increment:int):
 	current_focused = next_focused
 	var container_focused:LevelContainer = level_containers[current_focused]
 	container_focused.is_focused = true
+	return true
 
 func _process(_delta):
 	if is_transitioning:
 		return
 	
 	if Input.is_action_just_pressed("ui_cancel"):
+		Audio.resource.interface_back.play()
 		is_transitioning = true
 		SceneManager.load_string("res://scenes/main_menu.tscn", null, false)
 		return
 	
+	var play_select_sound = false
+	
 	if Input.is_action_just_pressed("ui_left"):
-		focus_by_increment(-1)
+		play_select_sound = focus_by_increment(-1)
 	
 	if Input.is_action_just_pressed("ui_right"):
-		focus_by_increment(1)
+		play_select_sound = focus_by_increment(1)
 	
 	if Input.is_action_just_pressed("ui_down"):
-		focus_by_increment(3)
+		play_select_sound = focus_by_increment(3)
 	
 	if Input.is_action_just_pressed("ui_up"):
-		focus_by_increment(-3)
+		play_select_sound = focus_by_increment(-3)
+	
+	if play_select_sound:
+		Audio.resource.interface_select.play()
 	
 	if Input.is_action_just_pressed("ui_accept"):
+		Audio.resource.interface_enter.play()
 		is_transitioning = true
 		level_name_label.visible = false
 		time_counter_hud.visible = false

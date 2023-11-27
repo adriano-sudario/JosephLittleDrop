@@ -56,11 +56,14 @@ func _process(_delta):
 		change_next(1)
 	
 	if Input.is_action_just_pressed("ui_right"):
+		Audio.resource.interface_select.play()
 		change_next(1)
 	
 	if Input.is_action_just_pressed("ui_left"):
+		Audio.resource.interface_select.play()
 		change_next(-1)
 	
 	if Input.is_action_just_pressed("ui_accept"):
+		Audio.resource.interface_enter.play()
 		has_selected = true
 		selections[selection_focused_index].select()

@@ -56,6 +56,7 @@ var has_won := false:
 		has_won = value
 		
 		if has_won:
+			Audio.resource.victory.play()
 			on_win.emit()
 
 var can_control:
@@ -99,6 +100,7 @@ func _physics_process(delta):
 
 func handle_death():
 	if position.y < -10 or current_scale < minimum_scale:
+		Audio.resource.vanish.play()
 		can_control = false
 		var death_smoke_scene_path = "res://objects/death_smoke.tscn"
 		var death_smoke = load(death_smoke_scene_path).instantiate()

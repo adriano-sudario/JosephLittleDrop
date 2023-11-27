@@ -66,10 +66,13 @@ func _process(_delta):
 		change_focus_next(1)
 	
 	if Input.is_action_just_pressed("ui_down"):
+		Audio.resource.interface_select.play()
 		change_focus_next(1)
 	
 	if Input.is_action_just_pressed("ui_up"):
+		Audio.resource.interface_select.play()
 		change_focus_next(-1)
 	
 	if Input.is_action_just_pressed("ui_accept"):
+		Audio.resource.interface_enter.play()
 		options[option_focused_index].select()

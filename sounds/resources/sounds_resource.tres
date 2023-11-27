@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SoundsResource" load_steps=16 format=3 uid="uid://tr1doeeqtvud"]
+[gd_resource type="Resource" script_class="SoundsResource" load_steps=24 format=3 uid="uid://tr1doeeqtvud"]
 
 [ext_resource type="AudioStream" uid="uid://cko3em7xury11" path="res://sounds/sfxs/fall.ogg" id="1_1cogu"]
 [ext_resource type="Script" path="res://sounds/resources/sfx_stream.gd" id="1_7usyr"]
@@ -9,6 +9,31 @@
 [ext_resource type="AudioStream" uid="uid://bygrj12u37fyu" path="res://sounds/sfxs/little_drop_collected.ogg" id="5_hqej6"]
 [ext_resource type="Script" path="res://sounds/resources/sounds_resource.gd" id="6_3b4fg"]
 [ext_resource type="AudioStream" uid="uid://bk31rjdivb4i5" path="res://sounds/soundtracks/menu_ost.wav" id="8_773ek"]
+
+[sub_resource type="Resource" id="Resource_tlrqw"]
+script = ExtResource("1_7usyr")
+minimum_pitch = 1.0
+maximum_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_iiiet"]
+script = ExtResource("1_7usyr")
+minimum_pitch = 1.0
+maximum_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_sumbs"]
+script = ExtResource("1_7usyr")
+minimum_pitch = 1.0
+maximum_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_3urbd"]
+script = ExtResource("1_7usyr")
+minimum_pitch = 1.0
+maximum_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_ul88p"]
+script = ExtResource("1_7usyr")
+minimum_pitch = 1.0
+maximum_pitch = 1.0
 
 [sub_resource type="Resource" id="Resource_i4367"]
 script = ExtResource("1_7usyr")
@@ -40,6 +65,21 @@ minimum_pitch = 1.0
 maximum_pitch = 1.0
 stream = ExtResource("2_3ry2v")
 
+[sub_resource type="Resource" id="Resource_38u78"]
+script = ExtResource("1_7usyr")
+minimum_pitch = 1.0
+maximum_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_ua3er"]
+script = ExtResource("1_7usyr")
+minimum_pitch = 1.0
+maximum_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_k5ui8"]
+script = ExtResource("1_7usyr")
+minimum_pitch = 1.0
+maximum_pitch = 1.0
+
 [sub_resource type="Resource" id="Resource_t0pvl"]
 script = ExtResource("1_7usyr")
 minimum_pitch = 1.0
@@ -53,6 +93,15 @@ run = SubResource("Resource_asmu8")
 little_drop_collected = SubResource("Resource_s70lk")
 jump = SubResource("Resource_i4367")
 land = SubResource("Resource_7d3gc")
+vanish = SubResource("Resource_ua3er")
+victory = SubResource("Resource_k5ui8")
+teleport = SubResource("Resource_38u78")
 platform_fall = SubResource("Resource_dblff")
+interface_select = SubResource("Resource_ul88p")
+interface_back = SubResource("Resource_tlrqw")
+interface_enter = SubResource("Resource_sumbs")
+interface_open = SubResource("Resource_3urbd")
+interface_close = SubResource("Resource_iiiet")
 gameplay = ExtResource("3_bho20")
 menu = ExtResource("8_773ek")
+credits = ExtResource("3_bho20")
