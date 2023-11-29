@@ -43,6 +43,7 @@ func set_active(value: bool, set_linked = true):
 		linked_platform.set_active(value, false)
 
 func teleport():
+	Audio.resource.teleport.play()
 	player.global_position = linked_platform.feedback_drop.global_position
 	player.current_scale = scale_on_teleport
 

@@ -31,6 +31,7 @@ func _ready():
 		func():
 			is_transitioning = true
 			ConfigurationManager.save_options()
+			Audio.resource.interface_back.play()
 			SceneManager.load_string("res://scenes/main_menu.tscn", null, false)
 	)
 
@@ -58,10 +59,13 @@ func _process(_delta):
 		change_next(1)
 	
 	if Input.is_action_just_pressed("ui_down"):
+		Audio.resource.interface_select.play()
 		change_next(1)
 	
 	if Input.is_action_just_pressed("ui_up"):
+		Audio.resource.interface_select.play()
 		change_next(-1)
 	
 	if Input.is_action_just_pressed("ui_accept"):
+		Audio.resource.interface_enter.play()
 		options[option_focused_index].select()

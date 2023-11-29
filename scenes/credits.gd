@@ -12,6 +12,7 @@ var has_animation_ended := false
 var tween: Tween
 
 func _ready():
+	SoundManager.play_music(Audio.resource.credits)
 	background.pivot_offset = background.size / 2
 	thanks_label.modulate.a = 0
 	credits_container.position.y = background.size.y

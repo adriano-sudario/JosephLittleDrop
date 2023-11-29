@@ -12,10 +12,12 @@ static func reload_current(delay = null):
 	if delay != null:
 		await scene_tree.create_timer(delay).timeout
 	
+	Audio.resource.interface_close.play()
 	transition_scene.on_transition_end.connect(
 		func(_transition):
 			scene_tree.reload_current_scene()
 			is_transitioning = false
+			Audio.resource.interface_open.play()
 	)
 	transition_scene.mode = Transition.Mode.IN_OUT
 	scene_tree.current_scene.get_parent().add_child(transition_scene)
@@ -29,6 +31,7 @@ static func load_packed(scene: PackedScene, delay = null, play_soundtrack = true
 	if delay != null:
 		await scene_tree.create_timer(delay).timeout
 	
+	Audio.resource.interface_close.play()
 	transition_scene.on_transition_end.connect(
 		func(_transition):
 			scene_tree.change_scene_to_packed(scene)
@@ -37,6 +40,7 @@ static func load_packed(scene: PackedScene, delay = null, play_soundtrack = true
 				SoundManager.play_music(Audio.resource.gameplay)
 			
 			is_transitioning = false
+			Audio.resource.interface_open.play()
 	)
 	transition_scene.mode = Transition.Mode.IN_OUT
 	scene_tree.current_scene.get_parent().add_child(transition_scene)
@@ -50,6 +54,7 @@ static func load_string(scene_path: String, delay = null, play_soundtrack = true
 	if delay != null:
 		await scene_tree.create_timer(delay).timeout
 	
+	Audio.resource.interface_close.play()
 	transition_scene.on_transition_end.connect(
 		func(_transition):
 			scene_tree.change_scene_to_file(scene_path)
@@ -58,6 +63,7 @@ static func load_string(scene_path: String, delay = null, play_soundtrack = true
 				SoundManager.play_music(Audio.resource.gameplay)
 			
 			is_transitioning = false
+			Audio.resource.interface_open.play()
 	)
 	transition_scene.mode = Transition.Mode.IN_OUT
 	scene_tree.current_scene.get_parent().add_child(transition_scene)
@@ -67,7 +73,7 @@ static func load_next_level(delay := 1.5):
 	
 	if LevelManager.current_level_index >= LevelData.levels.size():
 		LevelManager.current_level_index = LevelData.levels.size() - 1
-		SceneManager.load_string("res://scenes/credits.tscn")
+		SceneManager.load_string("res://scenes/credits.tscn", null, false)
 		return
 	
 	var current_level = LevelManager.get_current_level()
