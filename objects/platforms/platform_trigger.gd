@@ -19,6 +19,7 @@ var player: Player
 var has_activated := false
 
 func prepare_transition():
+	Audio.resource.platform_button.play()
 	player.view.movement_transition_speed = 2.0
 	player.can_control = false
 	player.is_evaporating = false
@@ -27,7 +28,6 @@ func prepare_transition():
 func finish_transition():
 	player.can_control = true
 	player.view.target = player
-#	await get_tree().create_timer(0.5).timeout
 	player.is_evaporating = true
 
 func activate():

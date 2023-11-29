@@ -30,11 +30,19 @@ var movement_velocity: Vector3
 var rotation_direction: float
 var gravity := 0.0
 var was_on_floor := false
-var is_running := false
 var is_evaporating := true
 var jumps_count := 0
 var is_jump_prevented := false
 var footstep_player:AudioStreamPlayer = null
+
+var is_running := false:
+	set(value):
+		if value == is_running:
+			return
+		
+		is_running = value
+		
+		handle_footstep_sound()
 
 var is_moving:bool:
 	set(value):
@@ -42,6 +50,7 @@ var is_moving:bool:
 			return
 		
 		is_moving = value
+		
 		handle_footstep_sound()
 
 var has_begun_run := false:
@@ -67,15 +76,27 @@ var can_control:
 			movement_velocity = Vector3.ZERO
 		can_control = _value
 
+func remove_footsteps_sound():
+	if footstep_player == null:
+		return
+	
+	footstep_player.stop()
+
 func handle_footstep_sound():
 	if not is_moving:
-		footstep_player.stop()
-		footstep_player = null
+		remove_footsteps_sound()
+		return
+	
+	if is_running:
+		if footstep_player != null and footstep_player.stream == Audio.resource.walk.stream:
+			remove_footsteps_sound()
+		
+		footstep_player = Audio.resource.run.play()
 	else:
-		if is_running:
-			footstep_player = Audio.resource.run.play()
-		else:
-			footstep_player = Audio.resource.walk.play()
+		if footstep_player != null and footstep_player.stream == Audio.resource.run.stream:
+			remove_footsteps_sound()
+		
+		footstep_player = Audio.resource.walk.play()
 
 func _ready():
 	model.scale = Vector3(initial_scale, initial_scale, initial_scale)

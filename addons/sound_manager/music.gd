@@ -5,7 +5,7 @@ var tweens: Dictionary = {}
 var track_history: PackedStringArray = []
 
 
-func play(resource: AudioStream, volume: float = 0.0, crossfade_duration: float = 0.0, override_bus: String = "") -> AudioStreamPlayer:
+func play(resource: AudioStream, volume: float = 1.0, crossfade_duration: float = 0.0, override_bus: String = "") -> AudioStreamPlayer:
 	stop(crossfade_duration * 2)
 
 	var player = _get_player_with_music(resource)
@@ -16,7 +16,7 @@ func play(resource: AudioStream, volume: float = 0.0, crossfade_duration: float 
 		return player
 
 	# Otherwise we need to prep another player and handle its introduction
-	player = prepare(resource, override_bus)
+	player = prepare(resource, volume, override_bus)
 	fade_volume(player, -80.0, volume, crossfade_duration)
 
 	# Remember this track name

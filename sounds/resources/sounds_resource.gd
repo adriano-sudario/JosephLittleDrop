@@ -14,7 +14,6 @@ extends Resource
 @export_subgroup("Platforms", "platform_")
 @export var platform_fall:SfxResource
 @export var platform_button:SfxResource
-@export var platform_teleport:SfxResource
 
 @export_subgroup("Interface", "interface_")
 @export var interface_select:SfxResource

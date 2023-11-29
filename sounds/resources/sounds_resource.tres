@@ -1,90 +1,130 @@
-[gd_resource type="Resource" script_class="SoundsResource" load_steps=24 format=3 uid="uid://tr1doeeqtvud"]
+[gd_resource type="Resource" script_class="SoundsResource" load_steps=36 format=3 uid="uid://tr1doeeqtvud"]
 
-[ext_resource type="AudioStream" uid="uid://cko3em7xury11" path="res://sounds/sfxs/fall.ogg" id="1_1cogu"]
+[ext_resource type="AudioStream" uid="uid://bmqknmnus6m8l" path="res://sounds/soundtracks/credits_ost.wav" id="1_6ioo6"]
 [ext_resource type="Script" path="res://sounds/resources/sfx_stream.gd" id="1_7usyr"]
-[ext_resource type="AudioStream" uid="uid://cydjn1ct3hps2" path="res://sounds/sfxs/walking.ogg" id="2_3ry2v"]
+[ext_resource type="AudioStream" uid="uid://cdyxw1ydqept7" path="res://sounds/sfxs/interface_back.wav" id="3_7wldw"]
 [ext_resource type="AudioStream" uid="uid://ds683ci5dtbig" path="res://sounds/soundtracks/gameplay_ost.wav" id="3_bho20"]
-[ext_resource type="AudioStream" uid="uid://dw2m5fxhfjykq" path="res://sounds/sfxs/jump.ogg" id="3_sboqd"]
-[ext_resource type="AudioStream" uid="uid://xnxidwkp46un" path="res://sounds/sfxs/land.ogg" id="4_5bbil"]
-[ext_resource type="AudioStream" uid="uid://bygrj12u37fyu" path="res://sounds/sfxs/little_drop_collected.ogg" id="5_hqej6"]
+[ext_resource type="AudioStream" uid="uid://bmm53qtxs01x6" path="res://sounds/sfxs/interface_close.wav" id="4_iv5md"]
+[ext_resource type="AudioStream" uid="uid://cquxvk1w0dqtv" path="res://sounds/sfxs/interface_enter.wav" id="5_vfgov"]
 [ext_resource type="Script" path="res://sounds/resources/sounds_resource.gd" id="6_3b4fg"]
-[ext_resource type="AudioStream" uid="uid://bk31rjdivb4i5" path="res://sounds/soundtracks/menu_ost.wav" id="8_773ek"]
+[ext_resource type="AudioStream" uid="uid://cmsv2n6kslf3x" path="res://sounds/sfxs/interface_open.wav" id="6_y0ep2"]
+[ext_resource type="AudioStream" uid="uid://c7mifbd8eqkt8" path="res://sounds/sfxs/interface_select.wav" id="7_26d5i"]
+[ext_resource type="AudioStream" uid="uid://ddjxmmgnntk3v" path="res://sounds/sfxs/jump.wav" id="8_1hon0"]
+[ext_resource type="AudioStream" uid="uid://dvavnhiao0keb" path="res://sounds/soundtracks/menu_ost.wav" id="8_773ek"]
+[ext_resource type="AudioStream" uid="uid://ohxe03ix4v1m" path="res://sounds/sfxs/jump_alt.wav" id="9_4d8oo"]
+[ext_resource type="AudioStream" uid="uid://824s3ei3p8q4" path="res://sounds/sfxs/platform_button.wav" id="9_uuqyg"]
+[ext_resource type="AudioStream" uid="uid://dq5cdtav5bdvq" path="res://sounds/sfxs/platform_fall.wav" id="10_483eb"]
+[ext_resource type="AudioStream" uid="uid://cmh0t3fv2qhjg" path="res://sounds/sfxs/little_drop_collected.wav" id="10_rk2e5"]
+[ext_resource type="AudioStream" uid="uid://b028fqv756v5a" path="res://sounds/sfxs/teleport.wav" id="11_rvggl"]
+[ext_resource type="AudioStream" uid="uid://cjyv1ikp4gquj" path="res://sounds/sfxs/run.wav" id="15_ovmgv"]
+[ext_resource type="AudioStream" uid="uid://cob5ssppu30mc" path="res://sounds/sfxs/vanish.wav" id="17_1qyki"]
+[ext_resource type="AudioStream" uid="uid://cxr3bv7smk80e" path="res://sounds/sfxs/victory.wav" id="18_cndhg"]
+[ext_resource type="AudioStream" uid="uid://cf0uvxo3w7i76" path="res://sounds/sfxs/walk.wav" id="19_5efau"]
 
 [sub_resource type="Resource" id="Resource_tlrqw"]
 script = ExtResource("1_7usyr")
 minimum_pitch = 1.0
 maximum_pitch = 1.0
+maximum_volume = 1.0
+stream = ExtResource("3_7wldw")
 
 [sub_resource type="Resource" id="Resource_iiiet"]
 script = ExtResource("1_7usyr")
 minimum_pitch = 1.0
 maximum_pitch = 1.0
+maximum_volume = 0.3
+stream = ExtResource("4_iv5md")
 
 [sub_resource type="Resource" id="Resource_sumbs"]
 script = ExtResource("1_7usyr")
 minimum_pitch = 1.0
 maximum_pitch = 1.0
+maximum_volume = 0.5
+stream = ExtResource("5_vfgov")
 
 [sub_resource type="Resource" id="Resource_3urbd"]
 script = ExtResource("1_7usyr")
 minimum_pitch = 1.0
 maximum_pitch = 1.0
+maximum_volume = 0.4
+stream = ExtResource("6_y0ep2")
 
 [sub_resource type="Resource" id="Resource_ul88p"]
 script = ExtResource("1_7usyr")
 minimum_pitch = 1.0
 maximum_pitch = 1.0
+maximum_volume = 0.7
+stream = ExtResource("7_26d5i")
 
 [sub_resource type="Resource" id="Resource_i4367"]
 script = ExtResource("1_7usyr")
 minimum_pitch = 1.0
 maximum_pitch = 1.0
-stream = ExtResource("3_sboqd")
+maximum_volume = 1.0
+stream = ExtResource("8_1hon0")
 
 [sub_resource type="Resource" id="Resource_7d3gc"]
 script = ExtResource("1_7usyr")
 minimum_pitch = 1.0
 maximum_pitch = 1.0
-stream = ExtResource("4_5bbil")
+maximum_volume = 1.0
+stream = ExtResource("9_4d8oo")
 
 [sub_resource type="Resource" id="Resource_s70lk"]
 script = ExtResource("1_7usyr")
-minimum_pitch = 0.75
-maximum_pitch = 1.25
-stream = ExtResource("5_hqej6")
+minimum_pitch = 1.0
+maximum_pitch = 1.0
+maximum_volume = 1.0
+stream = ExtResource("10_rk2e5")
+
+[sub_resource type="Resource" id="Resource_7qtlk"]
+script = ExtResource("1_7usyr")
+minimum_pitch = 1.0
+maximum_pitch = 1.0
+maximum_volume = 1.0
+stream = ExtResource("9_uuqyg")
 
 [sub_resource type="Resource" id="Resource_dblff"]
 script = ExtResource("1_7usyr")
-minimum_pitch = 1.0
-maximum_pitch = 1.0
-stream = ExtResource("1_1cogu")
+minimum_pitch = 0.9
+maximum_pitch = 1.1
+maximum_volume = 0.2
+stream = ExtResource("10_483eb")
 
 [sub_resource type="Resource" id="Resource_asmu8"]
 script = ExtResource("1_7usyr")
-minimum_pitch = 1.0
-maximum_pitch = 1.0
-stream = ExtResource("2_3ry2v")
+minimum_pitch = 2.0
+maximum_pitch = 2.0
+maximum_volume = 1.0
+stream = ExtResource("15_ovmgv")
 
 [sub_resource type="Resource" id="Resource_38u78"]
 script = ExtResource("1_7usyr")
 minimum_pitch = 1.0
 maximum_pitch = 1.0
+maximum_volume = 0.8
+stream = ExtResource("11_rvggl")
 
 [sub_resource type="Resource" id="Resource_ua3er"]
 script = ExtResource("1_7usyr")
-minimum_pitch = 1.0
-maximum_pitch = 1.0
+minimum_pitch = 0.75
+maximum_pitch = 1.25
+maximum_volume = 0.4
+stream = ExtResource("17_1qyki")
 
 [sub_resource type="Resource" id="Resource_k5ui8"]
 script = ExtResource("1_7usyr")
 minimum_pitch = 1.0
 maximum_pitch = 1.0
+maximum_volume = 1.0
+stream = ExtResource("18_cndhg")
 
 [sub_resource type="Resource" id="Resource_t0pvl"]
 script = ExtResource("1_7usyr")
-minimum_pitch = 1.0
-maximum_pitch = 1.0
-stream = ExtResource("2_3ry2v")
+minimum_pitch = 0.9
+maximum_pitch = 0.9
+maximum_volume = 1.0
+stream = ExtResource("19_5efau")
 
 [resource]
 script = ExtResource("6_3b4fg")
@@ -97,6 +137,7 @@ vanish = SubResource("Resource_ua3er")
 victory = SubResource("Resource_k5ui8")
 teleport = SubResource("Resource_38u78")
 platform_fall = SubResource("Resource_dblff")
+platform_button = SubResource("Resource_7qtlk")
 interface_select = SubResource("Resource_ul88p")
 interface_back = SubResource("Resource_tlrqw")
 interface_enter = SubResource("Resource_sumbs")
@@ -104,4 +145,4 @@ interface_open = SubResource("Resource_3urbd")
 interface_close = SubResource("Resource_iiiet")
 gameplay = ExtResource("3_bho20")
 menu = ExtResource("8_773ek")
-credits = ExtResource("3_bho20")
+credits = ExtResource("1_6ioo6")

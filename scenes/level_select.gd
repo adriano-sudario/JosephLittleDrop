@@ -36,7 +36,9 @@ func _ready():
 func focus_by_increment(index_increment:int) -> bool:
 	var next_focused = current_focused + index_increment
 	
-	if next_focused < 0 or next_focused > LevelManager.current_level_index:
+	if next_focused < 0 \
+		or next_focused > LevelManager.current_level_index \
+		or next_focused >= level_containers.size():
 		return false
 	
 	var container_previous_focused:LevelContainer = level_containers[current_focused]
