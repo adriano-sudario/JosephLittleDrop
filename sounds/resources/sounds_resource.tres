@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SoundsResource" load_steps=36 format=3 uid="uid://tr1doeeqtvud"]
 
-[ext_resource type="AudioStream" uid="uid://bmqknmnus6m8l" path="res://sounds/soundtracks/credits_ost.wav" id="1_6ioo6"]
+[ext_resource type="AudioStream" uid="uid://ca0k6xgg31phc" path="res://sounds/soundtracks/credits_ost.wav" id="1_6ioo6"]
 [ext_resource type="Script" path="res://sounds/resources/sfx_stream.gd" id="1_7usyr"]
 [ext_resource type="AudioStream" uid="uid://cdyxw1ydqept7" path="res://sounds/sfxs/interface_back.wav" id="3_7wldw"]
 [ext_resource type="AudioStream" uid="uid://ds683ci5dtbig" path="res://sounds/soundtracks/gameplay_ost.wav" id="3_bho20"]
@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cmsv2n6kslf3x" path="res://sounds/sfxs/interface_open.wav" id="6_y0ep2"]
 [ext_resource type="AudioStream" uid="uid://c7mifbd8eqkt8" path="res://sounds/sfxs/interface_select.wav" id="7_26d5i"]
 [ext_resource type="AudioStream" uid="uid://ddjxmmgnntk3v" path="res://sounds/sfxs/jump.wav" id="8_1hon0"]
-[ext_resource type="AudioStream" uid="uid://dvavnhiao0keb" path="res://sounds/soundtracks/menu_ost.wav" id="8_773ek"]
+[ext_resource type="AudioStream" uid="uid://bjdvrr4e2ftkw" path="res://sounds/soundtracks/menu_ost.wav" id="8_773ek"]
 [ext_resource type="AudioStream" uid="uid://ohxe03ix4v1m" path="res://sounds/sfxs/jump_alt.wav" id="9_4d8oo"]
 [ext_resource type="AudioStream" uid="uid://824s3ei3p8q4" path="res://sounds/sfxs/platform_button.wav" id="9_uuqyg"]
 [ext_resource type="AudioStream" uid="uid://dq5cdtav5bdvq" path="res://sounds/sfxs/platform_fall.wav" id="10_483eb"]
