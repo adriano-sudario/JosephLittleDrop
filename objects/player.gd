@@ -83,19 +83,14 @@ func remove_footsteps_sound():
 	footstep_player.stop()
 
 func handle_footstep_sound():
+	remove_footsteps_sound()
+	
 	if not is_moving:
-		remove_footsteps_sound()
 		return
 	
 	if is_running:
-		if footstep_player != null and footstep_player.stream == Audio.resource.walk.stream:
-			remove_footsteps_sound()
-		
 		footstep_player = Audio.resource.run.play()
 	else:
-		if footstep_player != null and footstep_player.stream == Audio.resource.run.stream:
-			remove_footsteps_sound()
-		
 		footstep_player = Audio.resource.walk.play()
 
 func _ready():
