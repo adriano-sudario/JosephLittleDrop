@@ -10,7 +10,7 @@ func _walk_condition() -> bool:
 	return node.is_moving_on_floor and not node.is_running
 
 func _fall_condition() -> bool:
-	return node.gravity < 0 and not node.is_on_floor()
+	return node.gravity > 0 and not node.is_moving_on_floor and not node.was_on_floor
 
 func _winning_condition() -> bool:
 	return node.has_won

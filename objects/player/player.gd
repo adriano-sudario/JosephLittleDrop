@@ -49,7 +49,9 @@ var has_begun_run := false:
 var can_control:
 	set(_value):
 		if not _value:
-			state_machine.change_state_string("idle")
+			if not has_won:
+				state_machine.change_state_string("idle")
+			
 			is_running = false
 			is_moving_on_floor = false
 			movement_velocity = Vector3.ZERO

@@ -260,6 +260,27 @@ label_settings = SubResource("LabelSettings_itpua")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="VoiceActingContainer" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="CreditsContainer/VoiceActingContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Voice Acting"
+label_settings = SubResource("LabelSettings_3prdh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="CreditsContainer/VoiceActingContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Sese"
+label_settings = SubResource("LabelSettings_itpua")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="EngineContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
