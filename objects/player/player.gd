@@ -10,7 +10,7 @@ signal on_begin_run
 
 @export_subgroup("Properties")
 @export var movement_speed = 250
-@export var running_speed_multiplier = 1.75
+@export var fast_speed_multiplier = 1.75
 @export var jump_strength = 7
 @export var maximum_jumps = 2
 @export var evaporation_rate = 0.15
@@ -24,34 +24,20 @@ signal on_begin_run
 @onready var animation = $Character/AnimationPlayer
 @onready var view: ViewCamera = $"../View"
 @onready var centered_position: Vector3 = $Collider.position
+@onready var state_machine = $StateMachine
 
 var current_scale := initial_scale
 var movement_velocity: Vector3
 var rotation_direction: float
 var gravity := 0.0
 var was_on_floor := false
-var is_evaporating := true
 var jumps_count := 0
+var is_evaporating := true
 var is_jump_prevented := false
-var footstep_player:AudioStreamPlayer = null
-
-var is_running := false:
-	set(value):
-		if value == is_running:
-			return
-		
-		is_running = value
-		
-		handle_footstep_sound()
-
-var is_moving:bool:
-	set(value):
-		if value == is_moving:
-			return
-		
-		is_moving = value
-		
-		handle_footstep_sound()
+var is_running := false
+var is_moving_on_floor:bool
+var has_won := false
+var input:Vector3
 
 var has_begun_run := false:
 	set(value):
@@ -60,46 +46,31 @@ var has_begun_run := false:
 		
 		has_begun_run = value
 
-var has_won := false:
-	set(value):
-		has_won = value
-		
-		if has_won:
-			Audio.resource.victory.play()
-			on_win.emit()
-
 var can_control:
 	set(_value):
 		if not _value:
+			if not has_won:
+				state_machine.change_state_string("idle")
+			
 			is_running = false
-			is_moving = false
+			is_moving_on_floor = false
 			movement_velocity = Vector3.ZERO
 		can_control = _value
-
-func remove_footsteps_sound():
-	if footstep_player == null:
-		return
-	
-	footstep_player.stop()
-
-func handle_footstep_sound():
-	remove_footsteps_sound()
-	
-	if not is_moving:
-		return
-	
-	if is_running:
-		footstep_player = Audio.resource.run.play()
-	else:
-		footstep_player = Audio.resource.walk.play()
 
 func _ready():
 	model.scale = Vector3(initial_scale, initial_scale, initial_scale)
 	can_control = true
 	LevelManager.on_pause.connect(
 		func():
-			if footstep_player != null:
-				footstep_player.stream_paused = true
+			if state_machine.dictionary.walk.is_current() \
+				or state_machine.dictionary.run.is_current():
+				state_machine.current_state.footstep_player.stream_paused = true
+	)
+	LevelManager.on_unpause.connect(
+		func():
+			if state_machine.dictionary.walk.is_current() \
+				or state_machine.dictionary.run.is_current():
+				state_machine.current_state.footstep_player.stream_paused = false
 	)
 
 func _physics_process(delta):
@@ -108,8 +79,6 @@ func _physics_process(delta):
 	
 	handle_controls(delta)
 	handle_gravity(delta)
-	handle_effects()
-	handle_animations()
 	handle_movement(delta)
 	handle_evaporation(delta)
 	handle_death()
@@ -161,33 +130,6 @@ func handle_landing():
 		model.scale = Vector3(current_scale * 1.25, current_scale * 0.75, current_scale * 1.25)
 		Audio.resource.land.play()
 
-func handle_effects():
-	particles_trail.emitting = false
-
-func handle_animations():
-	var animation_name = ""
-	
-	if has_won:
-		animation_name = "winning"
-	elif is_on_floor():
-		animation_name = "idle"
-		
-		if abs(velocity.x) > 1 or abs(velocity.z) > 1:
-			animation_name = "walk"
-			
-			if is_running:
-				animation_name = "running"
-			
-			particles_trail.emitting = true
-	else:
-		animation_name = "jumping"
-		
-		if gravity > 0:
-			animation_name = "falling"
-	
-	is_moving = animation_name == "walk" or animation_name == "running"
-	animation.play(animation_name, 0.5)
-
 func handle_controls(delta):
 	if not can_control:
 		return
@@ -195,20 +137,25 @@ func handle_controls(delta):
 	if Input.is_action_just_pressed("respawn"):
 		current_scale = 0
 	
-	var input := Vector3.ZERO
+	input = Vector3.ZERO
 	input.x = Input.get_axis("move_left", "move_right")
 	input.z = Input.get_axis("move_forward", "move_back")
 	input = input.rotated(Vector3.UP, view.rotation.y).normalized()
 	
-	if OS.get_name() == "Web":
-		is_running = Input.is_action_pressed("web_run")
-	else:
-		is_running = Input.is_action_pressed("run")
+	var is_fast:bool
 	
+	if OS.get_name() == "Web":
+		is_fast = Input.is_action_pressed("web_fast")
+	else:
+		is_fast = Input.is_action_pressed("fast")
+	
+	var is_moving = input != Vector3.ZERO
+	is_moving_on_floor = is_moving and is_on_floor()
+	is_running = is_moving and is_fast
 	movement_velocity = input * movement_speed * delta
 	
-	if is_running:
-		movement_velocity *= running_speed_multiplier
+	if is_fast:
+		movement_velocity *= fast_speed_multiplier
 	
 	if Input.is_action_just_pressed("jump") and can_jump():
 		jump()
@@ -227,6 +174,7 @@ func jump():
 		gravity = -jump_strength
 		model.scale = Vector3(current_scale * 0.5, current_scale * 1.5, current_scale * 0.5)
 		jumps_count += 1
+		state_machine.change_state_string("jump")
 	
 	is_jump_prevented = false
 

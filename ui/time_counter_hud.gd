@@ -23,4 +23,4 @@ func _process(delta):
 		return
 	
 	elapsed_time += delta
-	time_text.text = StringFormat.get_formated_time(elapsed_time)
+	time_text.text = StringExtension.get_formated_time(elapsed_time)
