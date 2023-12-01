@@ -1,8 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://dl2ed4gkybggf"]
+[gd_scene load_steps=27 format=3 uid="uid://dl2ed4gkybggf"]
 
-[ext_resource type="Script" path="res://objects/player.gd" id="1_404yt"]
-[ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://sprites/blob_shadow.png" id="3_0c7wt"]
-[ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="4_mvhqy"]
+[ext_resource type="Script" path="res://objects/player/player.gd" id="1_07y4u"]
+[ext_resource type="Texture2D" uid="uid://8ggihh27mlrr" path="res://sprites/blob_shadow.png" id="2_1iy7s"]
+[ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://meshes/dust.res" id="3_p1x6w"]
+[ext_resource type="Script" path="res://scripts/states/state_machine.gd" id="4_f68pd"]
+[ext_resource type="Script" path="res://objects/player/state_idle.gd" id="5_apoog"]
+[ext_resource type="Script" path="res://objects/player/state_walk.gd" id="6_1b1yv"]
+[ext_resource type="Script" path="res://objects/player/state_run.gd" id="7_itx74"]
+[ext_resource type="Script" path="res://objects/player/state_jump.gd" id="8_tujdb"]
+[ext_resource type="Script" path="res://objects/player/state_fall.gd" id="9_ye277"]
+[ext_resource type="Script" path="res://objects/player/state_winning.gd" id="10_6681r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gdq8c"]
 radius = 0.3
@@ -988,7 +995,7 @@ point_count = 3
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 3
-script = ExtResource("1_404yt")
+script = ExtResource("1_07y4u")
 evaporation_rate = 0.1
 
 [node name="Collider" type="CollisionShape3D" parent="."]
@@ -1203,7 +1210,7 @@ libraries = {
 [node name="Shadow" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
 size = Vector3(1, 2, 1)
-texture_albedo = ExtResource("3_0c7wt")
+texture_albedo = ExtResource("2_1iy7s")
 modulate = Color(1, 1, 1, 0.705882)
 normal_fade = 0.5
 
@@ -1211,7 +1218,7 @@ normal_fade = 0.5
 material_override = SubResource("StandardMaterial3D_q7stj")
 cast_shadow = 0
 amount = 60
-mesh = ExtResource("4_mvhqy")
+mesh = ExtResource("3_p1x6w")
 emission_shape = 1
 emission_sphere_radius = 0.2
 particle_flag_align_y = true
@@ -1219,3 +1226,25 @@ direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0.1, 0)
 scale_amount_min = 0.75
 scale_amount_curve = SubResource("Curve_xh1e2")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_f68pd")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_apoog")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("6_1b1yv")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("7_itx74")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("8_tujdb")
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("9_ye277")
+
+[node name="Winning" type="Node" parent="StateMachine"]
+script = ExtResource("10_6681r")

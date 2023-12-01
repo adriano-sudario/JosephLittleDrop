@@ -24,7 +24,7 @@ func _ready():
 					return
 				
 				var best_time = best_times[container_index]
-				var best_time_description = StringFormat.get_formated_time(best_time)
+				var best_time_description = StringExtension.get_formated_time(best_time)
 				time_label.text = "Best time: %s" % best_time_description
 		)
 		
