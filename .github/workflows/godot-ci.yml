@@ -160,4 +160,3 @@ jobs:
             ${{ github.event.head_commit.message }}
             
             https://petit-suisse.itch.io/joseph-little-drop
-            senha: zegotinha
