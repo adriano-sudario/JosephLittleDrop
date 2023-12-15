@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Joseph Little Drop"
 run/main_scene="res://scenes/main_menu.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.694118, 0.811765, 0.894118, 1)
 boot_splash/image="res://splash-screen.png"
 config/icon="res://icon.svg"
