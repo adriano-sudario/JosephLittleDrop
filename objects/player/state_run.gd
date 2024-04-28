@@ -15,11 +15,11 @@ func _fall_condition() -> bool:
 func _winning_condition() -> bool:
 	return node.has_won
 
-func enter():
+func _enter():
 	node.animation.play("running", 0.5)
 	node.particles_trail.emitting = true
 	footstep_player = Audio.resource.run.play()
 
-func exit():
+func _exit():
 	node.particles_trail.emitting = false
 	footstep_player.stop()

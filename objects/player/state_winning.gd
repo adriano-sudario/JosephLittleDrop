@@ -1,7 +1,7 @@
 class_name StateWinning
 extends State
 
-func enter():
+func _enter():
 	node.can_control = false
 	node.animation.play("winning", 0.5)
 	node.particles_trail.emitting = false

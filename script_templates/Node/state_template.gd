@@ -8,13 +8,17 @@ func _snake_case_state_name_condition() -> bool:
 	return true # Replace with condition.
 
 # Called when the state has just been changed
-func enter():
+func _enter():
 	pass # Replace with function body.
 
 # Called when the the state has just been exited
-func exit():
+func _exit():
 	pass # Replace with function body.
 
 # Called every _proccess
-func update(_delta):
+func _update(_delta):
+	pass # Replace with function body.
+
+# Called every _proccess_physics
+func _update_physics(_delta):
 	pass # Replace with function body.

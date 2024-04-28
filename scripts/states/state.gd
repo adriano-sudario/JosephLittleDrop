@@ -26,14 +26,14 @@ func is_current():
 func machine_ready():
 	pass
 
-func enter():
+func _enter():
 	pass
 
-func update(_delta):
+func _update(_delta):
 	pass
 
-func update_physics(_delta):
+func _update_physics(_delta):
 	pass
 
-func exit():
+func _exit():
 	pass

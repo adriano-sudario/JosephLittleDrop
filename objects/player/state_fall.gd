@@ -7,6 +7,6 @@ func _idle_condition() -> bool:
 func _winning_condition() -> bool:
 	return node.has_won
 
-func enter():
+func _enter():
 	node.animation.play("falling", 0.5)
 	node.particles_trail.emitting = false
