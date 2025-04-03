@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c80b1odgla686"]
 
-[ext_resource type="Script" path="res://ui/time_counter_hud.gd" id="1_b21cv"]
+[ext_resource type="Script" uid="uid://de21y16ny31vj" path="res://ui/time_counter_hud.gd" id="1_b21cv"]
 [ext_resource type="Texture2D" uid="uid://b8sgu3q4nssr4" path="res://sprites/clock.png" id="2_lhfp2"]
 [ext_resource type="FontFile" uid="uid://ccs8rh8s7ngx5" path="res://fonts/Jackpot.ttf" id="3_450q7"]
 

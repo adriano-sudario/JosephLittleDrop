@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cy2v8hph35gv5"]
 
-[ext_resource type="Script" path="res://objects/little_drop.gd" id="1_rawhc"]
+[ext_resource type="Script" uid="uid://up2j55gyts1q" path="res://objects/little_drop.gd" id="1_rawhc"]
 [ext_resource type="Texture2D" uid="uid://bs6puxrivhkk2" path="res://sprites/particle.png" id="3_xl1k0"]
 [ext_resource type="PackedScene" uid="uid://clqr0manm2rxe" path="res://models/drop.glb" id="4_w6r5o"]
 

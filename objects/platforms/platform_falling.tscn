@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8up71en5djgm"]
 
-[ext_resource type="Script" path="res://objects/platforms/platform_falling.gd" id="2_5pdiq"]
+[ext_resource type="Script" uid="uid://ubxjpnf5bgx6" path="res://objects/platforms/platform_falling.gd" id="2_5pdiq"]
 [ext_resource type="PackedScene" uid="uid://bacvvetpvjor6" path="res://models/PlatformFalling.glb" id="2_or80p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t551e"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://l64gv7asxqet"]
 
-[ext_resource type="Shader" path="res://shaders/energy_field.gdshader" id="1_iuo3r"]
-[ext_resource type="Script" path="res://objects/energy_field.gd" id="1_yh8ge"]
+[ext_resource type="Shader" uid="uid://q1hvwoca6ws6" path="res://shaders/energy_field.gdshader" id="1_iuo3r"]
+[ext_resource type="Script" uid="uid://bpxgpr4jkuew1" path="res://objects/energy_field.gd" id="1_yh8ge"]
 [ext_resource type="ArrayMesh" uid="uid://da14x8guf5n1y" path="res://meshes/EnergySphere.obj" id="3_77hg7"]
 
 [sub_resource type="Curve" id="Curve_t583c"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0.00970873, 0.0526316), 0.0, 0.0, 0, 0, Vector2(0.31068, 2), 0.0, 0.0, 0, 0, Vector2(1, 0.0105263), 0.0, 0.0, 0, 0]
 point_count = 3
 

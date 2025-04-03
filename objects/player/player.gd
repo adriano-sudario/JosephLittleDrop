@@ -5,8 +5,8 @@ signal on_little_drop_collected
 signal on_jump
 signal on_interaction
 signal on_vanish
-signal on_win
 signal on_begin_run
+signal on_win(level_index: int)
 
 @export_subgroup("Properties")
 @export var movement_speed = 250
@@ -37,6 +37,7 @@ var is_jump_prevented := false
 var is_running := false
 var is_moving_on_floor:bool
 var has_won := false
+var on_level_index := 0
 var input:Vector3
 
 var has_begun_run := false:
@@ -58,6 +59,7 @@ var can_control:
 		can_control = _value
 
 func _ready():
+	on_level_index = LevelManager.current_level_index
 	model.scale = Vector3(initial_scale, initial_scale, initial_scale)
 	can_control = true
 	LevelManager.on_pause.connect(
