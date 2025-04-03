@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://btfo4v77g2j6c"]
 
-[ext_resource type="Script" path="res://objects/platforms/teleport_scan.gd" id="1_oty84"]
+[ext_resource type="Script" uid="uid://cdocm3y56i0ra" path="res://objects/platforms/teleport_scan.gd" id="1_oty84"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ywy3"]
 transparency = 1

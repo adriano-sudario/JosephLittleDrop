@@ -1,13 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://ckfp4vtlgmrgk"]
 
-[ext_resource type="Script" path="res://scenes/options_menu.gd" id="1_aaeme"]
-[ext_resource type="Shader" path="res://shaders/rain.gdshader" id="1_ilwrl"]
+[ext_resource type="Script" uid="uid://clevxv8yhr100" path="res://scenes/options_menu.gd" id="1_aaeme"]
+[ext_resource type="Shader" uid="uid://bccu5kd7auaxc" path="res://shaders/rain.gdshader" id="1_ilwrl"]
 [ext_resource type="FontFile" uid="uid://ccs8rh8s7ngx5" path="res://fonts/Jackpot.ttf" id="2_fvfqh"]
 [ext_resource type="Texture2D" uid="uid://ble5vmpcbm8r" path="res://sprites/icon-check.png" id="4_6g5le"]
 [ext_resource type="Texture2D" uid="uid://s7f3rnvalkh3" path="res://sprites/icons-uncheck.png" id="6_rcvll"]
 [ext_resource type="FontFile" uid="uid://cx5igbhkb14mv" path="res://fonts/SoulwayFont-Demo.otf" id="7_51yjm"]
-[ext_resource type="Script" path="res://scripts/checkbox_container.gd" id="8_pkqn1"]
-[ext_resource type="Script" path="res://scripts/option_container.gd" id="9_t8uob"]
+[ext_resource type="Script" uid="uid://dy8r5rluvlw0i" path="res://scripts/checkbox_container.gd" id="8_pkqn1"]
+[ext_resource type="Script" uid="uid://csfv0liruv1kf" path="res://scripts/option_container.gd" id="9_t8uob"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fwjh0"]
 shader = ExtResource("1_ilwrl")

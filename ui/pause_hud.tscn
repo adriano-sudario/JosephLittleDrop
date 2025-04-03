@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dimew6d4702mq"]
 
-[ext_resource type="Script" path="res://ui/pause_hud.gd" id="1_mlhk7"]
-[ext_resource type="Script" path="res://scripts/option_container.gd" id="2_8v50y"]
+[ext_resource type="Script" uid="uid://1bwkxs3ugvm" path="res://ui/pause_hud.gd" id="1_mlhk7"]
+[ext_resource type="Script" uid="uid://csfv0liruv1kf" path="res://scripts/option_container.gd" id="2_8v50y"]
 [ext_resource type="FontFile" uid="uid://cx5igbhkb14mv" path="res://fonts/SoulwayFont-Demo.otf" id="3_7gxvg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qa163"]
