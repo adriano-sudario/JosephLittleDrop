@@ -21,12 +21,12 @@ func get_options_data_path():
 	
 	return OS.get_user_data_dir() + "/config.json"
 
-func keep_track_on_progress(time: float):
-	if LevelManager.current_level_index == progress.best_times.size():
+func keep_track_on_progress(level_index: int, time: float):
+	if level_index == progress.best_times.size():
 		progress.best_times.push_back(time)
 		save_progress()
-	elif time < progress.best_times[LevelManager.current_level_index]:
-		progress.best_times[LevelManager.current_level_index] = time
+	elif time < progress.best_times[level_index]:
+		progress.best_times[level_index] = time
 		save_progress()
 
 func load_progress():

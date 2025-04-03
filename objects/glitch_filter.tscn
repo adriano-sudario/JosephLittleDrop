@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dyjoi2078fxxm"]
 
-[ext_resource type="Shader" path="res://shaders/glitch.gdshader" id="1_613ur"]
+[ext_resource type="Shader" uid="uid://b08juxcfgi0eo" path="res://shaders/glitch.gdshader" id="1_613ur"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5empu"]
 render_priority = 0

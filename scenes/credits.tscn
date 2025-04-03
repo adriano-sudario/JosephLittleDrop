@@ -1,10 +1,10 @@
 [gd_scene load_steps=16 format=3 uid="uid://b3vtosfk8400a"]
 
 [ext_resource type="Texture2D" uid="uid://bprxyqn6k4rmd" path="res://sprites/MenuBg.png" id="1_l36wt"]
-[ext_resource type="Script" path="res://scenes/credits.gd" id="1_u3bmt"]
+[ext_resource type="Script" uid="uid://c0xrlens6tsjy" path="res://scenes/credits.gd" id="1_u3bmt"]
 [ext_resource type="FontFile" uid="uid://cx5igbhkb14mv" path="res://fonts/SoulwayFont-Demo.otf" id="2_pd5ad"]
 [ext_resource type="Texture2D" uid="uid://b6xxa16hjxywn" path="res://sprites/sparkle.png" id="3_4pu3s"]
-[ext_resource type="Shader" path="res://shaders/wavy_canvas.gdshader" id="4_3d6ct"]
+[ext_resource type="Shader" uid="uid://enckoojf4qv" path="res://shaders/wavy_canvas.gdshader" id="4_3d6ct"]
 [ext_resource type="Texture2D" uid="uid://cf5n1qpyn77kd" path="res://sprites/godot_icon.png" id="6_3seoo"]
 
 [sub_resource type="Curve" id="Curve_nqmxu"]
@@ -256,6 +256,27 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Daytripper"
+label_settings = SubResource("LabelSettings_itpua")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VoiceActingContainer" type="VBoxContainer" parent="CreditsContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TitleLabel" type="Label" parent="CreditsContainer/VoiceActingContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Voice Acting"
+label_settings = SubResource("LabelSettings_3prdh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="CreditsContainer/VoiceActingContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Sese"
 label_settings = SubResource("LabelSettings_itpua")
 horizontal_alignment = 1
 vertical_alignment = 1

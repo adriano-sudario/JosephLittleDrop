@@ -62,7 +62,6 @@ func prepare_player(body: Player):
 	player.view.camera_rotation.x = camera_vertical_look
 	player.view.target = self
 	player.is_evaporating = false
-	player.can_control = false
 	player.has_won = true
 	set_impact_origin(player.position)
 	pull_player_towards_self()

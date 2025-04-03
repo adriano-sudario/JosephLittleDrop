@@ -29,7 +29,7 @@ func _ready():
 	tween.tween_property(thanks_label, "modulate:a", 1.0, 1.5)
 	tween.tween_callback(
 		func():
-			var roll_up_time = 20.0
+			var roll_up_time = 24.0
 			tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 			tween.tween_property(\
 				engine_container, "position:y", engine_container_end_y, roll_up_time)

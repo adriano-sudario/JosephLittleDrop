@@ -1,14 +1,14 @@
 [gd_scene load_steps=16 format=3 uid="uid://qlo8qu8inrtl"]
 
-[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_by0r5"]
-[ext_resource type="Shader" path="res://shaders/speed_lines.gdshader" id="1_h50va"]
-[ext_resource type="Shader" path="res://shaders/wavy_canvas.gdshader" id="1_uihuy"]
+[ext_resource type="Script" uid="uid://vfjkopgg1kbo" path="res://scenes/main_menu.gd" id="1_by0r5"]
+[ext_resource type="Shader" uid="uid://cl7685w7p1lh4" path="res://shaders/speed_lines.gdshader" id="1_h50va"]
+[ext_resource type="Shader" uid="uid://enckoojf4qv" path="res://shaders/wavy_canvas.gdshader" id="1_uihuy"]
 [ext_resource type="Texture2D" uid="uid://bprxyqn6k4rmd" path="res://sprites/MenuBg.png" id="2_ijkif"]
 [ext_resource type="Texture2D" uid="uid://bfwdhmfjaoqee" path="res://sprites/title.png" id="4_ncwnb"]
-[ext_resource type="Texture2D" uid="uid://b2wha038hr2c3" path="res://models/textures/speed_lines_noise.tres" id="5_7anrp"]
+[ext_resource type="Texture2D" uid="uid://b2wha038hr2c3" path="res://models/Textures/speed_lines_noise.tres" id="5_7anrp"]
 [ext_resource type="Texture2D" uid="uid://daxmxife8dixx" path="res://sprites/joseph_little_drop.png" id="6_bxihl"]
 [ext_resource type="Texture2D" uid="uid://b6xxa16hjxywn" path="res://sprites/sparkle.png" id="10_7q76j"]
-[ext_resource type="Script" path="res://scripts/selection.gd" id="10_cjjc4"]
+[ext_resource type="Script" uid="uid://dfuu46ao1xaig" path="res://scripts/selection.gd" id="10_cjjc4"]
 [ext_resource type="FontFile" uid="uid://cx5igbhkb14mv" path="res://fonts/SoulwayFont-Demo.otf" id="10_i4rtx"]
 
 [sub_resource type="Curve" id="Curve_hovj1"]
@@ -20,6 +20,7 @@ offsets = PackedFloat32Array(0, 0.0331126)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oy2n1"]
 shader = ExtResource("1_h50va")
+shader_parameter/noise = ExtResource("5_7anrp")
 shader_parameter/line_color = Color(0.176471, 0.196078, 0.545098, 1)
 shader_parameter/line_count = 2.0
 shader_parameter/line_density = 0.43
@@ -27,7 +28,6 @@ shader_parameter/line_faloff = 0.32
 shader_parameter/mask_size = 0.1
 shader_parameter/mask_edge = 0.534
 shader_parameter/animation_speed = 10.0
-shader_parameter/noise = ExtResource("5_7anrp")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ueuq1"]
 shader = ExtResource("1_uihuy")

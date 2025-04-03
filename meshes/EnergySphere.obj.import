@@ -16,6 +16,10 @@ dest_files=["res://.godot/imported/EnergySphere.obj-8d24c942144d3b729e80cc77e927
 [params]
 
 generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
 scale_mesh=Vector3(1, 1, 1)
 offset_mesh=Vector3(0, 0, 0)
-optimize_mesh=true
+force_disable_mesh_compression=false

@@ -9,9 +9,9 @@ var has_begun_run := false
 func _ready():
 	var player:Player = $"../Player"
 	player.on_vanish.connect(func(): is_counting = false)
-	player.on_win.connect(func():
+	player.on_win.connect(func(level_index: int):
 		is_counting = false
-		ConfigurationManager.keep_track_on_progress(elapsed_time)
+		ConfigurationManager.keep_track_on_progress(level_index, elapsed_time)
 	)
 	player.on_begin_run.connect(func(): has_begun_run = true)
 	
@@ -23,4 +23,4 @@ func _process(delta):
 		return
 	
 	elapsed_time += delta
-	time_text.text = StringFormat.get_formated_time(elapsed_time)
+	time_text.text = StringExtension.get_formated_time(elapsed_time)
