@@ -11,6 +11,7 @@ env:
   EXPORT_NAME_MAC: joseph-little-drop-mac
   ITCH_USER_NAME: petit-suisse
   ITCH_GAME_NAME: joseph-little-drop
+  PROJECT_PATH: .
 
 jobs:
   export-windows:
