@@ -112,10 +112,6 @@ jobs:
       - name: Install rsync 📚
         run: |
           apt-get update && apt-get install -y rsync
-      - name: Deploy to GitHub Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v4
-        with:
-          folder: build/web
       - name: deploy to itch.io (Web)
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
