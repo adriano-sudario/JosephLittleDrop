@@ -32,7 +32,7 @@ jobs:
           mkdir -v -p build/windows
           godot --headless --export-release "Windows Desktop" ./build/windows/$EXPORT_NAME_WINDOWS.exe project.godot
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: windows
           path: build/windows
@@ -64,7 +64,7 @@ jobs:
           mkdir -v -p build/linux
           godot --headless --export-release "Linux/X11" ./build/linux/$EXPORT_NAME_LINUX.x86_64 project.godot
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: linux
           path: build/linux
@@ -96,7 +96,7 @@ jobs:
           mkdir -v -p build/web
           godot --headless --export-release "HTML5" ./build/web/index.html project.godot
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: web
           path: build/web
@@ -131,7 +131,7 @@ jobs:
           mkdir -v -p build/mac
           godot --headless --export-release "Mac OSX" ./build/mac/$EXPORT_NAME_MAC.zip project.godot
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: mac
           path: build/mac
