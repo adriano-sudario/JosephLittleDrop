@@ -103,7 +103,7 @@ jobs:
           mkdir -v -p build/web
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
-          godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html"
+          godot --headless --verbose --export-release "HTML5" "$EXPORT_DIR/web/index.html"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -144,7 +144,7 @@ jobs:
           mkdir -v -p build/mac
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
-          godot --headless --verbose --export-release "macOS" "$EXPORT_DIR/mac/$EXPORT_NAME_MAC.zip"
+          godot --headless --verbose --export-release "Mac OSX" "$EXPORT_DIR/mac/$EXPORT_NAME_MAC.zip"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
